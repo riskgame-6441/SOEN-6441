@@ -8,7 +8,7 @@ If 2) Show all the rules and How to play RISK.
 If 3) Exit
 If 1) Choose :	
 	1) Default Map [no of country x=42]
-	2) Upload Map(.txt) [x=according to input]
+	2) Upload Map OR Create your own map(.txt File) [x=according to input]
 -> Enter No. of Players(2-5) :
 [If any other input show message "Please enter 2-5 players"]
 -> Name of Player1[Red] : 
