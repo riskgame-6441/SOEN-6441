@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class mapoptions {
+public class mapoptions extends namingplayers{
     public void mapo() {
         int i = 0;
         Scanner a = new Scanner(System.in);
@@ -14,7 +14,7 @@ public class mapoptions {
                     i = i + 1;
                     break;
                 case 2:
-                    System.out.println("go to existing map");
+                    namep();
                     i = i + 1;
                     break;
                 case 3:
