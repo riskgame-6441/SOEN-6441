@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * This class is for creation of map by user
- * 
+ * This class file_creation methos to create map file
  * @author charan
  * @version 1.0.0
  */
