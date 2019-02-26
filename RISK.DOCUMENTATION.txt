@@ -65,7 +65,7 @@ Table :
 Total no of Reinforcement army = No of army_country + No of army_continent + No of army_card
 	No of army_country = max( No of country player1 holding / 3 , 3 )
 	No of army_continent = according to pre-defined value
-	No of army_card = acccording to card treding
+	//No of army_card = acccording to card treding
 ]
   
 You have ___ Armies.
@@ -74,7 +74,7 @@ Enter number of armies to reinforce :
 [Loop until all armies are distributed]
 
 
-country_won = false
+//country_won = false
 Do you want to attack(Y/N)? :
 If Y :
 ****************Attack Phase*********************
