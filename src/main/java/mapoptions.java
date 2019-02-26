@@ -1,5 +1,7 @@
+import java.util.Arrays;
 import java.util.Scanner;
 public class mapoptions extends namingplayers{
+    String[] name = new String[5];
     public void mapo() {
         int i = 0;
         Scanner a = new Scanner(System.in);
@@ -25,5 +27,9 @@ public class mapoptions extends namingplayers{
                     System.out.println("Enter correct option");
             }
         }
+    }
+    public String[] getname(){
+        System.out.println(Arrays.toString(name));
+        return name;
     }
 }

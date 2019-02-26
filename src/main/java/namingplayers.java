@@ -1,10 +1,9 @@
-
-
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class namingplayers  {
     uem a1 = new uem();
-    public void namep(){
+    public int namep(){
         String[] names = new String[5];
         Scanner a = new Scanner(System.in);
         final String ANSI_RESET = "\u001B[0m";
@@ -39,5 +38,6 @@ public class namingplayers  {
                 System.out.println("Player name : " + ANSI_CYAN + pname + ANSI_RESET);
             }
         }
+        return pinp;
 }
 }

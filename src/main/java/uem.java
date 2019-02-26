@@ -1,10 +1,8 @@
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 public class uem extends calcline{
-        public void countrylist() throws Exception{
+        public ArrayList<String> countrylist() throws Exception{
             String fileWord = "Territories";
             String searchword = " ";
             ArrayList<String> list = new ArrayList<String>();
@@ -25,12 +23,12 @@ public class uem extends calcline{
                         list.add(input[0]);
                     }
                     j = j + 1;
-                    System.out.println(list);
                 }
             }
 
+            return list;
         }
-        public void continentlist() throws Exception{
+        public ArrayList<String> continentlist() throws Exception{
             String searchcontinent = " ";
             ArrayList<String> continentlist = new ArrayList<String>();
             int i;
@@ -50,9 +48,9 @@ public class uem extends calcline{
                         continentlist.add(input[0]);
                     }
                     j = j + 1;
-                    System.out.println(continentlist);
                 }
             }
+            return continentlist;
         }
 
     }
