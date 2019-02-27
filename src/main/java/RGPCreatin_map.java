@@ -4,12 +4,32 @@ import java.util.Scanner;
 
 /**
  * This class is for creation of map by user
- * This class file_creation methos to create map file
+ * 
  * @author charan
  * @version 1.0.0
  */
 public class RGPCreatin_map {
-
+	/**
+	 * This method is to create a map file
+	 * 
+	 * @param continent_name1
+	 *            gives the continent name
+	 * @param contint1
+	 *            gives the no of continents
+	 * @param cntry1
+	 *            gives the no of countries
+	 * @param continent_countries1
+	 *            gives the countries of particular continent
+	 * @param country_name1
+	 *            gives the countries names
+	 * @param country_cordinates1
+	 *            gives the country coordinates
+	 * @param country_continent1
+	 *            gives the countries
+	 * @param adjacent_countries1
+	 *            gives the adjacent countries
+	 * @throws FileNotFoundException
+	 */
 	public static void file_creation(String[] continent_name1, int contint1, int cntry1, int[] continent_countries1,
 			String[] country_name1, String[] country_cordinates1, String[] country_continent1,
 			String[] adjacent_countries1) throws FileNotFoundException {
@@ -38,8 +58,9 @@ public class RGPCreatin_map {
 			mapcreation.print(adjacent_countries1[i]);
 			// }
 			mapcreation.println(" ");
-		}
 
+		}
+		System.out.println("Map has been created");
 		mapcreation.close();
 
 	}
@@ -48,7 +69,7 @@ public class RGPCreatin_map {
 
 		// TODO Auto-generated method stub
 		Scanner input = new Scanner(System.in);
-		System.out.println("Enter no of COntinents");
+		System.out.println("Enter no of Continents");
 		int contint = input.nextInt();
 		String[] continent_name = new String[contint];
 
@@ -83,7 +104,7 @@ public class RGPCreatin_map {
 			System.out.println("Enter co-ordinates for the country");
 			country_cordinates[i] = input2.nextLine();
 			// for (int j = 0; j < cntint_contry[i]; j++) {
-			System.out.println("Enter Adjacent countries");
+			System.out.println("Enter Adjacent countries with ',' seperator");
 			// Scanner input2 = new Scanner(System.in);
 			adjacent_countries[i] = input2.nextLine();
 			// }
