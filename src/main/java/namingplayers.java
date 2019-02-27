@@ -1,8 +1,15 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
+
 public class namingplayers  {
     uem a1 = new uem();
+    
+    public int getPlayers(int a) {
+    	int total_players = a;
+    	return total_players;
+    }
+    
     public int namep(){
         String[] names = new String[5];
         Scanner a = new Scanner(System.in);
@@ -15,6 +22,7 @@ public class namingplayers  {
 
         System.out.println("Enter the no of players (2-5)");
         int pinp = a.nextInt();
+        getPlayers(pinp);
         String pname;
         int i;
         for (i = 0; i < pinp; i++) {
