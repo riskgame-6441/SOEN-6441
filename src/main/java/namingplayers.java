@@ -4,9 +4,12 @@ import java.util.Scanner;
 
 public class namingplayers  {
     uem a1 = new uem();
+    int total_players;
     
-    public int getPlayers(int a) {
-    	int total_players = a;
+    public int getPlayers() {
+    	Scanner a = new Scanner(System.in);
+    	System.out.println("enter no of players");
+    	total_players = a.nextInt();
     	return total_players;
     }
     
@@ -20,9 +23,7 @@ public class namingplayers  {
         final String ANSI_PURPLE = "\u001B[35m";
         final String ANSI_CYAN = "\u001B[36m";
 
-        System.out.println("Enter the no of players (2-5)");
-        int pinp = a.nextInt();
-        getPlayers(pinp);
+        int pinp = getPlayers();
         String pname;
         int i;
         for (i = 0; i < pinp; i++) {

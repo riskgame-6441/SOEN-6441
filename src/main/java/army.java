@@ -49,7 +49,7 @@ public class army extends mainmethod{
 	 * 
 	 * @return This method returns list of countries per player as list of list string.
 	 * */
-	public static List<List<String>> divideCountry(String player_name[], ArrayList<String> country_name){
+	public static List<List<String>> divideCountry(int total_players, ArrayList<String> country_name){
 		List<List<String>> country_list_for_player = new ArrayList<List<String>>();
 		List<String> country_for_player1 = new ArrayList<String>();
 		List<String> country_for_player2 = new ArrayList<String>();
@@ -57,7 +57,7 @@ public class army extends mainmethod{
 		List<String> country_for_player4 = new ArrayList<String>();
 		List<String> country_for_player5 = new ArrayList<String>();
 		List<String> country_for_player6 = new ArrayList<String>();
-		int p = player_name.length;
+		int p = total_players;
 		int j = 0;
 		int total_no_of_country = country_name.size();
 		for(int i=0; i<p && total_no_of_country != 0; i++) {
@@ -141,9 +141,9 @@ public class army extends mainmethod{
 	 * @return This method returns number of armies in each country.
 	 * 
 	 * */
-	public static HashMap<String,Integer> armyPerCountry(String[] player_name, int army_per_player, List<List<String>> country_per_player){
+	public static HashMap<String,Integer> armyPerCountry(int total_players, int army_per_player, List<List<String>> country_per_player){
 		HashMap<String,Integer> army_per_country = new HashMap<String,Integer>();
-		int p = player_name.length;
+		int p = total_players;
 		for(int i=0; i<p; i++) {
 			int ap = army_per_player;
 			int q = country_per_player.get(i).size();
