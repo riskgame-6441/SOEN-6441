@@ -1,0 +1,140 @@
+*****RISK*****
+1) Start
+2) Help
+3) Exit
+Choose : 
+
+If 2) Show all the rules and How to play RISK.
+If 3) Exit
+If 1) Choose :	
+	1) Default Map [no of country x=42]
+	2) Upload Map OR Create your own map(.txt File) [x=according to input]
+-> Enter No. of Players(2-5) :
+[If any other input show message "Please enter 2-5 players"]
+-> Name of Player1[Red] : 
+   Name of Player2[Yellow] :
+   Name of Player3[Blue] :
+   Name of Player4[Green] :
+   Name of Player5[Purple] :
+   Name of Player6[Orange] :
+[
+Number of Infantry : for 2 players -> 40*x/42
+		     for 3 players -> 35*x/42
+		     for 4 players -> 30*x/42
+		     for 5 players -> 25*x/42
+		     for 6 players -> 20*x/42
+To divide armies to each country :
+- first count no of country for each player(for extra country use random function to allocate or just assign 1-1 country from player1 to so on)
+- divide amries to each country for each player(each country should have atlist 1 army)
+]
+**********Get Ready For RISK!!**************
+[ Turn for Player1 ]
+Player1 Name
+Table :
+---------------------------------------------------------------------------------------------------------------
+| Country                                    |   Neighbor Countries(Countries that can be attacked)	      | 
+---------------------------------------------------------------------------------------------------------------
+| Country Name(Continent Name) : No of Army  |   Country Name(Continent Name) : No of Army		      | 
+| 					     |   Country Name(Continent Name) : No of Army		      | 
+| 					     |   Country Name(Continent Name) : No of Army		      | 
+|  					     |   Country Name(Continent Name) : No of Army		      | 
+---------------------------------------------------------------------------------------------------------------
+| Country Name(Continent Name) : No of Army  |   Country Name(Continent Name) : No of Army		      | 
+| 					     |   Country Name(Continent Name) : No of Army		      | 
+| 					     |   Country Name(Continent Name) : No of Army	    	      | 
+| 					     |   Country Name(Continent Name) : No of Army		      | 
+---------------------------------------------------------------------------------------------------------------
+| Country Name(Continent Name) : No of Army  |   Country Name(Continent Name) : No of Army		      | 
+| 					     |   Country Name(Continent Name) : No of Army		      | 
+| 					     |   Country Name(Continent Name) : No of Army		      | 
+| 					     |   Country Name(Continent Name) : No of Army		      | 
+---------------------------------------------------------------------------------------------------------------
+| [If player is having any continent under control]							      |
+| List of Continents											      |
+---------------------------------------------------------------------------------------------------------------
+| [If player is having any card]									      |
+| List of Cards												      |
+---------------------------------------------------------------------------------------------------------------
+|Asia(7) : 12 | Africa(3) : 6 | North America(5) : 9 | South America(2) : 4 | Australia(2) : 4 | Europe(5) : 7|
+---------------------------------------------------------------------------------------------------------------
+[Continent Name(No Of extra armies) : No of country in the continent]
+
+
+***********Reinforcement Phase*****************
+[
+Total no of Reinforcement army = No of army_country + No of army_continent + No of army_card
+	No of army_country = max( No of country player1 holding / 3 , 3 )
+	No of army_continent = according to pre-defined value
+	//No of army_card = acccording to card treding
+]
+  
+You have ___ Armies.
+Enter country name :
+Enter number of armies to reinforce :
+[Loop until all armies are distributed]
+
+
+//country_won = false
+Do you want to attack(Y/N)? :
+If Y :
+****************Attack Phase*********************
+[Display table]
+
+Enter name of country by which you want to attack :
+Enter name of country to attack :
+[ If player enters wrong country display list of counties that can be attacked by the selected country "You can only attack __ , __ and __ countries." ]
+
+[ Rolling Dice ]
+for attacker (max)3 dice [min(no of army,3)][If it has only 2 army then it can't roll 3 dice]
+[find min of 3 dice and discard it]
+for defender (max)2 dice [min(no of army,2)]
+compare both dice and get winner
+win1->max(A,D)
+win2->max(A,D)
+
+
+if win1==A
+	no_of_army_D - 1
+else
+	no_of_army_A - 1
+
+
+if win2==A
+	no_of_army_D - 1
+else
+	no_of_army_A - 1
+
+
+if no_of_army_A == 0
+	assign attacker's country to defender
+else
+	assign defender's country to attacker
+	country_won = true
+
+[Loop]Do you want to attack(Y/N)? :
+
+If N :
+************Fortification Phase******************
+if(country_won == true){
+	no_of_card++;
+}
+[Display Table]
+Enter Country1(Sender) :
+Enter Country2(Receiver) :
+[ No of army that can be fortified (A) = no of army in country1 - 1 ]
+Enter No of army to fortify :
+[ If input is larger than A display message "You can only fortify maximum A armies" ]
+
+[ Player1 turn over.....Start for Player2 ]
+[ Loop ]
+
+
+
+
+
+
+
+
+
+
+
