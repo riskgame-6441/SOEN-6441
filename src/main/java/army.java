@@ -1,35 +1,27 @@
-<<<<<<< HEAD
-import java.util.ArrayList;
-import java.util.Arrays;
-
-public class army{
-    int infantry;
-    public int display() throws Exception {
-        int n = 5;
-        if (n == 3){
-            infantry = 35;
-        }
-        else if(n == 4){
-            infantry = 30;
-        }
-        else if(n == 5){
-            infantry = 25;
-        }
-        else {
-            infantry = 20;
-        }
-    return infantry;
-    }
-=======
 
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
 
-
+/**  
+ * This class is to Divide Army and Country to the Players accordingly.
+ * 
+ * @author Dhruvi Gadhiya
+ * @version 1.0.0
+ * */
 public class army extends mainmethod{
 	
+	/**
+	 * This method is used to calculate How many army each Player will get.
+	 * 
+	 * @param no_of_players This parameter contains value of total number of Players.
+	 * 
+	 * @param total_country This parameter contains value of total number of Countries.
+	 * 
+	 * @return This method returns total number of armies each player will get.
+	 * 
+	 * */
 	public static Integer totalArmy(int no_of_players, int total_country) {
 		int armies_per_player = 0;
 		
@@ -48,6 +40,15 @@ public class army extends mainmethod{
 		return armies_per_player;
 	}
 	
+	/**
+	 * This method is used to divide country to each player.
+	 * 
+	 * @param player_name[] This parameter contains array string of players name.
+	 * 
+	 * @param country_name This parameter contains string arraylist of all country name.
+	 * 
+	 * @return This method returns list of countries per player as list of list string.
+	 * */
 	public static List<List<String>> divideCountry(String player_name[], ArrayList<String> country_name){
 		List<List<String>> country_list_for_player = new ArrayList<List<String>>();
 		List<String> country_for_player1 = new ArrayList<String>();
@@ -128,6 +129,18 @@ public class army extends mainmethod{
 		return country_list_for_player;
 	}
 	
+	/**
+	 * This method is used to divide armies to each country according to players.
+	 * 
+	 * @param player_name This parameter contains String array of all players name.
+	 * 
+	 * @param army_per_player This parameter contains number of armies each player is having.
+	 * 
+	 * @param country_per_player This parameter contains the list of countries for each player.
+	 * 
+	 * @return This method returns number of armies in each country.
+	 * 
+	 * */
 	public static HashMap<String,Integer> armyPerCountry(String[] player_name, int army_per_player, List<List<String>> country_per_player){
 		HashMap<String,Integer> army_per_country = new HashMap<String,Integer>();
 		int p = player_name.length;
@@ -153,5 +166,4 @@ public class army extends mainmethod{
 		return army_per_country;
 	}
 
->>>>>>> upstream/master
 }
