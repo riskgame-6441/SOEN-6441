@@ -7,7 +7,8 @@ public class uem extends calcline{
             String searchword = " ";
             ArrayList<String> list = new ArrayList<String>();
             int i;
-            File file = new File("C:\\Users\\dattebayo\\Desktop\\Board.map");
+            //File file = new File("C:\\Users\\dattebayo\\Desktop\\Board.map");
+            File file = new File("/Users/Guest1/SOEN-6441/src/main/java/Board.map");
             Scanner sc = new Scanner(file);
             int j = 0;
             int n = line2();
@@ -18,8 +19,12 @@ public class uem extends calcline{
                 searchword = sc.next();
                 if (searchword.equals("[Territories]")) {
                     for (i = 0; i < n-1; i++) {
+                    	if(!sc.hasNext()) {
+                    		break;
+                    	}
                         String text = sc.next();
                         String[] input = text.split(",");
+                        //System.out.println(input[0]);
                         list.add(input[0]);
                     }
                     j = j + 1;
@@ -32,7 +37,8 @@ public class uem extends calcline{
             String searchcontinent = " ";
             ArrayList<String> continentlist = new ArrayList<String>();
             int i;
-            File file = new File("C:\\Users\\dattebayo\\Desktop\\Board.map");
+            File file = new File("/Users/Guest1/SOEN-6441/src/main/java/Board.map");
+            //File file = new File("C:\\Users\\dattebayo\\Desktop\\Board.map");
             Scanner sc = new Scanner(file);
             int j = 0;
             int n = line1();
