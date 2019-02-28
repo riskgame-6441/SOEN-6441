@@ -8,7 +8,7 @@ public class uem extends calcline{
             ArrayList<String> list = new ArrayList<String>();
             int i;
             //File file = new File("C:\\Users\\dattebayo\\Desktop\\Board.map");
-            File file = new File("/Users/Guest1/SOEN-6441/src/main/java/Board.map");
+            File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
             Scanner sc = new Scanner(file);
             int j = 0;
             int n = line2();
@@ -37,7 +37,7 @@ public class uem extends calcline{
             String searchcontinent = " ";
             ArrayList<String> continentlist = new ArrayList<String>();
             int i;
-            File file = new File("/Users/Guest1/SOEN-6441/src/main/java/Board.map");
+            File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/woard.map");
             //File file = new File("C:\\Users\\dattebayo\\Desktop\\Board.map");
             Scanner sc = new Scanner(file);
             int j = 0;
