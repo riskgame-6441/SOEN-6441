@@ -32,17 +32,20 @@ public class main {
 		System.out.println("No. of armies per country");
 		System.out.println(army_per_country);
 		
-        /*
-        mainmethod object_mainmethod = new mainmethod();
-        object_mainmethod.generateArmy();
-                
-        printtable object_printtable = new printtable();
+        
+        printtable o_printtable = new printtable();
         //int player_count = object_mainmethod.n;
         //System.out.println(player_count);
-        int n=5;
-        for(int i=0;i<n;i++) {
-        	object_printtable.getTable(i);
-        }*/
+        for(int i=0;i<total_players;i++) {
+        	o_printtable.getTable(i,country_per_player,army_per_country);
+       
+        	
+        
+        }
+        
+        
+        
+        
     }
     
 	public static void menu(){

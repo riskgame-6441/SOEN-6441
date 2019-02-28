@@ -1,4 +1,6 @@
 import java.io.File;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,9 +44,23 @@ public class printtable {
         return neighbour;
 	}
 	
-	public void getTable(int player) {
-		System.out.println("Player : "+player);
-		System.out.println(object_mainmethod.getCountryPerPlayer());
-		System.out.println("Country Name : ");
+	public void getTable(int player, List<List<String>> country_per_player, HashMap<String,Integer> army_per_country) throws Exception{
+		System.out.println("\nPlayer : "+(player+1));
+		System.out.println("*************************");
+		//System.out.println(country_per_player.get(player));
+		int n = country_per_player.get(player).size();
+		for(int i=0;i<n;i++) {
+			String country_name = country_per_player.get(player).get(i);
+			int c_army = 1;//army_per_country.get(country_per_player.get(player).get(i));
+			System.out.println("\nCountry Name : "+country_name+"("+c_army+")");
+			ArrayList<String> neighbour_countries = getNeighbour(country_name);
+			int m = neighbour_countries.size();
+			System.out.println(m);
+			for(int j=0;j<m;j++) {
+				int army = 1;//army_per_country.get(neighbour_countries.get(j));
+				//System.out.println(army);
+				System.out.println("=> "+neighbour_countries.get(j)+"("+army+")");
+			}
+		}
 	}
 }

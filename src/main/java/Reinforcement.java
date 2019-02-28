@@ -10,7 +10,7 @@ public class Reinforcement {
 	String countryName; // Country where you place your army
 	String[] p; // Player names
 	int totalCountry; // total num of countries in the map
-	String playerNo;
+	String[] continentwon;//String of continents own for any player;
 
 	public Reinforcement(int totalCountry, Map<String, Integer> contientValues) {
 		this.totalCountry = totalCountry;
@@ -20,10 +20,14 @@ public class Reinforcement {
 	
 
 	// how many reinforcement to give based on countries he has, how many continents
-	public Integer calReinforcementArmies(int playerNum, List<List<String>> countries, List<String> continents) {
+	public Integer calReinforcementArmies(int playerNum, List<List<String>> countries, Map<String,Integer> contientValues) {
 		int reinforced_armies = Math.max(countries.get(playerNum).size() / 3, 3);
-		for (String continet : continents) {
-			reinforced_armies += contientValues.get(continet);
+		
+		for(int i=0;i<contientValues.size();i++) {
+		String continent = (String)contientValues.keySet();
+		}
+		for (String continent : contientValues) {
+			reinforced_armies += contientValues.get(continetValues);
 		}
 		return reinforced_armies;
 	}
