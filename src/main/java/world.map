@@ -30,7 +30,7 @@ Argentina,263,407,SouthAmerica,Peru,Brazil
 Brazil,308,337,SouthAmerica,Venezuala,Peru,Argentina,NorthAfrica
 
 NorthAfrica,420,264,Africa,Brazil,WesternEurope,SouthernEurope,Egypt,EastAfrica,Congo
-Congo,475,318,Africa,NorthAfrica,EastAfrica,South Africa
+Congo,475,318,Africa,NorthAfrica,EastAfrica,SouthAfrica
 SouthAfrica,483,371,Africa,Congo,EastAfrica,Madagascar
 Madagascar,536,361,Africa,EastAfrica,SouthAfrica
 EastAfrica,517,298,Africa,Egypt,MiddleEast,Congo,NorthAfrica,SouthAfrica,Madagascar
@@ -39,7 +39,7 @@ Egypt,480,249,Africa,SouthernEurope,NorthAfrica,MiddleEast,EastAfrica
 Iceland,380,126,Europe,Greenland,GreatBritain,Scandinavia
 GreatBritain,419,169,Europe,Iceland,Scandinavia,WesternEurope,NorthernEurope
 WesternEurope,423,202,Europe,GreatBritain,NorthernEurope,SouthernEurope,NorthAfrica
-Scandinavia,463,127,Europe,Iceland,Great Britain,NorthernEurope,Ukraine
+Scandinavia,463,127,Europe,Iceland,GreatBritain,NorthernEurope,Ukraine
 NorthernEurope,460,173,Europe,GreatBritain,Scandinavia,Ukraine,SouthernEurope,WesternEurope
 SouthernEurope,473,197,Europe,NorthernEurope,Ukraine,MiddleEast,Egypt,NorthAfrica,WesternEurope
 Ukraine,524,157,Europe,Ural,Afghanistan,MiddleEast,SouthernEurope,NorthernEurope,Scandinavia
@@ -61,10 +61,3 @@ Indonesia,698,314,Australia,Siam,NewGuinea,WesternAustralia
 NewGuinea,768,325,Australia,Indonesia,WesternAustralia,EasternAustralia
 WesternAustralia,729,373,Australia,Indonesia,NewGuinea,EasternAustralia
 EasternAustralia,779,381,Australia,WesternAustralia,NewGuinea
-
-
-
-
-
-
-

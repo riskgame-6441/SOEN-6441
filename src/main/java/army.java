@@ -129,7 +129,7 @@ public class army extends mainmethod{
 		return country_list_for_player;
 	}
 	
-	/**
+	./**
 	 * This method is used to divide armies to each country according to players.
 	 * 
 	 * @param player_name This parameter contains String array of all players name.
