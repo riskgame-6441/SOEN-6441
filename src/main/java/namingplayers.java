@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class namingplayers  {
     uem a1 = new uem();
     int pinp = 0;
-    String[] names;
+    String[] names = new String[5];
     public int getPlayers() {
     	Scanner a = new Scanner(System.in);
     	System.out.println("enter no of players");
@@ -16,8 +16,6 @@ public class namingplayers  {
     
     public int namep(){
     	
-    	
-        
         Scanner a = new Scanner(System.in);
 
         pinp = getPlayers();

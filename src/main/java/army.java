@@ -146,11 +146,7 @@ public class army{
 		int p = total_players;
 		for(int i=0; i<p; i++) {
 			int ap = army_per_player;
-			System.out.println("hello");
-			System.out.println(i);
-			System.out.println(country_per_player);
 			int q = country_per_player.get(i).size();
-			System.out.println(q);
 			for(int j=0; j<q; j++) {
 				String s = country_per_player.get(i).get(j);
 				if(army_per_country.containsKey(s)) {
