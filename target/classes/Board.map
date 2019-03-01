@@ -30,7 +30,7 @@ Argentina,263,407,SouthAmerica,Peru,Brazil
 Brazil,308,337,SouthAmerica,Venezuala,Peru,Argentina,NorthAfrica
 
 NorthAfrica,420,264,Africa,Brazil,WesternEurope,SouthernEurope,Egypt,EastAfrica,Congo
-Congo,475,318,Africa,NorthAfrica,EastAfrica,South Africa
+Congo,475,318,Africa,NorthAfrica,EastAfrica,SouthAfrica
 SouthAfrica,483,371,Africa,Congo,EastAfrica,Madagascar
 Madagascar,536,361,Africa,EastAfrica,SouthAfrica
 EastAfrica,517,298,Africa,Egypt,MiddleEast,Congo,NorthAfrica,SouthAfrica,Madagascar
@@ -44,10 +44,10 @@ NorthernEurope,460,173,Europe,GreatBritain,Scandinavia,Ukraine,SouthernEurope,We
 SouthernEurope,473,197,Europe,NorthernEurope,Ukraine,MiddleEast,Egypt,NorthAfrica,WesternEurope
 Ukraine,524,157,Europe,Ural,Afghanistan,MiddleEast,SouthernEurope,NorthernEurope,Scandinavia
 
-MiddleEast,530,234,Asia,Ukraine,Afghanistan,India,SouthernEurope,Egypt,EastAfrica
+Middle East,530,234,Asia,Ukraine,Afghanistan,India,SouthernEurope,Egypt,EastAfrica
 Ural,613,136,Asia,Siberia,China,Afghanistan,Ukraine
 Afghanistan,585,192,Asia,Ural,China,India,MiddleEast,Ukraine
-India,612,249,Asia,China,Siam,Afghanistan,MiddleEast
+India,612,249,Asia,China,Siam,Afghanistan,Middle East
 Siberia,666,110,Asia,Yatusk,Irkutsk,Mongolia,China,Ural
 China,662,217,Asia,Ural,Siberia,Mongolia,Siam,India,Afghanistan
 Siam,671,270,Asia,China,India,Indonesia
@@ -61,10 +61,3 @@ Indonesia,698,314,Australia,Siam,NewGuinea,WesternAustralia
 NewGuinea,768,325,Australia,Indonesia,WesternAustralia,EasternAustralia
 WesternAustralia,729,373,Australia,Indonesia,NewGuinea,EasternAustralia
 EasternAustralia,779,381,Australia,WesternAustralia,NewGuinea
-
-
-
-
-
-
-
