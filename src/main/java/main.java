@@ -12,9 +12,10 @@ public class main {
 		menu();
         
         army o_army = new army();
-        uem object_uem = new uem();
-        int total_country = object_uem.countrylist().size();
-        ArrayList<String> country_name = object_uem.countrylist();
+        uem o_uem = new uem();
+        Reinforcement o_reinforcement = new Reinforcement();
+        int total_country = o_uem.countrylist().size();
+        ArrayList<String> country_name = o_uem.countrylist();
 		System.out.println(country_name);
 		System.out.println(total_players);
 		
@@ -32,6 +33,10 @@ public class main {
 		System.out.println("No. of armies per country");
 		System.out.println(army_per_country);
 		
+		HashMap<String, Integer> contvalue = o_uem.getcontinentandcontrolvalue();
+		HashMap<String, Integer> contvalue1 = o_uem.getcontinentandcountry();
+		HashMap<String, String> country_continent = o_uem.getCountryContinent();
+    	//System.out.println(country_continent);
         
         printtable o_printtable = new printtable();
         //int player_count = object_mainmethod.n;
@@ -39,8 +44,9 @@ public class main {
         for(int i=0;i<total_players;i++) {
         	o_printtable.getTable(i,country_per_player,army_per_country);
        
-        	
-        
+        	int z = o_reinforcement.calReinforcementArmies(i, country_per_player.get(i), contvalue, contvalue1, country_continent);
+        	System.out.println(z);
+        	break;
         }
         
         
