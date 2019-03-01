@@ -10,7 +10,7 @@ import java.util.HashMap;
  * @author Dhruvi Gadhiya
  * @version 1.0.0
  * */
-public class army extends mainmethod{
+public class army{
 	
 	/**
 	 * This method is used to calculate How many army each Player will get.
@@ -129,7 +129,7 @@ public class army extends mainmethod{
 		return country_list_for_player;
 	}
 	
-	./**
+	/**
 	 * This method is used to divide armies to each country according to players.
 	 * 
 	 * @param player_name This parameter contains String array of all players name.

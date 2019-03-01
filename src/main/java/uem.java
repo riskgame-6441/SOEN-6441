@@ -12,7 +12,8 @@ public class uem extends calcline{
             ArrayList<String> list = new ArrayList<String>();
             int i;
             //File file = new File("C:\\Users\\dattebayo\\Desktop\\Board.map");
-            File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
+            //File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
+            File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");
             Scanner sc = new Scanner(file);
             int j = 0;
             int n = line2();
@@ -41,7 +42,8 @@ public class uem extends calcline{
             String searchcontinent = " ";
             ArrayList<String> continentlist = new ArrayList<String>();
             int i;
-            File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
+            //File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
+            File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");
             //File file = new File("C:\\Users\\dattebayo\\Desktop\\Board.map");
             Scanner sc = new Scanner(file);
             int j = 0;
@@ -62,11 +64,12 @@ public class uem extends calcline{
             }
             return continentlist;
         }
-        public HashMap<String, String> getcontinentandcontrolvalue() throws Exception{
-        	HashMap<String, String> contvalue = new HashMap<String, String>();
+        public HashMap<String, Integer> getcontinentandcontrolvalue() throws Exception{
+        	HashMap<String, Integer> contvalue = new HashMap<String, Integer>();
         	String searchcontinent = " ";
             int i;
-            File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
+            File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");
+            //File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
             //File file = new File("C:\\Users\\dattebayo\\Desktop\\Board.map");
             Scanner sc = new Scanner(file);
             int j = 0;
@@ -80,7 +83,8 @@ public class uem extends calcline{
                     for (i = 0; i <= n-2; i++) {
                         String text = sc.next();
                         String[] input = text.split("=");
-                        contvalue.put(input[0],input[1]);
+                        int x = Integer.parseInt(input[1]);
+                        contvalue.put(input[0],x);
                     }
                     j = j + 1;
                 }
@@ -88,18 +92,13 @@ public class uem extends calcline{
         	return contvalue;
         }
         
-        public HashMap<String, Integer> getcontinentandcountry(ArrayList<String> continent_list) throws Exception{
+        public HashMap<String, Integer> getcontinentandcountry() throws Exception{
         	HashMap<String, Integer> contcountry = new HashMap<String, Integer>();
         	String searchcontinent = " ";
-        	String searchcountry = " ";
-            int i;
-            int country = 0;
-            File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
+            //File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
+            File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");
             //File file = new File("C:\\Users\\dattebayo\\Desktop\\Board.map");
-            ArrayList<String> cont = new ArrayList<String>();
             Scanner sc = new Scanner(file);
-            int j = 0;
-            int n = line1();
             while (sc.hasNextLine()) {
             	
                 if (!sc.hasNext()) {
@@ -124,6 +123,35 @@ public class uem extends calcline{
                 
             }
         	return contcountry;
+        }
+        
+        public HashMap<String, String> getCountryContinent() throws Exception{
+        	HashMap<String,String> country_continent = new HashMap<String,String>();
+        	
+        	String searchcontinent = " ";
+            File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");
+            Scanner sc = new Scanner(file);
+
+            while (sc.hasNextLine()) {
+            	
+                if (!sc.hasNext()) {
+                    break;
+                }
+                searchcontinent = sc.next();
+                if (searchcontinent.equals("[Territories]")) {
+                	while(sc.hasNextLine()){
+                		if (!sc.hasNext()) {
+                            break;
+                        }
+	                	String text = sc.next();
+	                    String[] input = text.split(",");
+	                    country_continent.put(input[0], input[3]);
+                	}
+                }
+                
+            }
+            
+        	return country_continent;
         }
 
     }
