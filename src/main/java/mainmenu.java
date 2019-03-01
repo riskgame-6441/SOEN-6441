@@ -1,6 +1,6 @@
 import java.util.Scanner;
 public class mainmenu extends mapoptions{
-    public void menu(){
+    public void menu() throws Exception{
         int i = 0;
         Scanner a = new Scanner(System.in);
         System.out.println("******WELCOME TO RISK******");

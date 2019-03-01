@@ -13,7 +13,7 @@ public class uem extends calcline{
             int i;
             //File file = new File("C:\\Users\\dattebayo\\Desktop\\Board.map");
             //File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
-            File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");
+            File file = new File("D:\\\\Risk game Git\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
             Scanner sc = new Scanner(file);
             int j = 0;
             int n = line2();
@@ -43,7 +43,7 @@ public class uem extends calcline{
             ArrayList<String> continentlist = new ArrayList<String>();
             int i;
             //File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
-            File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");
+            File file = new File("D:\\\\Risk game Git\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
             //File file = new File("C:\\Users\\dattebayo\\Desktop\\Board.map");
             Scanner sc = new Scanner(file);
             int j = 0;
@@ -68,7 +68,7 @@ public class uem extends calcline{
         	HashMap<String, Integer> contvalue = new HashMap<String, Integer>();
         	String searchcontinent = " ";
             int i;
-            File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");
+            File file = new File("D:\\\\Risk game Git\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
             //File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
             //File file = new File("C:\\Users\\dattebayo\\Desktop\\Board.map");
             Scanner sc = new Scanner(file);
@@ -96,7 +96,7 @@ public class uem extends calcline{
         	HashMap<String, Integer> contcountry = new HashMap<String, Integer>();
         	String searchcontinent = " ";
             //File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
-            File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");
+            File file = new File("D:\\\\Risk game Git\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
             //File file = new File("C:\\Users\\dattebayo\\Desktop\\Board.map");
             Scanner sc = new Scanner(file);
             while (sc.hasNextLine()) {
@@ -129,7 +129,7 @@ public class uem extends calcline{
         	HashMap<String,String> country_continent = new HashMap<String,String>();
         	
         	String searchcontinent = " ";
-            File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");
+            File file = new File("D:\\\\Risk game Git\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
             Scanner sc = new Scanner(file);
 
             while (sc.hasNextLine()) {

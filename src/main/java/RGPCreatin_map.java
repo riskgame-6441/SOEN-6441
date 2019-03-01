@@ -30,14 +30,14 @@ public class RGPCreatin_map {
 	 *            gives the adjacent countries
 	 * @throws FileNotFoundException
 	 */
-	public static void file_creation(String[] continent_name1, int contint1, int cntry1, int[] continent_countries1,
+	public void file_creation(String[] continent_name1, int contint1, int cntry1, int[] continent_countries1,
 			String[] country_name1, String[] country_cordinates1, String[] country_continent1,
 			String[] adjacent_countries1) throws FileNotFoundException {
-		PrintWriter mapcreation = new PrintWriter("newmap.txt");
+		PrintWriter mapcreation = new PrintWriter("D:\\Risk game Git\\SOEN-6441\\src\\main\\java\\world.map");
 
 		mapcreation.println("[Map]");
-		mapcreation.println("author=charan");
-		mapcreation.println("image=world.map");
+		mapcreation.println("author=");
+		mapcreation.println("image=Board.map");
 		mapcreation.println("wrap=no");
 		mapcreation.println("scroll=horizontal");
 		mapcreation.println("warn=yes");
@@ -65,7 +65,7 @@ public class RGPCreatin_map {
 
 	}
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public void createmap() throws Exception{
 
 		// TODO Auto-generated method stub
 		Scanner input = new Scanner(System.in);
