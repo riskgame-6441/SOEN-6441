@@ -15,7 +15,7 @@ public class printtable {
 	public ArrayList<String> getNeighbour(String newword) throws Exception{
 		ArrayList<String> neighbour = new ArrayList<String>();
 		String searchword = " ";
-		File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");
+		File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
         Scanner sc = new Scanner(file);
         int j = 0;
         int n = a.line2();
