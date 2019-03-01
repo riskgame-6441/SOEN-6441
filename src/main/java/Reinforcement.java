@@ -60,11 +60,16 @@ public class Reinforcement {
 	public HashMap<String, Integer> placeReinforceArmies(int z, int i, List<List<String>> country_per_player, HashMap<String, Integer> army_per_country) {
 		int flag=0;
 		String a_country= " ";
+		int a_army;
     	while(z!=0) {
     		Scanner a = new Scanner(System.in);
     		while(flag==0) {
     			System.out.println("Enter country name to place army : ");
         		a_country = a.next();
+        		if(a_country.getClass().getName() != "java.lang.String" ){
+        			System.out.println("Please enter valid country which will be string value.");
+        			break;
+        		}
         		if(!country_per_player.get(i).contains(a_country)) {
         			System.out.println("You entered country which is not owned by you.");
         			break;
@@ -74,7 +79,12 @@ public class Reinforcement {
     		}
     		while(flag==1) {
     			System.out.println("Enter number of armies to place : ");
-        		int a_army = a.nextInt();
+        		if(!a.hasNextInt()) {
+        			System.out.println("Please enter valid number of army which will be integer value.");
+        			break;
+        		}else {
+        			a_army = a.nextInt();
+        		}
         		if(a_army>z) {
         			System.out.println("You can only place until "+z+" armies.");
         			break;
