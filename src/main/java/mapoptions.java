@@ -1,9 +1,10 @@
 import java.util.Arrays;
 import java.util.Scanner;
 public class mapoptions extends namingplayers{
+	RGPCreatin_map a1 = new RGPCreatin_map();
     String[] name = new String[5];
     int p;
-    public void mapo() {
+    public void mapo() throws Exception{
         int i = 0;
         Scanner a = new Scanner(System.in);
         while (i == 0) {
@@ -13,7 +14,8 @@ public class mapoptions extends namingplayers{
             int option = a.nextInt();
             switch (option) {
                 case 1:
-                    System.out.println("go to new map");
+                    a1.createmap();
+                    namep();
                     i = i + 1;
                     break;
                 case 2:

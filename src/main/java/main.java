@@ -70,7 +70,7 @@ public class main {
         
     }
     
-	public static void menu(){
+	public static void menu() throws Exception{
         int i = 0;
         Scanner a = new Scanner(System.in);
         System.out.println("******WELCOME TO RISK******");
@@ -104,9 +104,10 @@ public class main {
 
     }
     
-	public static void mapo() {
+	public static void mapo() throws Exception{
         int i = 0;
         namingplayers o_namingplayers = new namingplayers();
+        RGPCreatin_map a1 = new RGPCreatin_map();
         Scanner a = new Scanner(System.in);
         while (i == 0) {
             System.out.println("1- Create a new map");
@@ -115,7 +116,8 @@ public class main {
             int option = a.nextInt();
             switch (option) {
                 case 1:
-                    System.out.println("go to new map");
+                    a1.createmap();
+                    o_namingplayers.namep();
                     i = i + 1;
                     break;
                 case 2:
