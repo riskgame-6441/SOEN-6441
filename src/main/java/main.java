@@ -42,10 +42,17 @@ public class main {
         //int player_count = object_mainmethod.n;
         //System.out.println(player_count);
         for(int i=0;i<total_players;i++) {
+        	//print table
         	o_printtable.getTable(i,country_per_player,army_per_country);
-       
+        	
+        	//reinforce armies
         	int z = o_reinforcement.calReinforcementArmies(i, country_per_player.get(i), contvalue, contvalue1, country_continent);
-        	System.out.println(z);
+        	System.out.println("Number of armies to Reinforcement : "+z);
+        	
+        	army_per_country = o_reinforcement.placeReinforceArmies(z, i, country_per_player, army_per_country);
+        	//print table
+        	o_printtable.getTable(i,country_per_player,army_per_country);
+        	
         	break;
         }
         
@@ -115,9 +122,9 @@ public class main {
             }
         }
         total_players = o_namingplayers.pinp;
-        for(i=0;i<total_players;i++) {
+        /*for(i=0;i<total_players;i++) {
         	System.out.println(o_namingplayers.names[i]);
-        }
+        }*/
     }
 	
 }

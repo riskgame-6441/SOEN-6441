@@ -1,5 +1,7 @@
 import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 
 public class Reinforcement {
@@ -55,15 +57,36 @@ public class Reinforcement {
 
 	// placing reinforcement armies in countries
 	// country, numOfArmies
-	public Map<String, Integer> placeReinforceArmies(Map<String, Integer> countryArmies, String country,
-			int numOfArmies) {
-		if (countryArmies.containsKey(country)) {
-			int currentArmies = countryArmies.get(country);
-			countryArmies.put(country, currentArmies + numOfArmies);
-		} else {
-			countryArmies.put(country, numOfArmies);
-		}
-		return countryArmies;
+	public HashMap<String, Integer> placeReinforceArmies(int z, int i, List<List<String>> country_per_player, HashMap<String, Integer> army_per_country) {
+		int flag=0;
+		String a_country= " ";
+    	while(z!=0) {
+    		Scanner a = new Scanner(System.in);
+    		while(flag==0) {
+    			System.out.println("Enter country name to place army : ");
+        		a_country = a.next();
+        		if(!country_per_player.get(i).contains(a_country)) {
+        			System.out.println("You entered country which is not owned by you.");
+        			break;
+        		}else {
+        			flag=1;
+        		}
+    		}
+    		while(flag==1) {
+    			System.out.println("Enter number of armies to place : ");
+        		int a_army = a.nextInt();
+        		if(a_army>z) {
+        			System.out.println("You can only place until "+z+" armies.");
+        			break;
+        		}else {
+        			z=z-a_army;
+        			a_army += army_per_country.get(a_country);
+        			army_per_country.put(a_country, a_army);
+        			flag=0;
+        		}
+    		}
+    	}
+    	return army_per_country; 
 	}
 
 }
