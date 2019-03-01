@@ -53,6 +53,15 @@ public class main {
         	//print table
         	o_printtable.getTable(i,country_per_player,army_per_country);
         	
+        	//reinforcement ends
+        	Scanner a = new Scanner(System.in);
+        	System.out.println("Do you want to attack ?(y/n)");
+        	String ans = a.next();
+        	if(ans == "y") {
+        		//attack phase
+        	}else {
+        		//fortification phase
+        	}
         	break;
         }
         
