@@ -17,8 +17,12 @@ public class main {
 		ArrayList<String> continent_list = o_uem.continentlist();
 		ArrayList<String> country_list = o_uem.countrylist();
 		map o_map = new map();
-		//o_map.validateMap(country_list, continent_list, country_continent);
 		
+		//System.out.println("Check Continents");
+		//o_map.validateConnectedCountries(country_list, continent_list);
+		o_map.validateConnectedContinents(country_list, continent_list, country_continent);
+		o_map.validateConnectedCountries(country_list, continent_list);
+		/*
 		menu();
         
         
@@ -72,7 +76,7 @@ public class main {
         	break;
         }
         
-        
+        */
         
         
     }
