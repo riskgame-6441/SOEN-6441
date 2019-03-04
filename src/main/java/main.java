@@ -19,9 +19,18 @@ public class main {
 		map o_map = new map();
 		
 		//System.out.println("Check Continents");
-		//o_map.validateConnectedCountries(country_list, continent_list);
-		o_map.validateConnectedContinents(country_list, continent_list, country_continent);
-		o_map.validateConnectedCountries(country_list, continent_list);
+		int a=o_map.validateConnectedCountries(country_list, continent_list);
+		continent_list = o_uem.continentlist();
+		country_list = o_uem.countrylist();
+		int b =o_map.validateConnectedContinents(country_list, continent_list, country_continent);
+		continent_list = o_uem.continentlist();
+		country_list = o_uem.countrylist();
+		int c =o_map.validateConnectedCountries(country_list, continent_list);
+		continent_list = o_uem.continentlist();
+		country_list = o_uem.countrylist();
+		int d =o_map.validateConnectedContinents(country_list, continent_list, country_continent);
+		System.out.println(a+""+b+""+c+""+d);
+		System.out.println("Check Continents");
 		/*
 		menu();
         

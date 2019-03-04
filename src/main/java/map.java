@@ -5,18 +5,19 @@ public class map {
 	
 	printtable o_printtable = new printtable();
 	
-	public void validateConnectedContinents(ArrayList<String> country_list, ArrayList<String> continent_list, HashMap<String, String> country_continent) throws Exception {
+	public int validateConnectedContinents(ArrayList<String> country_list, ArrayList<String> continent_list, HashMap<String, String> country_continent) throws Exception {
 		ArrayList<String> neighbour_country = new ArrayList<String>();
 		ArrayList<String> new_continent_list = new ArrayList<String>();
 		new_continent_list = continent_list;
 		int n = country_list.size();
 		String continent = " ",continent1 = " ",country = " ";
-		int flag = 0;
+		int flag = 0,a=0;
 		
 		for(int i=0;i<n;i++) {
 			//System.out.println(new_continent_list);
 			if(new_continent_list.isEmpty()) {
 				System.out.println("Continents are connected.");
+				a=1;
 				break;
 			}
 			country = country_list.get(i);
@@ -34,22 +35,23 @@ public class map {
 			}
 			
 		}
-		
+		return a;
 	}
 	
-	public void validateConnectedCountries(ArrayList<String> country_list, ArrayList<String> continent_list) throws Exception {
+	public int validateConnectedCountries(ArrayList<String> country_list, ArrayList<String> continent_list) throws Exception {
 		
 		ArrayList<String> neighbour_country = new ArrayList<String>();
 		ArrayList<String> new_country_list = new ArrayList<String>();
 		int n = country_list.size();
 		String country=" ",country1=" ";
-		int flag=0,flag1=0;
+		int flag=0,flag1=0,a=0;
 		new_country_list = country_list;
 		//System.out.println(country_list);
 
 		for(int i=0;i<n;i++) {
 			if(new_country_list.isEmpty()) {
 				System.out.println("Countries are connected.");
+				a=1;
 				break;
 			}
 			flag1=0;
@@ -87,6 +89,7 @@ public class map {
 				n++;
 			}
 		}
+		return a;
 	}
 	
 }
