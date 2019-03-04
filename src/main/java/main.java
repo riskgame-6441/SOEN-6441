@@ -31,7 +31,7 @@ public class main {
 		int d =o_map.validateConnectedContinents(country_list, continent_list, country_continent);
 		System.out.println(a+""+b+""+c+""+d);
 		System.out.println("Check Continents");
-		/*
+		
 		menu();
         
         
@@ -74,9 +74,9 @@ public class main {
         	o_printtable.getTable(i,country_per_player,army_per_country);
         	
         	//reinforcement ends
-        	Scanner a = new Scanner(System.in);
+        	Scanner ab = new Scanner(System.in);
         	System.out.println("Do you want to attack ?(y/n)");
-        	String ans = a.next();
+        	String ans = ab.next();
         	if(ans == "y") {
         		//attack phase
         	}else {
@@ -84,8 +84,6 @@ public class main {
         	}
         	break;
         }
-        
-        */
         
         
     }
