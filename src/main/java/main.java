@@ -9,10 +9,32 @@ public class main {
     
 	public static void main(String[] args) throws Exception{
         
+		army o_army = new army();
+        uem o_uem = new uem();
+		HashMap<String, Integer> contvalue = o_uem.getcontinentandcontrolvalue();
+		HashMap<String, Integer> contvalue1 = o_uem.getcontinentandcountry();
+		HashMap<String, String> country_continent = o_uem.getCountryContinent();
+		ArrayList<String> continent_list = o_uem.continentlist();
+		ArrayList<String> country_list = o_uem.countrylist();
+		map o_map = new map();
+		
+		//System.out.println("Check Continents");
+		int a=o_map.validateConnectedCountries(country_list, continent_list);
+		continent_list = o_uem.continentlist();
+		country_list = o_uem.countrylist();
+		int b =o_map.validateConnectedContinents(country_list, continent_list, country_continent);
+		continent_list = o_uem.continentlist();
+		country_list = o_uem.countrylist();
+		int c =o_map.validateConnectedCountries(country_list, continent_list);
+		continent_list = o_uem.continentlist();
+		country_list = o_uem.countrylist();
+		int d =o_map.validateConnectedContinents(country_list, continent_list, country_continent);
+		System.out.println(a+""+b+""+c+""+d);
+		System.out.println("Check Continents");
+		
 		menu();
         
-        army o_army = new army();
-        uem o_uem = new uem();
+        
         Reinforcement o_reinforcement = new Reinforcement();
         int total_country = o_uem.countrylist().size();
         ArrayList<String> country_name = o_uem.countrylist();
@@ -33,9 +55,7 @@ public class main {
 		System.out.println("No. of armies per country");
 		System.out.println(army_per_country);
 		
-		HashMap<String, Integer> contvalue = o_uem.getcontinentandcontrolvalue();
-		HashMap<String, Integer> contvalue1 = o_uem.getcontinentandcountry();
-		HashMap<String, String> country_continent = o_uem.getCountryContinent();
+		
     	//System.out.println(country_continent);
         
         printtable o_printtable = new printtable();
@@ -54,9 +74,9 @@ public class main {
         	o_printtable.getTable(i,country_per_player,army_per_country);
         	
         	//reinforcement ends
-        	Scanner a = new Scanner(System.in);
+        	Scanner ab = new Scanner(System.in);
         	System.out.println("Do you want to attack ?(y/n)");
-        	String ans = a.next();
+        	String ans = ab.next();
         	if(ans == "y") {
         		//attack phase
         	}else {
@@ -64,8 +84,6 @@ public class main {
         	}
         	break;
         }
-        
-        
         
         
     }
