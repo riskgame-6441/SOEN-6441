@@ -1,22 +1,38 @@
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class map {
+/**
+ * This class verify map's correctness. 
+ * 
+ * @author Dhruvi Gadhiya
+ * @version 1.0.0
+ * */
+public class RGPmap {
 	
-	printtable o_printtable = new printtable();
+	RGPprintTable o_printtable = new RGPprintTable();
+	RGPlisting o_uem = new RGPlisting();
 	
-	public int validateConnectedContinents(ArrayList<String> country_list, ArrayList<String> continent_list, HashMap<String, String> country_continent) throws Exception {
+	/**
+	 * This method checks if all the continents given in the map is connected or not.
+	 * 
+	 * @param file This parameter contains file path.
+	 * 
+	 * @return This method returns value 1 if continents are connected or else 0.
+	 * */
+	public int validateConnectedContinents(File file) throws Exception {
 		ArrayList<String> neighbour_country = new ArrayList<String>();
-		ArrayList<String> new_continent_list = new ArrayList<String>();
-		new_continent_list = continent_list;
+		ArrayList<String> continent_list = o_uem.continentlist(file);
+		ArrayList<String> new_continent_list = continent_list;
+		ArrayList<String> country_list = o_uem.countrylist(file);
+		HashMap<String,String> country_continent = o_uem.getCountryContinent(file);
+		
 		int n = country_list.size();
 		String continent = " ",continent1 = " ",country = " ";
 		int flag = 0,a=0;
 		
 		for(int i=0;i<n;i++) {
-			//System.out.println(new_continent_list);
 			if(new_continent_list.isEmpty()) {
-				System.out.println("Continents are connected.");
 				a=1;
 				break;
 			}
@@ -38,24 +54,33 @@ public class map {
 		return a;
 	}
 	
-	public int validateConnectedCountries(ArrayList<String> country_list, ArrayList<String> continent_list) throws Exception {
+	
+	/**
+	 * This method checks if all the countries given in the map is connected or not.
+	 * 
+	 * @param file This parameter contains file path.
+	 * 
+	 * @return This method returns value 1 if countries are connected or else 0.
+	 * */
+	public int validateConnectedCountries(File file) throws Exception {
 		
-		ArrayList<String> neighbour_country = new ArrayList<String>();
-		ArrayList<String> new_country_list = new ArrayList<String>();
+		ArrayList<String> neighbour_country = new ArrayList<String>();		
+		ArrayList<String> continent_list = o_uem.continentlist(file);
+		ArrayList<String> country_list = o_uem.countrylist(file);
+		ArrayList<String> new_country_list = country_list;
+
+		
 		int n = country_list.size();
 		String country=" ",country1=" ";
 		int flag=0,flag1=0,a=0;
 		new_country_list = country_list;
-		//System.out.println(country_list);
 
 		for(int i=0;i<n;i++) {
 			if(new_country_list.isEmpty()) {
-				System.out.println("Countries are connected.");
 				a=1;
 				break;
 			}
 			flag1=0;
-			//System.out.println(new_country_list);
 			if(flag == 0) {
 				country = country_list.get(i);
 				flag = 1;
@@ -70,16 +95,12 @@ public class map {
 					}
 				}
 			}
-			//System.out.println("Country : "+country);
 			neighbour_country = o_printtable.getNeighbour(country);
-			//System.out.println(neighbour_country);
 			new_country_list.remove(country);
 			n--;
 			for(int j=0;j<neighbour_country.size();j++) {
 				if(new_country_list.contains(neighbour_country.get(j))) {
 					country1 = neighbour_country.get(j);
-					//System.out.println("Country1 : "+country1);
-					//System.out.println();
 					flag1=1;
 					break;
 				}
