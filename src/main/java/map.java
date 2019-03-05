@@ -1,10 +1,27 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * This class verify map's correctness. 
+ * 
+ * @author Dhruvi Gadhiya
+ * @version 1.0.0
+ * */
 public class map {
 	
 	printtable o_printtable = new printtable();
 	
+	/**
+	 * This method checks if all the continents given in the map is connected or not.
+	 * 
+	 * @param country_list This parameter contains list of all countries.
+	 * 
+	 * @param continent_list This parameter contains list of all the continents.
+	 * 
+	 * @param country_continent This parameter contains hash map of country(key) and its continent(value).
+	 * 
+	 * @return This method returns value 1 if continents are connected or else 0.
+	 * */
 	public int validateConnectedContinents(ArrayList<String> country_list, ArrayList<String> continent_list, HashMap<String, String> country_continent) throws Exception {
 		ArrayList<String> neighbour_country = new ArrayList<String>();
 		ArrayList<String> new_continent_list = new ArrayList<String>();
@@ -38,6 +55,16 @@ public class map {
 		return a;
 	}
 	
+	
+	/**
+	 * This method checks if all the countries given in the map is connected or not.
+	 * 
+	 * @param country_list This parameter contains list of all countries.
+	 * 
+	 * @param continent_list This parameter contains list of all the continents.
+	 * 
+	 * @return This method returns value 1 if countries are connected or else 0.
+	 * */
 	public int validateConnectedCountries(ArrayList<String> country_list, ArrayList<String> continent_list) throws Exception {
 		
 		ArrayList<String> neighbour_country = new ArrayList<String>();
