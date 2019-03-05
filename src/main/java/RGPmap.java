@@ -8,19 +8,15 @@ import java.util.HashMap;
  * @author Dhruvi Gadhiya
  * @version 1.0.0
  * */
-public class map {
+public class RGPmap {
 	
-	printtable o_printtable = new printtable();
-	uem o_uem = new uem();
+	RGPprintTable o_printtable = new RGPprintTable();
+	RGPlisting o_uem = new RGPlisting();
 	
 	/**
 	 * This method checks if all the continents given in the map is connected or not.
 	 * 
-	 * @param country_list This parameter contains list of all countries.
-	 * 
-	 * @param continent_list This parameter contains list of all the continents.
-	 * 
-	 * @param country_continent This parameter contains hash map of country(key) and its continent(value).
+	 * @param file This parameter contains file path.
 	 * 
 	 * @return This method returns value 1 if continents are connected or else 0.
 	 * */
@@ -36,9 +32,7 @@ public class map {
 		int flag = 0,a=0;
 		
 		for(int i=0;i<n;i++) {
-			//System.out.println(new_continent_list);
 			if(new_continent_list.isEmpty()) {
-				//System.out.println("Continents are connected.");
 				a=1;
 				break;
 			}
@@ -64,9 +58,7 @@ public class map {
 	/**
 	 * This method checks if all the countries given in the map is connected or not.
 	 * 
-	 * @param country_list This parameter contains list of all countries.
-	 * 
-	 * @param continent_list This parameter contains list of all the continents.
+	 * @param file This parameter contains file path.
 	 * 
 	 * @return This method returns value 1 if countries are connected or else 0.
 	 * */
@@ -82,16 +74,13 @@ public class map {
 		String country=" ",country1=" ";
 		int flag=0,flag1=0,a=0;
 		new_country_list = country_list;
-		//System.out.println(country_list);
 
 		for(int i=0;i<n;i++) {
 			if(new_country_list.isEmpty()) {
-				//System.out.println("Countries are connected.");
 				a=1;
 				break;
 			}
 			flag1=0;
-			//System.out.println(new_country_list);
 			if(flag == 0) {
 				country = country_list.get(i);
 				flag = 1;
@@ -106,16 +95,12 @@ public class map {
 					}
 				}
 			}
-			//System.out.println("Country : "+country);
 			neighbour_country = o_printtable.getNeighbour(country);
-			//System.out.println(neighbour_country);
 			new_country_list.remove(country);
 			n--;
 			for(int j=0;j<neighbour_country.size();j++) {
 				if(new_country_list.contains(neighbour_country.get(j))) {
 					country1 = neighbour_country.get(j);
-					//System.out.println("Country1 : "+country1);
-					//System.out.println();
 					flag1=1;
 					break;
 				}

@@ -1,6 +1,6 @@
-public class calcline{
+public class RGPcalcLine{
     public int line1() throws Exception{
-        calculatinglines c = new calculatinglines();
+        RGPcalcTotalLine c = new RGPcalcTotalLine();
         int a=c.countrylines();
         int b=c.continentlines();
         int d=c.totallines();
@@ -9,7 +9,7 @@ public class calcline{
         return continentline;
     }
     public int line2() throws Exception{
-        calculatinglines c = new calculatinglines();
+        RGPcalcTotalLine c = new RGPcalcTotalLine();
         int a=c.countrylines();
         int b=c.continentlines();
         int d=c.totallines();

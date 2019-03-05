@@ -1,7 +1,7 @@
 import java.io.File;
 import java.util.Scanner;
 
-public class calculatinglines {
+public class RGPcalcTotalLine {
 
 	main o_main = new main();
 	

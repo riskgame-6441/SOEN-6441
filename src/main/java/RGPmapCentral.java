@@ -1,6 +1,6 @@
 import java.io.File;
 
-public class mapCentral {
+public class RGPmapCentral {
 
 	public File mapOption(int value) {
 		File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");
@@ -8,7 +8,7 @@ public class mapCentral {
 		int option = value;
 		if (option == 1)
 		{
-			
+			file = new File("/Users/Guest1/SOEN-6441/src/main/java/cmap.map");
 		}
 		if (option == 2)
 		{

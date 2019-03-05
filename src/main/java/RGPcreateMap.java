@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -8,7 +9,7 @@ import java.util.Scanner;
  * @author charan
  * @version 1.0.0
  */
-public class RGPCreatin_map {
+public class RGPcreateMap {
 	/**
 	 * This method is to create a map file
 	 * 
@@ -30,10 +31,10 @@ public class RGPCreatin_map {
 	 *            gives the adjacent countries
 	 * @throws FileNotFoundException
 	 */
-	public void file_creation(String[] continent_name1, int contint1, int cntry1, int[] continent_countries1,
+	public void file_creation(File file,String[] continent_name1, int contint1, int cntry1, int[] continent_countries1,
 			String[] country_name1, String[] country_cordinates1, String[] country_continent1,
 			String[] adjacent_countries1) throws FileNotFoundException {
-		PrintWriter mapcreation = new PrintWriter("createmap.txt");
+		PrintWriter mapcreation = new PrintWriter(file);
 
 		mapcreation.println("[Map]");
 		mapcreation.println("author=charan");
@@ -65,7 +66,7 @@ public class RGPCreatin_map {
 
 	}
 
-	public void createmap() throws FileNotFoundException {
+	public void createmap(File file) throws FileNotFoundException {
 
 		// TODO Auto-generated method stub
 		Scanner input = new Scanner(System.in);
@@ -110,7 +111,7 @@ public class RGPCreatin_map {
 			// }
 		}
 
-		file_creation(continent_name, contint, cntry, continent_countries, country_name, country_cordinates,
+		file_creation(file,continent_name, contint, cntry, continent_countries, country_name, country_cordinates,
 				country_continent, adjacent_countries);
 
 	}

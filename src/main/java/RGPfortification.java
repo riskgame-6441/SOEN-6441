@@ -4,10 +4,24 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-public class fortification {
+/**
+ * This class will perform fortification phase.
+ * 
+ * @author 
+ * 
+ * @version 1.0.0
+ * */
+public class RGPfortification {
 
-	printtable o_printtable = new printtable();
+	RGPprintTable o_printtable = new RGPprintTable();
 	
+	/**
+	 * This method will perform fortification.
+	 * 
+	 * @param country_list This parameter contains list of countries owned by particular player.
+	 * 
+	 * @param army_per_country This parameter contains hash map of armies for each country.
+	 * */
 	public void fortify(List<String> country_list,HashMap<String,Integer> army_per_country) throws Exception {
 		System.out.println(country_list);
 		Scanner a = new Scanner(System.in);
@@ -17,7 +31,7 @@ public class fortification {
 		
 		while(flag==0) {
 			while(flag==0) {
-				System.out.println("Enter country1 : ");
+				System.out.println("From country1 : ");
 				country1 = a.next();
 				if(!country_list.contains(country1)) {
 					System.out.println("Please enter country that you own.");
@@ -29,7 +43,7 @@ public class fortification {
 		}
 		while(flag==1) {
 			while(flag==1) {
-				System.out.println("Enter country2 : ");
+				System.out.println("To country2 : ");
 				country2 = a.next();
 				if(!country_list.contains(country2)) {
 					System.out.println("Please enter country that you own.");
@@ -67,6 +81,15 @@ public class fortification {
 		
 	}
 	
+	/**
+	 * This method will check if given two countries are connected or not.
+	 * 
+	 * @param country1 This parameter contains country value from which army will be fortify.
+	 * 
+	 * @param country2 This parameter contains country value to which army will be fortify.
+	 * 
+	 * @return This method will return integer value if given countries are connected(1) or not(0).
+	 * */
 	public int checkConnection(String country1,String country2,List<String> country_list,List<String> list) throws Exception {
 		int flag = 0,return_value = 2;
 		List<String> neighbour_list = o_printtable.getNeighbour(country1);

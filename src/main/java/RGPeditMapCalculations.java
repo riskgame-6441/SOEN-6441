@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class RGPEditMapCalculations {
+public class RGPeditMapCalculations {
 	
 	main o_main = new main();
 	File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");

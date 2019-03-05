@@ -11,12 +11,10 @@ public class main {
     
 	public static void main(String[] args) throws Exception{
         
-		army o_army = new army();
-        uem o_uem = new uem();
-        fortification o_fortification = new fortification();
-        
-		
-		
+		RGParmy o_army = new RGParmy();
+        RGPlisting o_uem = new RGPlisting();
+        RGPfortification o_fortification = new RGPfortification();
+	
 		menu();
         
 		HashMap<String, Integer> contvalue = o_uem.getcontinentandcontrolvalue();
@@ -25,7 +23,7 @@ public class main {
 		ArrayList<String> continent_list = o_uem.continentlist();
 		ArrayList<String> country_list = o_uem.countrylist();
 		
-        Reinforcement o_reinforcement = new Reinforcement();
+        RGPreinforcement o_reinforcement = new RGPreinforcement();
         int total_country = o_uem.countrylist().size();
         ArrayList<String> country_name = o_uem.countrylist();
 		System.out.println(country_name);
@@ -45,7 +43,7 @@ public class main {
 		System.out.println("No. of armies per country");
 		System.out.println(army_per_country);
 	        
-        printtable o_printtable = new printtable();
+        RGPprintTable o_printtable = new RGPprintTable();
 
         for(int i=0;i<total_players;i++) {
         	//print table
@@ -54,7 +52,9 @@ public class main {
         	o_printtable.getTable(i,country_per_player,army_per_country);
         	
         	//reinforce armies
-        	int z = o_reinforcement.calReinforcementArmies(i, country_per_player.get(i), contvalue, contvalue1, country_continent);
+        	System.out.println("Reinforcement Phase");
+    		System.out.println("=====================================");
+        	int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1, country_continent);
         	System.out.println("Number of armies to Reinforcement : "+z);
         	
         	army_per_country = o_reinforcement.placeReinforceArmies(z, i, country_per_player, army_per_country);
@@ -69,6 +69,8 @@ public class main {
         		//attack phase
         	}else {
         		//fortification phase
+        		System.out.println("Fortification Phase");
+        		System.out.println("=====================================");
         		o_fortification.fortify(country_per_player.get(i),army_per_country);
         		o_printtable.getTable(i,country_per_player,army_per_country);
         	}
@@ -114,10 +116,10 @@ public class main {
     
 	public static void mapo() throws Exception{
         int i = 0;
-        mapCentral mapob = new mapCentral();
-        RGPEditMap o_editOptions = new RGPEditMap();
-        namingplayers o_namingplayers = new namingplayers();
-        RGPCreatin_map o_RGPCreatin_map = new RGPCreatin_map();
+        RGPmapCentral mapob = new RGPmapCentral();
+        RGPeditMap o_editOptions = new RGPeditMap();
+        RGPnamingPlayers o_namingplayers = new RGPnamingPlayers();
+        RGPcreateMap o_RGPCreatin_map = new RGPcreateMap();
         Scanner a = new Scanner(System.in);
         
         while (i == 0) {
@@ -128,13 +130,12 @@ public class main {
             file = mapob.mapOption(option);
             switch (option) {
                 case 1:
-                	o_RGPCreatin_map.createmap();
+                	o_RGPCreatin_map.createmap(file);
                 	o_namingplayers.namep(file);
                     i = i + 1;
                     break;
                 case 2:
                     o_namingplayers.namep(file);
-                    
                     i = i + 1;
                     break;
                 case 3:

@@ -3,41 +3,46 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-
-public class Reinforcement {
+/**
+ * 
+ * */
+public class RGPreinforcement {
 
 	int tradeCount;
 	int numOfPlayers;
 	Map<String, Integer> contientValues;
-	String countryName; // Country where you place your army
-	String[] p; // Player names
-	int totalCountry; // total num of countries in the map
-	String[] continentwon;//String of continents own for any player;
+	String countryName;
+	String[] p;
+	int totalCountry;
+	String[] continentwon;
 
-	public Reinforcement(int totalCountry, Map<String, Integer> contientValues) {
+	public RGPreinforcement(int totalCountry, Map<String, Integer> contientValues) {
 		this.totalCountry = totalCountry;
 		this.contientValues = contientValues;
 		tradeCount = 0;
 	}
 	
-	public Reinforcement() {
+	public RGPreinforcement() {
 		
 	}
 	
-
-	// how many reinforcement to give based on countries he has, how many continents
-	public Integer calReinforcementArmies(int playerNum, List<String> countries, Map<String,Integer> contientValues, Map<String, Integer> continentCountryCount, Map<String, String> country_continent) {
-		//System.out.println(contientValues);
-		//System.out.println(continentCountryCount);
-		//System.out.println(country_continent);
+	/**
+	 * This method will calculate reinforcement armies.
+	 * 
+	 * @param countries This parameter contains list of countries for current player.
+	 * 
+	 * @param continent_country_count This parameter contains continents and total number of countries in each continent.
+	 * 
+	 * @param country_continent This parameter contains countries mapped to it's continent.
+	 * 
+	 * @return This method will return calculated reinforced armies.
+	 * */
+	public Integer calReinforcementArmies(List<String> countries, Map<String, Integer> continent_country_count, Map<String, String> country_continent) {
 		int reinforced_armies = Math.max(countries.size() / 3, 3);
-		//System.out.println(reinforced_armies);
 		int n = countries.size();
 		for(int i=0;i<n;i++) {
-			//System.out.println(countries.get(i));
 			String continent = country_continent.get(countries.get(i));
-			//System.out.println(continent);
-			int continent_have_countries = continentCountryCount.get(continent);
+			int continent_have_countries = continent_country_count.get(continent);
 			int flag = continent_have_countries;
 			for(int j=0;j<n;j++) {
 				if(continent == country_continent.get(countries.get(j))) {
@@ -48,22 +53,30 @@ public class Reinforcement {
 			}
 			if(flag == 0) {
 				reinforced_armies += contientValues.get(continent);
-				//System.out.println(reinforced_armies);
 			}
 		}
 		return reinforced_armies;
 	}
 	
-
-	// placing reinforcement armies in countries
-	// country, numOfArmies
+	/**
+	 * This method will perform placing of reinforced armies to countries.
+	 * 
+	 * @param z This parameter contains calculated reinforced armies.
+	 * 
+	 * @param i This parameter contains index of current player.
+	 * 
+	 * @param country_per_player This parameter contains list of countries for each player.
+	 * 
+	 * @param army_per_country This parameter contains hash map of countries and armies.
+	 * 
+	 * @return This method will return updated hash map of countries and armies.
+	 */
 	public HashMap<String, Integer> placeReinforceArmies(int z, int i, List<List<String>> country_per_player, HashMap<String, Integer> army_per_country) {
 		int flag=0;
 		String a_country= " ";
 		int a_army;
     	while(z!=0) {
     		Scanner a = new Scanner(System.in);
-    		//System.out.println("Hello");
     		while(flag==0) {
     			System.out.println("Enter country name to place army : ");
         		a_country = a.next();

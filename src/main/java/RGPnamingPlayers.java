@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 
-public class namingplayers  {
-    uem a1 = new uem();
+public class RGPnamingPlayers  {
+    RGPlisting a1 = new RGPlisting();
     int pinp = 0;
     String[] names = new String[5];
     
@@ -18,7 +18,7 @@ public class namingplayers  {
     
     public int namep(File file) throws Exception{
     	
-    	map o_map = new map();
+    	RGPmap o_map = new RGPmap();
     	int a = o_map.validateConnectedContinents(file);
     	int b = o_map.validateConnectedCountries(file);
     	

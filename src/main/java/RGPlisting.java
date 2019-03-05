@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-public class uem extends calcline{
+public class RGPlisting extends RGPcalcLine{
 	
 	main o_main = new main();
 	

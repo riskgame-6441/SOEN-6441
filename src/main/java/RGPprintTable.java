@@ -5,13 +5,26 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class printtable {
+/**
+ * This class will work on printing values related country, continent, number of armies for each countries for each players.
+ * 
+ * @author Dhruvi Gadhiya
+ * 
+ * @version 1.0.0
+ * */
+public class RGPprintTable {
 	
-	calcline a = new calcline();
-	mainmethod object_mainmethod = new mainmethod();
+	RGPcalcLine a = new RGPcalcLine();
 	int i = 0;
 	main o_main = new main();
 	
+	/**
+	 * This method is used to get neighbour countries for given country.
+	 * 
+	 * @param newword This parameter contains country name.
+	 * 
+	 * @return This method will return array list of neighbour countries.
+	 * */
 	public ArrayList<String> getNeighbour(String newword) throws Exception{
 		ArrayList<String> neighbour = new ArrayList<String>();
 		String searchword = " ";
@@ -44,6 +57,15 @@ public class printtable {
         return neighbour;
 	}
 	
+	/**
+	 * This method is used to print table containing information about countries, neighbour countries and their armies.
+	 * 
+	 * @param player This parameter contains index of current player.
+	 * 
+	 * @param country_per_player This parameter contains list of list of countries for each player.
+	 * 
+	 * @param army_per_country This parameter contains hash map of countries(key) and armies for that country(value).
+	 */
 	public void getTable(int player, List<List<String>> country_per_player, HashMap<String,Integer> army_per_country) throws Exception{
 		
 		int n = country_per_player.get(player).size();

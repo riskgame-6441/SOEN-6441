@@ -2,9 +2,9 @@
 import java.util.List;
 import java.util.Scanner;
 
-public class RGPEditMap {
+public class RGPeditMap {
     public void editMap() throws Exception{
-        RGPEditMapCalculations a = new RGPEditMapCalculations();
+        RGPeditMapCalculations a = new RGPeditMapCalculations();
         System.out.println("Edit Menu");
         System.out.println("1- Add continent.");
         System.out.println("2- Delete continent");
