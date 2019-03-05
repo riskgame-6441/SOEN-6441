@@ -10,12 +10,12 @@ public class printtable {
 	calcline a = new calcline();
 	mainmethod object_mainmethod = new mainmethod();
 	int i = 0;
-	
+	main o_main = new main();
 	
 	public ArrayList<String> getNeighbour(String newword) throws Exception{
 		ArrayList<String> neighbour = new ArrayList<String>();
 		String searchword = " ";
-		File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");
+		File file = o_main.file;
         Scanner sc = new Scanner(file);
         int j = 0;
         int n = a.line2();
@@ -45,9 +45,7 @@ public class printtable {
 	}
 	
 	public void getTable(int player, List<List<String>> country_per_player, HashMap<String,Integer> army_per_country) throws Exception{
-		//System.out.println("\nPlayer : "+(player+1));
-		//System.out.println("*************************");
-		//System.out.println(country_per_player.get(player));
+		
 		int n = country_per_player.get(player).size();
 		for(int i=0;i<n;i++) {
 			String country_name = country_per_player.get(player).get(i);
@@ -55,10 +53,8 @@ public class printtable {
 			System.out.println("\nCountry Name : "+country_name+"("+c_army+")");
 			ArrayList<String> neighbour_countries = getNeighbour(country_name);
 			int m = neighbour_countries.size();
-			//System.out.println(m);
 			for(int j=0;j<m;j++) {
 				int army = army_per_country.get(neighbour_countries.get(j));
-				//System.out.println(army);
 				System.out.println("=> "+neighbour_countries.get(j)+"("+army+")");
 			}
 		}

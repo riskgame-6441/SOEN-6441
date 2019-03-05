@@ -3,9 +3,10 @@ import java.util.Scanner;
 
 public class calculatinglines {
 
+	main o_main = new main();
+	
     public int totallines() throws Exception{
-    	File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");
-    	//File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
+    	File file = o_main.file;
         Scanner sc = new Scanner(file);
         int count = 0;
         while (sc.hasNextLine()) {
@@ -16,8 +17,7 @@ public class calculatinglines {
     }
     public int countrylines() throws Exception{
         int a = 0;
-        File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");
-        //File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
+    	File file = o_main.file;
         Scanner sc = new Scanner(file);
         while (sc.hasNextLine()){
             a++;
@@ -29,8 +29,7 @@ public class calculatinglines {
     }
     public int continentlines() throws Exception{
         int b = 0;
-        File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");
-        //File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
+    	File file = o_main.file;
         Scanner sc = new Scanner(file);
         while (sc.hasNextLine()){
             b++;

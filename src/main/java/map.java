@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -10,6 +11,7 @@ import java.util.HashMap;
 public class map {
 	
 	printtable o_printtable = new printtable();
+	uem o_uem = new uem();
 	
 	/**
 	 * This method checks if all the continents given in the map is connected or not.
@@ -22,10 +24,13 @@ public class map {
 	 * 
 	 * @return This method returns value 1 if continents are connected or else 0.
 	 * */
-	public int validateConnectedContinents(ArrayList<String> country_list, ArrayList<String> continent_list, HashMap<String, String> country_continent) throws Exception {
+	public int validateConnectedContinents(File file) throws Exception {
 		ArrayList<String> neighbour_country = new ArrayList<String>();
-		ArrayList<String> new_continent_list = new ArrayList<String>();
-		new_continent_list = continent_list;
+		ArrayList<String> continent_list = o_uem.continentlist(file);
+		ArrayList<String> new_continent_list = continent_list;
+		ArrayList<String> country_list = o_uem.countrylist(file);
+		HashMap<String,String> country_continent = o_uem.getCountryContinent(file);
+		
 		int n = country_list.size();
 		String continent = " ",continent1 = " ",country = " ";
 		int flag = 0,a=0;
@@ -33,7 +38,7 @@ public class map {
 		for(int i=0;i<n;i++) {
 			//System.out.println(new_continent_list);
 			if(new_continent_list.isEmpty()) {
-				System.out.println("Continents are connected.");
+				//System.out.println("Continents are connected.");
 				a=1;
 				break;
 			}
@@ -65,10 +70,14 @@ public class map {
 	 * 
 	 * @return This method returns value 1 if countries are connected or else 0.
 	 * */
-	public int validateConnectedCountries(ArrayList<String> country_list, ArrayList<String> continent_list) throws Exception {
+	public int validateConnectedCountries(File file) throws Exception {
 		
-		ArrayList<String> neighbour_country = new ArrayList<String>();
-		ArrayList<String> new_country_list = new ArrayList<String>();
+		ArrayList<String> neighbour_country = new ArrayList<String>();		
+		ArrayList<String> continent_list = o_uem.continentlist(file);
+		ArrayList<String> country_list = o_uem.countrylist(file);
+		ArrayList<String> new_country_list = country_list;
+
+		
 		int n = country_list.size();
 		String country=" ",country1=" ";
 		int flag=0,flag1=0,a=0;
@@ -77,7 +86,7 @@ public class map {
 
 		for(int i=0;i<n;i++) {
 			if(new_country_list.isEmpty()) {
-				System.out.println("Countries are connected.");
+				//System.out.println("Countries are connected.");
 				a=1;
 				break;
 			}
