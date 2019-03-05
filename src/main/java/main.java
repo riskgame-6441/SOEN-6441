@@ -15,6 +15,7 @@ public class main {
         RGPlisting o_uem = new RGPlisting();
         RGPfortification o_fortification = new RGPfortification();
 	
+        System.out.println("******WELCOME TO RISK******");
 		menu();
         
 		HashMap<String, Integer> contvalue = o_uem.getcontinentandcontrolvalue();
@@ -83,7 +84,7 @@ public class main {
 	public static void menu() throws Exception{
         int i = 0;
         Scanner a = new Scanner(System.in);
-        System.out.println("******WELCOME TO RISK******");
+        
         while(i == 0) {
             System.out.println("1- Start");
             System.out.println("2- Help");
@@ -100,7 +101,7 @@ public class main {
                     i = i + 1;
                     break;
                 case 3:
-                    System.out.println("Exit");
+                    System.exit(option);
                     i = i + 1;
                     break;
                 default:
@@ -126,6 +127,8 @@ public class main {
             System.out.println("1- Create a new map");
             System.out.println("2- Use an existing map");
             System.out.println("3- Edit an existing map");
+            System.out.println("4- Go back");
+            
             int option = a.nextInt();
             file = mapob.mapOption(option);
             switch (option) {
@@ -143,6 +146,10 @@ public class main {
                     o_namingplayers.namep(file);
                     i = i + 1;
                     break;
+                case 4:
+                	menu();
+                	i = i + 1;
+                	break;
                 default:
                     System.out.println("Enter correct option");
             }
