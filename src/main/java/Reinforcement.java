@@ -63,6 +63,7 @@ public class Reinforcement {
 		int a_army;
     	while(z!=0) {
     		Scanner a = new Scanner(System.in);
+    		//System.out.println("Hello");
     		while(flag==0) {
     			System.out.println("Enter country name to place army : ");
         		a_country = a.next();

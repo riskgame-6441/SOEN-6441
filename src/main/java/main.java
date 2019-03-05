@@ -11,11 +11,15 @@ public class main {
         
 		army o_army = new army();
         uem o_uem = new uem();
+        fortification o_fortification = new fortification();
+        
 		HashMap<String, Integer> contvalue = o_uem.getcontinentandcontrolvalue();
 		HashMap<String, Integer> contvalue1 = o_uem.getcontinentandcountry();
 		HashMap<String, String> country_continent = o_uem.getCountryContinent();
 		ArrayList<String> continent_list = o_uem.continentlist();
 		ArrayList<String> country_list = o_uem.countrylist();
+		
+		/*
 		map o_map = new map();
 		
 		//System.out.println("Check Continents");
@@ -31,7 +35,7 @@ public class main {
 		int d =o_map.validateConnectedContinents(country_list, continent_list, country_continent);
 		System.out.println(a+""+b+""+c+""+d);
 		System.out.println("Check Continents");
-		
+		*/
 		menu();
         
         
@@ -54,15 +58,13 @@ public class main {
 		army_per_country = o_army.armyPerCountry(total_players,armies_per_player,country_per_player);
 		System.out.println("No. of armies per country");
 		System.out.println(army_per_country);
-		
-		
-    	//System.out.println(country_continent);
-        
+	        
         printtable o_printtable = new printtable();
-        //int player_count = object_mainmethod.n;
-        //System.out.println(player_count);
+
         for(int i=0;i<total_players;i++) {
         	//print table
+        	System.out.println("Player : "+(i+1));
+        	System.out.println("=========================================");
         	o_printtable.getTable(i,country_per_player,army_per_country);
         	
         	//reinforce armies
@@ -81,14 +83,16 @@ public class main {
         		//attack phase
         	}else {
         		//fortification phase
+        		o_fortification.fortify(country_per_player.get(i),army_per_country);
+        		o_printtable.getTable(i,country_per_player,army_per_country);
         	}
-        	break;
+        	//break;
         }
         
         
     }
     
-	public static void menu(){
+	public static void menu() throws Exception{
         int i = 0;
         Scanner a = new Scanner(System.in);
         System.out.println("******WELCOME TO RISK******");
@@ -113,7 +117,7 @@ public class main {
                     break;
                 default:
                     while (option > 3) {
-                        System.out.println("hello");
+                        System.out.println("Enter one of the given options ");
                         break;
                     }
 
@@ -122,9 +126,10 @@ public class main {
 
     }
     
-	public static void mapo() {
+	public static void mapo() throws Exception{
         int i = 0;
         namingplayers o_namingplayers = new namingplayers();
+        RGPCreatin_map o_RGPCreatin_map = new RGPCreatin_map();
         Scanner a = new Scanner(System.in);
         while (i == 0) {
             System.out.println("1- Create a new map");
@@ -133,11 +138,12 @@ public class main {
             int option = a.nextInt();
             switch (option) {
                 case 1:
-                    System.out.println("go to new map");
+                	o_RGPCreatin_map.createmap();
                     i = i + 1;
                     break;
                 case 2:
                     o_namingplayers.namep();
+                    
                     i = i + 1;
                     break;
                 case 3:
@@ -149,9 +155,6 @@ public class main {
             }
         }
         total_players = o_namingplayers.pinp;
-        /*for(i=0;i<total_players;i++) {
-        	System.out.println(o_namingplayers.names[i]);
-        }*/
     }
 	
 }

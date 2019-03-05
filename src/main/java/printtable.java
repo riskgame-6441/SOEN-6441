@@ -45,8 +45,8 @@ public class printtable {
 	}
 	
 	public void getTable(int player, List<List<String>> country_per_player, HashMap<String,Integer> army_per_country) throws Exception{
-		System.out.println("\nPlayer : "+(player+1));
-		System.out.println("*************************");
+		//System.out.println("\nPlayer : "+(player+1));
+		//System.out.println("*************************");
 		//System.out.println(country_per_player.get(player));
 		int n = country_per_player.get(player).size();
 		for(int i=0;i<n;i++) {
