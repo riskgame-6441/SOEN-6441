@@ -1,11 +1,14 @@
 import java.util.List;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 /**
- * 
- * */
+ * This class is performing reinforcement phase
+ * @author koti
+ * @version 1.0.0
+ */
 public class RGPreinforcement {
 
 	int tradeCount;
@@ -15,7 +18,11 @@ public class RGPreinforcement {
 	String[] p;
 	int totalCountry;
 	String[] continentwon;
-
+    /**
+     * This method is a constructor
+     * @param totalCountry get total no of countries
+     * @param contientValues get continent values
+     */
 	public RGPreinforcement(int totalCountry, Map<String, Integer> contientValues) {
 		this.totalCountry = totalCountry;
 		this.contientValues = contientValues;
@@ -37,11 +44,16 @@ public class RGPreinforcement {
 	 * 
 	 * @return This method will return calculated reinforced armies.
 	 * */
-	public Integer calReinforcementArmies(List<String> countries, Map<String, Integer> continent_country_count, Map<String, String> country_continent) {
+	public Integer calReinforcementArmies(List<String> countries, Map<String, Integer> continent_country_count, Map<String, String> country_continent, Map<String, Integer> continent_value) {
 		int reinforced_armies = Math.max(countries.size() / 3, 3);
 		int n = countries.size();
+		List<String> new_continent = new ArrayList<String>();
 		for(int i=0;i<n;i++) {
 			String continent = country_continent.get(countries.get(i));
+			if(new_continent.contains(continent)) {
+				break;
+			}
+			new_continent.add(continent);
 			int continent_have_countries = continent_country_count.get(continent);
 			int flag = continent_have_countries;
 			for(int j=0;j<n;j++) {
@@ -52,7 +64,7 @@ public class RGPreinforcement {
 					break;
 			}
 			if(flag == 0) {
-				reinforced_armies += contientValues.get(continent);
+				reinforced_armies += continent_value.get(continent);
 			}
 		}
 		return reinforced_armies;

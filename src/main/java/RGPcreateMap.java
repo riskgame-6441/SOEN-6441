@@ -45,7 +45,7 @@ public class RGPcreateMap {
 		mapcreation.println(" ");
 		mapcreation.println("[Continents]");
 		for (int i = 0; i < contint1; i++) {
-			mapcreation.print(continent_name1[i] + " = ");
+			mapcreation.print(continent_name1[i] + "=");
 			mapcreation.print(continent_countries1[i]);
 			mapcreation.println("");
 		}
@@ -65,7 +65,11 @@ public class RGPcreateMap {
 		mapcreation.close();
 
 	}
-
+   /**
+    * This method takes input from user and create map file
+    * @param file contains file path 
+    * @throws FileNotFoundException
+    */
 	public void createmap(File file) throws FileNotFoundException {
 
 		// TODO Auto-generated method stub

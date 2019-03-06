@@ -25,10 +25,10 @@ public class RGPprintTable {
 	 * 
 	 * @return This method will return array list of neighbour countries.
 	 * */
-	public ArrayList<String> getNeighbour(String newword) throws Exception{
+	public ArrayList<String> getNeighbour(File file1, String newword) throws Exception{
 		ArrayList<String> neighbour = new ArrayList<String>();
 		String searchword = " ";
-		File file = o_main.file;
+		File file = file1;
         Scanner sc = new Scanner(file);
         int j = 0;
         int n = a.line2();
@@ -66,14 +66,14 @@ public class RGPprintTable {
 	 * 
 	 * @param army_per_country This parameter contains hash map of countries(key) and armies for that country(value).
 	 */
-	public void getTable(int player, List<List<String>> country_per_player, HashMap<String,Integer> army_per_country) throws Exception{
+	public void getTable(File file, int player, List<List<String>> country_per_player, HashMap<String,Integer> army_per_country) throws Exception{
 		
 		int n = country_per_player.get(player).size();
 		for(int i=0;i<n;i++) {
 			String country_name = country_per_player.get(player).get(i);
 			int c_army = army_per_country.get(country_per_player.get(player).get(i));
 			System.out.println("\nCountry Name : "+country_name+"("+c_army+")");
-			ArrayList<String> neighbour_countries = getNeighbour(country_name);
+			ArrayList<String> neighbour_countries = getNeighbour(file, country_name);
 			int m = neighbour_countries.size();
 			for(int j=0;j<m;j++) {
 				int army = army_per_country.get(neighbour_countries.get(j));

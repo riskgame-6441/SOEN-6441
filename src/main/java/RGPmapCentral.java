@@ -1,7 +1,15 @@
 import java.io.File;
-
+/**
+ * This class is make file path global
+ * @author pavan
+ * @version 1.0.0
+ */
 public class RGPmapCentral {
-
+    /**
+     * This method is make file path global based on user input
+     * @param value contains user option
+     * @return
+     */
 	public File mapOption(int value) {
 		File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");
 		// TODO Auto-generated method stub

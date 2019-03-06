@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -7,7 +8,7 @@ import java.util.Scanner;
 /**
  * This class will perform fortification phase.
  * 
- * @author 
+ * @author dhruvi
  * 
  * @version 1.0.0
  * */
@@ -22,7 +23,7 @@ public class RGPfortification {
 	 * 
 	 * @param army_per_country This parameter contains hash map of armies for each country.
 	 * */
-	public void fortify(List<String> country_list,HashMap<String,Integer> army_per_country) throws Exception {
+	public void fortify(File file,List<String> country_list,HashMap<String,Integer> army_per_country) throws Exception {
 		System.out.println(country_list);
 		Scanner a = new Scanner(System.in);
 		int flag = 0;
@@ -55,7 +56,7 @@ public class RGPfortification {
 		}
 		
 		List<String> list = new ArrayList<String>();
-		int value = checkConnection(country1,country2,country_list,list);
+		int value = checkConnection(file,country1,country2,country_list,list);
 		if(value == 1) {
 			int flag2=0;
 			while(flag2==0) {
@@ -76,7 +77,7 @@ public class RGPfortification {
 			}
 		}else if(value == 0 || value == 2) {
 			System.out.println("Please enter valid countries which are connected.");
-			fortify(country_list,army_per_country);
+			fortify(file,country_list,army_per_country);
 		}
 		
 	}
@@ -90,9 +91,9 @@ public class RGPfortification {
 	 * 
 	 * @return This method will return integer value if given countries are connected(1) or not(0).
 	 * */
-	public int checkConnection(String country1,String country2,List<String> country_list,List<String> list) throws Exception {
+	public int checkConnection(File file,String country1,String country2,List<String> country_list,List<String> list) throws Exception {
 		int flag = 0,return_value = 2;
-		List<String> neighbour_list = o_printtable.getNeighbour(country1);
+		List<String> neighbour_list = o_printtable.getNeighbour(file,country1);
 		List<String> neighbour_list1 = neighbour_list;
 		
 		Iterator<String> iter = neighbour_list.iterator();
@@ -112,7 +113,7 @@ public class RGPfortification {
 				list.add(country1);
 				for(int i=0;i<neighbour_list1.size();i++) {
 					if(!list.contains(neighbour_list1.get(i))) {
-						checkConnection(neighbour_list1.get(i),country2,neighbour_list1,list);
+						checkConnection(file,neighbour_list1.get(i),country2,neighbour_list1,list);
 					}else {
 						break;
 					}

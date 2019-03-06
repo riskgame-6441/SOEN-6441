@@ -1,12 +1,19 @@
 import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
-
+/**
+ * This map is for calculating edit map details and save the file
+ * @author pavan
+ * @version 1.0.0
+ */
 public class RGPeditMapCalculations {
 	
 	main o_main = new main();
 	File file = new File("/Users/Guest1/SOEN-6441/src/main/java/world.map");
-	
+	/**
+	 * This method is to add continent to map file
+	 * @throws Exception
+	 */
     public void addContinent() throws Exception {
         BufferedReader br;
         System.out.println("Please enter the continent name to be added:");
@@ -28,7 +35,10 @@ public class RGPeditMapCalculations {
         }
         outputStream.close();
         }
-
+       /**
+        * This method is to delete continent from map file
+        * @throws Exception
+        */
         public void deleteContinent() throws Exception{
             BufferedReader br;
             System.out.println("Please enter the continent name to be Deleted:");
@@ -48,7 +58,10 @@ public class RGPeditMapCalculations {
             }
             outputStream.close();
         }
-
+        /**
+         * This method is to add country to map file
+         * @throws Exception
+         */
         public void addCountry() throws Exception{
             int i = 0;
             BufferedReader br;
@@ -83,7 +96,10 @@ public class RGPeditMapCalculations {
             outputStream.close();
 
         }
-
+        /**
+         * This method is to delete country from delete file
+         * @throws Exception
+         */
         public void deleteCountry() throws Exception{
             BufferedReader br;
             Scanner sc = new Scanner(System.in);

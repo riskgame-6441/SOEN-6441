@@ -41,7 +41,7 @@ public class RGPmap {
 				continent = country_continent.get(country);
 				flag = 1;
 			}
-			neighbour_country = o_printtable.getNeighbour(country);
+			neighbour_country = o_printtable.getNeighbour(file,country);
 			for(int j=0;j<neighbour_country.size();j++) {
 				continent1 = country_continent.get(neighbour_country.get(j));
 				if(country_continent.get(country) != country_continent.get(neighbour_country.get(j))) {
@@ -95,7 +95,7 @@ public class RGPmap {
 					}
 				}
 			}
-			neighbour_country = o_printtable.getNeighbour(country);
+			neighbour_country = o_printtable.getNeighbour(file,country);
 			new_country_list.remove(country);
 			n--;
 			for(int j=0;j<neighbour_country.size();j++) {
