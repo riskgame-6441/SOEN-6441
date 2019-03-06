@@ -2,20 +2,32 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-
+/**
+ * This class is for naming players
+ * @author pavan
+ * @version 1.0.0
+ */
 
 public class RGPnamingPlayers  {
     RGPlisting a1 = new RGPlisting();
     int pinp = 0;
     String[] names = new String[5];
-    
+    /**
+     * This method returns the total no of players
+     * @return no of players
+     */
     public int getPlayers() {
     	Scanner a = new Scanner(System.in);
     	System.out.println("enter no of players");
     	final int total_players = a.nextInt();
     	return total_players;
     }
-    
+    /**
+     * This method check whether countries are connected or not
+     * @param file contains the file path
+     * @return total players
+     * @throws Exception
+     */
     public int namep(File file) throws Exception{
     	
     	RGPmap o_map = new RGPmap();

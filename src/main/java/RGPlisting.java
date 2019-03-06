@@ -5,10 +5,20 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+/**
+ * This class is to get country and continent list from map file
+ * This class also extends RGPcalcLine class
+ * @author pavan
+ * @version 1.0.0
+ */
 public class RGPlisting extends RGPcalcLine{
 	
 	main o_main = new main();
-	
+	/**
+	 * This method returns country list
+	 * @return returns total countries
+	 * @throws Exception
+	 */
     public ArrayList<String> countrylist() throws Exception{
         String fileWord = "Territories";
         String searchword = " ";
@@ -39,7 +49,12 @@ public class RGPlisting extends RGPcalcLine{
 
         return list;
     }
-    
+    /**
+     * This method returns country list
+     * @param file1 contains the file path of a map
+     * @return returns total countries
+     * @throws Exception
+     */
     public ArrayList<String> countrylist(File file1) throws Exception{
         String fileWord = "Territories";
         String searchword = " ";
@@ -70,7 +85,11 @@ public class RGPlisting extends RGPcalcLine{
 
         return list;
     }
-    
+    /**
+     * This method returns continent list
+     * @return returns total continents in a map file
+     * @throws Exception
+     */
     public ArrayList<String> continentlist() throws Exception{
         String searchcontinent = " ";
         ArrayList<String> continentlist = new ArrayList<String>();
@@ -95,7 +114,12 @@ public class RGPlisting extends RGPcalcLine{
         }
         return continentlist;
     }
-    
+    /**
+     * This method returns continent list
+     * @param file1 contains the file path of a map
+     * @return returns total continents in a map file
+     * @throws Exception
+     */
     public ArrayList<String> continentlist(File file1) throws Exception{
         String searchcontinent = " ";
         ArrayList<String> continentlist = new ArrayList<String>();
@@ -120,6 +144,11 @@ public class RGPlisting extends RGPcalcLine{
         return continentlist;
     }
     
+    /**
+     * This method returns continent and control value
+     * @return returns continent name and value 
+     * @throws Exception
+     */
     public HashMap<String, Integer> getcontinentandcontrolvalue() throws Exception{
     	HashMap<String, Integer> contvalue = new HashMap<String, Integer>();
     	String searchcontinent = " ";
@@ -145,7 +174,12 @@ public class RGPlisting extends RGPcalcLine{
         }
     	return contvalue;
     }
-    
+    /**
+     * This method returns continent and control value
+     * @param file1 contains the file path of a map
+     * @return returns continent name and value
+     * @throws Exception
+     */
     public HashMap<String, Integer> getcontinentandcontrolvalue(File file1) throws Exception{
     	HashMap<String, Integer> contvalue = new HashMap<String, Integer>();
     	String searchcontinent = " ";
@@ -172,6 +206,11 @@ public class RGPlisting extends RGPcalcLine{
     	return contvalue;
     }
     
+    /**
+     * This method returns continent and countries
+     * @return returns continent name and no of countries in that continent
+     * @throws Exception
+     */
     public HashMap<String, Integer> getcontinentandcountry() throws Exception{
     	HashMap<String, Integer> contcountry = new HashMap<String, Integer>();
     	String searchcontinent = " ";
@@ -202,7 +241,12 @@ public class RGPlisting extends RGPcalcLine{
         }
     	return contcountry;
     }
-    
+    /**
+     * This method returns continent and countries
+     * @param file1 contains the file path of a map
+     * @return returns continent name and no of countries in continent
+     * @throws Exception
+     */
     public HashMap<String, Integer> getcontinentandcountry(File file1) throws Exception{
     	HashMap<String, Integer> contcountry = new HashMap<String, Integer>();
     	String searchcontinent = " ";
@@ -233,7 +277,11 @@ public class RGPlisting extends RGPcalcLine{
         }
     	return contcountry;
     }
-    
+    /**
+     * This method is to get particular country of a continent
+     * @return country continent
+     * @throws Exception
+     */
     public HashMap<String, String> getCountryContinent() throws Exception{
     	HashMap<String,String> country_continent = new HashMap<String,String>();
     	
@@ -262,6 +310,12 @@ public class RGPlisting extends RGPcalcLine{
         
     	return country_continent;
     }
+    /**
+     * This method returns country from a continent
+     * @param file1 contains the file path of a map
+     * @return returns country name of a continent
+     * @throws Exception
+     */
     
     public HashMap<String, String> getCountryContinent(File file1) throws Exception{
     	HashMap<String,String> country_continent = new HashMap<String,String>();

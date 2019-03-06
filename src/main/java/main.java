@@ -15,7 +15,7 @@ public class main {
         RGPlisting o_uem = new RGPlisting();
         RGPfortification o_fortification = new RGPfortification();
 	
-        System.out.println("******WELCOME TO RISK******");
+        System.out.println("--------WELCOME TO RISK--------\n");
 		menu();
         
 		HashMap<String, Integer> contvalue = o_uem.getcontinentandcontrolvalue();
@@ -50,17 +50,17 @@ public class main {
         	//print table
         	System.out.println("Player : "+(i+1));
         	System.out.println("=========================================");
-        	o_printtable.getTable(i,country_per_player,army_per_country);
+        	o_printtable.getTable(file,i,country_per_player,army_per_country);
         	
         	//reinforce armies
         	System.out.println("Reinforcement Phase");
     		System.out.println("=====================================");
-        	int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1, country_continent);
+        	int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1, country_continent, contvalue);
         	System.out.println("Number of armies to Reinforcement : "+z);
         	
         	army_per_country = o_reinforcement.placeReinforceArmies(z, i, country_per_player, army_per_country);
         	//print table
-        	o_printtable.getTable(i,country_per_player,army_per_country);
+        	o_printtable.getTable(file,i,country_per_player,army_per_country);
         	
         	//reinforcement ends
         	Scanner ab = new Scanner(System.in);
@@ -72,8 +72,8 @@ public class main {
         		//fortification phase
         		System.out.println("Fortification Phase");
         		System.out.println("=====================================");
-        		o_fortification.fortify(country_per_player.get(i),army_per_country);
-        		o_printtable.getTable(i,country_per_player,army_per_country);
+        		o_fortification.fortify(file,country_per_player.get(i),army_per_country);
+        		o_printtable.getTable(file,i,country_per_player,army_per_country);
         	}
         	//break;
         }
@@ -86,9 +86,11 @@ public class main {
         Scanner a = new Scanner(System.in);
         
         while(i == 0) {
-            System.out.println("1- Start");
-            System.out.println("2- Help");
-            System.out.println("3- Exit");
+        	System.out.println("************");
+            System.out.println("* 1- Start *");
+            System.out.println("* 2- Help  *");
+            System.out.println("* 3- Exit  *");
+            System.out.println("************\n");
             System.out.println("Enter your option");
             int option = a.nextInt();
             switch (option) {

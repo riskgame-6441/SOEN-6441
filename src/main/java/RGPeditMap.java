@@ -1,8 +1,16 @@
 
 import java.util.List;
 import java.util.Scanner;
-
+/**
+ * This class is to edit the existing map
+ * @author pavan
+ * @version 1.0.0
+ */
 public class RGPeditMap {
+	/**
+	 * This method takes user input for edit map
+	 * @throws Exception
+	 */
     public void editMap() throws Exception{
         RGPeditMapCalculations a = new RGPeditMapCalculations();
         System.out.println("Edit Menu");
