@@ -127,18 +127,21 @@ public class RGPdiceroll {
 		return r;
 	}
 
-	public static void main(String[] args) {
+	public int rollDice(int attack_armies, int defend_armies) {
 		// TODO Auto-generated method stub
 
-		System.out.println("Enter attacking country armies");
-		RGPscanner = new Scanner(System.in);
-		int attacker_armies = RGPscanner.nextInt();
-		System.out.println("Enter Defender country armies");
-		int defender_armies = RGPscanner.nextInt();
+		//System.out.println("Enter attacking country armies");
+		//RGPscanner = new Scanner(System.in);
+		//int attacker_armies = RGPscanner.nextInt();
+		//System.out.println("Enter Defender country armies");
+		//int defender_armies = RGPscanner.nextInt();
 		// System.out.println("Do you want to attack on the country(yes/no)");
 		// string = new Scanner(System.in);
 		// String str = string.nextLine();
 		// if (str.equalsIgnoreCase("yes")) {
+		int attacker_armies = attack_armies;
+		int defender_armies = defend_armies;
+		int z = 1;
 		if ((attacker_armies > 1) && (defender_armies < attacker_armies)) {
 			while (attacker_armies != 0 && defender_armies != 0) {
 				if (attacker_armies < 2) {
@@ -248,5 +251,6 @@ public class RGPdiceroll {
 		} else {
 			System.out.println("Attacking country armies should be higher than defender countries");
 		}
+		return z;
 	}
 }

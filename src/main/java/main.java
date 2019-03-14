@@ -66,8 +66,18 @@ public class main {
         	Scanner ab = new Scanner(System.in);
         	System.out.println("Do you want to attack ?(y/n)");
         	String ans = ab.next();
-        	if(ans == "y") {
+        	if(ans.equalsIgnoreCase("y")) {
         		//attack phase
+        		RGPdiceroll o_dice = new RGPdiceroll();
+        		System.out.println("Attack Phase");
+        		System.out.println("Enter country name from which you want to attack");
+        		String attack_country = ab.next();
+        		System.out.println("Enter country name on which you want to attack");
+        		String defend_country = ab.next();
+        		int attacker_armies = army_per_country.get(attack_country);
+        		int defender_armies = army_per_country.get(defend_country);
+        		int y = o_dice.rollDice(attacker_armies,defender_armies);
+        		System.out.println(y);
         	}else {
         		//fortification phase
         		System.out.println("Fortification Phase");
