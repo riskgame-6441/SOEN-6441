@@ -68,16 +68,47 @@ public class main {
         	String ans = ab.next();
         	if(ans.equalsIgnoreCase("y")) {
         		//attack phase
+        		int flag = 0, g = 0;
+        		String attack_country = null;
+        		String defend_country = null;
         		RGPdiceroll o_dice = new RGPdiceroll();
         		System.out.println("Attack Phase");
-        		System.out.println("Enter country name from which you want to attack");
-        		String attack_country = ab.next();
+        		while(flag==0) {
+        			while(flag==0) {
+        				System.out.println("Enter country name from which you want to attack");
+                	 attack_country = ab.next();
+        				if(!country_per_player.get(i).contains(attack_country)) {
+        					System.out.println("Please enter country that you own.");
+        					break;
+        				}else {
+        					flag=1;
+        				}
+        			}
+        		}
+        		int f = 1;
+        		while(g == 0 || f == 1){
         		System.out.println("Enter country name on which you want to attack");
-        		String defend_country = ab.next();
+        		defend_country = ab.next();
+        		List<String> list = new ArrayList<String>();
+        		 g = o_fortification.checkConnection(file, attack_country, defend_country, country_list, list);
+        		 if(country_per_player.get(i).contains(defend_country)){
+        			  f = 1;
+        		 }else{
+        			 f = 0;
+        		 }
+        		 if (g != 1 || f == 1){
+        			 System.out.println("Enter correct neighbouring country or other player country to attack");
+        		 }
+        		}
         		int attacker_armies = army_per_country.get(attack_country);
         		int defender_armies = army_per_country.get(defend_country);
         		int y = o_dice.rollDice(attacker_armies,defender_armies);
-        		System.out.println(y);
+        		//if (y ==1 )
+        			//System.out.println("Attacker has won");
+        			//else
+        			//	System.out.println("Defender has won");
+        			
+        		
         	}else {
         		//fortification phase
         		System.out.println("Fortification Phase");
