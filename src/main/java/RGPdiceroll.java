@@ -127,18 +127,22 @@ public class RGPdiceroll {
 		return r;
 	}
 
-	public static void main(String[] args) {
+	public int rollDice(int attack_armies, int defend_armies ) {
 		// TODO Auto-generated method stub
 
-		System.out.println("Enter attacking country armies");
-		RGPscanner = new Scanner(System.in);
-		int attacker_armies = RGPscanner.nextInt();
-		System.out.println("Enter Defender country armies");
-		int defender_armies = RGPscanner.nextInt();
+		//System.out.println("Enter attacking country armies");
+		//RGPscanner = new Scanner(System.in);
+		//int attacker_armies = RGPscanner.nextInt();
+		//System.out.println("Enter Defender country armies");
+		//int defender_armies = RGPscanner.nextInt();
 		// System.out.println("Do you want to attack on the country(yes/no)");
 		// string = new Scanner(System.in);
 		// String str = string.nextLine();
 		// if (str.equalsIgnoreCase("yes")) {
+		int attacker_armies = attack_armies;
+		int defender_armies = defend_armies;
+		int noOfAttackerDice = 0;
+		int z = 1;
 		if ((attacker_armies > 1) && (defender_armies < attacker_armies)) {
 			while (attacker_armies != 0 && defender_armies != 0) {
 				if (attacker_armies < 2) {
@@ -155,7 +159,9 @@ public class RGPdiceroll {
 						minattckerarmy[1] = 3;
 						int noofattackerdice = minOfArray(minattckerarmy);
 						int noofdefenderdice = 2;
-						int a[] = rollOfDice(noofattackerdice);
+						System.out.println("Enter no of dice you want to play with "+ "(maximum of" + noofattackerdice+")" );
+						 noOfAttackerDice = string.nextInt();
+						int a[] = rollOfDice(noOfAttackerDice);
 
 						if (defender_armies < 2) {
 							noofdefenderdice1 = noofdefenderdice - 1;
@@ -164,7 +170,7 @@ public class RGPdiceroll {
 							noofdefenderdice1 = noofdefenderdice;
 						}
 
-						int b[] = rollOfDice(noofdefenderdice);
+						int b[] = rollOfDice(noofdefenderdice1);
 
 						int minvalue = minOfArray(a);
 						System.out.println("Attacker Dice values");
@@ -240,13 +246,19 @@ public class RGPdiceroll {
 
 			if (attacker_armies < 1) {
 				System.out.println("Defender has won");
+				System.out.println("defender_armies:"+defender_armies);
+				z = 0;
 			}
 			if (defender_armies < 1) {
 				System.out.println("Attacker has won");
+				System.out.println("Attacker Armies:"+attacker_armies);
+				System.out.println("Enter no of armies in country won");
+				 z = 1;
 			}
 
 		} else {
 			System.out.println("Attacking country armies should be higher than defender countries");
 		}
+		return z;
 	}
 }
