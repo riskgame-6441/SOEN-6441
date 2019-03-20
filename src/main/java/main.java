@@ -102,20 +102,46 @@ public class main {
         		}
         		int attacker_armies = army_per_country.get(attack_country);
         		int defender_armies = army_per_country.get(defend_country);
-        		int y = o_dice.rollDice(attacker_armies,defender_armies);
-        		//if (y ==1 )
-        			//System.out.println("Attacker has won");
-        			//else
-        			//	System.out.println("Defender has won");
-        			
+        		HashMap<Integer,Integer> armies = o_dice.rollDice(attacker_armies,defender_armies,file,i,country_per_player,army_per_country);
+        		int c = (int)armies.keySet().toArray()[0];
+        		int army = armies.get(c);
+        		System.out.println(c);
+        		if(c == 0){
+        			System.out.println("Defender has won"+attack_country+"country");        			
+        			System.out.println("Enter no of armies to place in "+ attack_country);
+        			int armies1 = ab.nextInt();
+        			armies1 += army_per_country.get(attack_country);
+        			army_per_country.put(attack_country, armies1);
+            		int army1 = army - (armies1-1);
+            		army_per_country.put(defend_country, army1);
+            		o_printtable.getTable(file,i,country_per_player,army_per_country);
+        		}
+        	   else{
+        		System.out.println("Attacker has won"+defend_country+"country");    
+        		System.out.println("Enter no of armies to place in "+ defend_country);
+        		int armies1 = ab.nextInt();
+        		int j = 0;
+        		armies1 += army_per_country.get(defend_country);        		
+    			army_per_country.put(defend_country, armies1);
+        		int army1 = army - (armies1-1);
+        		army_per_country.put(attack_country, army1);
+        		country_per_player.get(i).add(defend_country);
+        		for(int l=0;l<total_players;l++){
+        			if(country_per_player.get(l).contains(defend_country)){
+        				j = l;
+        			}   		
+        		}
+        		country_per_player.get(j).remove(defend_country);
         		
-        	}else {
-        		//fortification phase
-        		System.out.println("Fortification Phase");
-        		System.out.println("=====================================");
-        		o_fortification.fortify(file,country_per_player.get(i),army_per_country);
         		o_printtable.getTable(file,i,country_per_player,army_per_country);
+        	   }
         	}
+        		//fortification phase
+        		//System.out.println("Fortification Phase");
+        		//System.out.println("=====================================");
+        		//o_fortification.fortify(file,country_per_player.get(i),army_per_country);
+        		//o_printtable.getTable(file,i,country_per_player,army_per_country);
+        	o_fortification.fortification(file,i,country_per_player,army_per_country);
         	//break;
         }
         
@@ -140,9 +166,8 @@ public class main {
                     i = i + 1;
                     break;
                 case 2:
-                    System.out.println("Help");
-                    i = i + 1;
-                    break;
+                    System.out.println("Risk Game Help");
+                    menu();
                 case 3:
                     System.exit(option);
                     i = i + 1;
@@ -157,6 +182,8 @@ public class main {
         }
 
     }
+	
+	
     
 	public static void mapo() throws Exception{
         int i = 0;
