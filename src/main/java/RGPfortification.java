@@ -23,7 +23,7 @@ public class RGPfortification {
 	 * 
 	 * @param army_per_country This parameter contains hash map of armies for each country.
 	 * */
-	public void fortify(File file,List<String> country_list,HashMap<String,Integer> army_per_country) throws Exception {
+	public void  fortify(File file,List<String> country_list,HashMap<String,Integer> army_per_country) throws Exception {
 		System.out.println(country_list);
 		Scanner a = new Scanner(System.in);
 		int flag = 0;
@@ -124,5 +124,15 @@ public class RGPfortification {
 			
 		}
 		return return_value;
+	}
+	public static void fortification(File file, int i, List<List<String>> country_per_player, HashMap<String,Integer> army_per_country) throws Exception
+	{
+		 RGPfortification o_fortification = new RGPfortification();
+		 RGPprintTable o_printtable = new RGPprintTable();
+		System.out.println("Fortification Phase");
+		System.out.println("=====================================");
+		o_fortification.fortify(file,country_per_player.get(i),army_per_country);
+		o_printtable.getTable(file,i,country_per_player,army_per_country);
+	
 	}
 }
