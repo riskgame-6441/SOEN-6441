@@ -10,7 +10,7 @@ import java.util.HashMap;
  * @author Dhruvi Gadhiya
  * @version 1.0.0
  * */
-public class army{
+public class RGParmy{
 	
 	/**
 	 * This method is used to calculate How many army each Player will get.

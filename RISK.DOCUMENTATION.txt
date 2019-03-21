@@ -126,7 +126,8 @@ Enter No of army to fortify :
 [ If input is larger than A display message "You can only fortify maximum A armies" ]
 
 [ Player1 turn over.....Start for Player2 ]
-[ Loop ]
+[ Loop ]//Then the loop continues...
+
 
 
 

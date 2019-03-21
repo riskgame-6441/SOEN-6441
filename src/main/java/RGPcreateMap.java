@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -8,7 +9,7 @@ import java.util.Scanner;
  * @author charan
  * @version 1.0.0
  */
-public class RGPCreatin_map {
+public class RGPcreateMap {
 	/**
 	 * This method is to create a map file
 	 * 
@@ -30,10 +31,17 @@ public class RGPCreatin_map {
 	 *            gives the adjacent countries
 	 * @throws FileNotFoundException
 	 */
+<<<<<<< HEAD:src/main/java/RGPCreatin_map.java
 	public void file_creation(String[] continent_name1, int contint1, int cntry1, int[] continent_countries1,
 			String[] country_name1, String[] country_cordinates1, String[] country_continent1,
 			String[] adjacent_countries1) throws FileNotFoundException {
 		PrintWriter mapcreation = new PrintWriter("D:\\Risk game Git\\SOEN-6441\\src\\main\\java\\world.map");
+=======
+	public void file_creation(File file,String[] continent_name1, int contint1, int cntry1, int[] continent_countries1,
+			String[] country_name1, String[] country_cordinates1, String[] country_continent1,
+			String[] adjacent_countries1) throws FileNotFoundException {
+		PrintWriter mapcreation = new PrintWriter(file);
+>>>>>>> upstream/master:src/main/java/RGPcreateMap.java
 
 		mapcreation.println("[Map]");
 		mapcreation.println("author=");
@@ -44,7 +52,7 @@ public class RGPCreatin_map {
 		mapcreation.println(" ");
 		mapcreation.println("[Continents]");
 		for (int i = 0; i < contint1; i++) {
-			mapcreation.print(continent_name1[i] + " = ");
+			mapcreation.print(continent_name1[i] + "=");
 			mapcreation.print(continent_countries1[i]);
 			mapcreation.println("");
 		}
@@ -64,8 +72,17 @@ public class RGPCreatin_map {
 		mapcreation.close();
 
 	}
+<<<<<<< HEAD:src/main/java/RGPCreatin_map.java
 
 	public void createmap() throws Exception{
+=======
+   /**
+    * This method takes input from user and create map file
+    * @param file contains file path 
+    * @throws FileNotFoundException
+    */
+	public void createmap(File file) throws FileNotFoundException {
+>>>>>>> upstream/master:src/main/java/RGPcreateMap.java
 
 		// TODO Auto-generated method stub
 		Scanner input = new Scanner(System.in);
@@ -110,7 +127,7 @@ public class RGPCreatin_map {
 			// }
 		}
 
-		file_creation(continent_name, contint, cntry, continent_countries, country_name, country_cordinates,
+		file_creation(file,continent_name, contint, cntry, continent_countries, country_name, country_cordinates,
 				country_continent, adjacent_countries);
 
 	}

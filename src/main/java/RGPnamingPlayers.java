@@ -1,29 +1,55 @@
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+/**
+ * This class is for naming players
+ * @author pavan
+ * @version 1.0.0
+ */
 
-
-public class namingplayers  {
-    uem a1 = new uem();
+public class RGPnamingPlayers  {
+    RGPlisting a1 = new RGPlisting();
     int pinp = 0;
     String[] names = new String[5];
+    /**
+     * This method returns the total no of players
+     * @return no of players
+     */
     public int getPlayers() {
     	Scanner a = new Scanner(System.in);
     	System.out.println("enter no of players");
     	final int total_players = a.nextInt();
     	return total_players;
     }
-    
-    public int namep(){
+    /**
+     * This method check whether countries are connected or not
+     * @param file contains the file path
+     * @return total players
+     * @throws Exception
+     */
+    public int namep(File file) throws Exception{
     	
-        Scanner a = new Scanner(System.in);
+    	RGPmap o_map = new RGPmap();
+    	int a = o_map.validateConnectedContinents(file);
+    	int b = o_map.validateConnectedCountries(file);
+    	
+    	if(a==0) {
+    		System.out.println("Invalid map.(Countries are not connected.)");
+    		System.exit(0);
+    	}else if(b==0) {
+    		System.out.println("Invalid map.(Continents are not connected.)");
+    		System.exit(0);
+    	}
+    	
+        Scanner ab = new Scanner(System.in);
 
         pinp = getPlayers();
         String pname;
         int i;
         for (i = 0; i < pinp; i++) {
             System.out.print("Enter the name of the player " + (i+1) + ":");
-            pname = a.next();
+            pname = ab.next();
             names[i] = pname;
             if (i == 0){
                 System.out.println("Player name : " + pname);

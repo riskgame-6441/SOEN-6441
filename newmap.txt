@@ -1,0 +1,14 @@
+[Map]
+author=charan
+image=world.map
+wrap=no
+scroll=horizontal
+warn=yes
+ 
+[Continents]
+Asia = 1
+Africa = 1
+ 
+[Territories]
+india,20,30,Asia,southafrica 
+southafrica,30,40,Africa,india 
