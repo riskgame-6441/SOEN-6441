@@ -187,10 +187,15 @@ public class main {
     
 	public static void mapo() throws Exception{
         int i = 0;
+<<<<<<< HEAD
+        namingplayers o_namingplayers = new namingplayers();
+        RGPCreatin_map a1 = new RGPCreatin_map();
+=======
         RGPmapCentral mapob = new RGPmapCentral();
         RGPeditMap o_editOptions = new RGPeditMap();
         RGPnamingPlayers o_namingplayers = new RGPnamingPlayers();
         RGPcreateMap o_RGPCreatin_map = new RGPcreateMap();
+>>>>>>> upstream/master
         Scanner a = new Scanner(System.in);
         
         while (i == 0) {
@@ -203,8 +208,13 @@ public class main {
             file = mapob.mapOption(option);
             switch (option) {
                 case 1:
+<<<<<<< HEAD
+                    a1.createmap();
+                    o_namingplayers.namep();
+=======
                 	o_RGPCreatin_map.createmap(file);
                 	o_namingplayers.namep(file);
+>>>>>>> upstream/master
                     i = i + 1;
                     break;
                 case 2:
