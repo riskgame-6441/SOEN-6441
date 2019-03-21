@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * This class is performing reinforcement phase
+ * This class is performing reinforcement phase which calculates the number of reinforcement armies and also helps placing the armies in the players respective countries
  * @author koti
  * @version 1.0.0
  */
