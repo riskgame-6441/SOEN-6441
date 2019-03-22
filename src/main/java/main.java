@@ -99,6 +99,7 @@ public class main {
     		}
     		
     		System.out.println("Extra armies : "+extra_army);
+    	
     		
     		//calculate total reinforcement army
         	int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1, country_continent, contvalue);
@@ -209,7 +210,6 @@ public class main {
         	//break;
         }
         System.out.println("The End.");
-        
     }
     
 	public static void menu() throws Exception{

@@ -216,16 +216,21 @@ public class RGPcardDivision {
 				Scanner a = new Scanner(System.in);
 				System.out.println("Do you want to trade cards?(y/n) : ");
 				String a1 = a.next();
-				if(a1=="y") {
+				//System.out.println(a1);
+				if(a1.equals("y")) {
+					//System.out.println(a1);
    					a_1 = get_card(cards);
 					b_1 = get_card(cards);
 					c_1 = get_card(cards);
 					extra_army = check_cards_deal(a_1, b_1, c_1);
-					System.out.println(extra_army);
-					System.out.println("Card treding.");
+					//System.out.println(extra_army);
 				}	
 			}else {
-				System.out.println("Card treding.");
+				a_1 = get_card(cards);
+				b_1 = get_card(cards);
+				c_1 = get_card(cards);
+				extra_army = check_cards_deal(a_1, b_1, c_1);
+				//System.out.println(extra_army);
 			}
 			return extra_army;
 		}
@@ -239,7 +244,9 @@ public class RGPcardDivision {
     			while(flag==0) {
     				System.out.println("Enter card(country name) : ");
     				c1 = ab.next();
-    				if(!cards.containsValue(c1)) {
+    				System.out.println(c1);
+    				System.out.println(cards);
+    				if(!cards.containsKey(c1)) {
     					System.out.println("Please enter card that you own.");
     					break;
     				}else {
