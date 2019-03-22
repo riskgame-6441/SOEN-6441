@@ -6,11 +6,11 @@ scroll=horizontal
 warn=yes
  
 [Continents]
-asia=2
-africa=2
+charan=2
+koti=2
  
 [Territories]
-india,1,2,asia,china,sa 
-china,2,3,asia,india,zimba 
-sa,3,4,africa,zimba,china 
-zimba,3,4,africa,sa,india 
+india,2,3,charan,africa,zamba 
+china,3,4,charan,india,zamba 
+africa,4,5,koti,china,india 
+zamba,4,5,koti,africa,china 
