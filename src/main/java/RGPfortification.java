@@ -125,12 +125,26 @@ public class RGPfortification {
 		}
 		return return_value;
 	}
-	public static void fortification(File file, int i, List<List<String>> country_per_player, HashMap<String,Integer> army_per_country) throws Exception
+	/**
+	 * This method is for fortification phase
+	 * @param file is file name
+	 * @param i is index of current player
+	 * @param country_per_player no of countries per player
+	 * @param army_per_country no of armies per country
+	 * @param attack_army no of attacker armies
+	 * @param defend_army no of defender armies
+	 * @param attack_country is name of attacker country
+	 * @param defend_country is name of defender country
+	 * @throws Exception
+	 */
+	public void fortification(File file, int i, List<List<String>> country_per_player, HashMap<String,Integer> army_per_country,int attack_army,int defend_army,String attack_country,String defend_country) throws Exception
 	{
 		 RGPfortification o_fortification = new RGPfortification();
 		 RGPprintTable o_printtable = new RGPprintTable();
+		 
 		System.out.println("Fortification Phase");
 		System.out.println("=====================================");
+		
 		o_fortification.fortify(file,country_per_player.get(i),army_per_country);
 		o_printtable.getTable(file,i,country_per_player,army_per_country);
 	
