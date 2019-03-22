@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class main {
 	
 	static int total_players;
+	static String[] player_names;
 	static File file;
     
 	public static void main(String[] args) throws Exception{
@@ -14,6 +15,7 @@ public class main {
 		RGParmy o_army = new RGParmy();
         RGPlisting o_uem = new RGPlisting();
         RGPfortification o_fortification = new RGPfortification();
+        RGPcardDivision o_card = new RGPcardDivision();
 	
         System.out.println("--------WELCOME TO RISK--------\n");
 		menu();
@@ -43,19 +45,64 @@ public class main {
 		army_per_country = o_army.armyPerCountry(total_players,armies_per_player,country_per_player);
 		System.out.println("No. of armies per country");
 		System.out.println(army_per_country);
-	        
-        RGPprintTable o_printtable = new RGPprintTable();
+	    
+		HashMap<String,Integer> cards = new HashMap<String,Integer>();
+		HashMap<String,Integer> card_1 = new HashMap<String,Integer>();
+		HashMap<String,Integer> card_2 = new HashMap<String,Integer>();
+		HashMap<String,Integer> card_3 = new HashMap<String,Integer>();
+		HashMap<String,Integer> card_4 = new HashMap<String,Integer>();
+		HashMap<String,Integer> card_5 = new HashMap<String,Integer>();
+		HashMap<String,Integer> card_6 = new HashMap<String,Integer>();
+		cards = o_card.hm1(country_name);
+		//System.out.println(cards);
+
+		RGPprintTable o_printtable = new RGPprintTable();
 
         for(int i=0;i<total_players;i++) {
-        	//print table
-        	System.out.println("Player : "+(i+1));
+        	
+        	//Players world domination view
+        	System.out.println("Map(%) : ");
+        	System.out.println("Continents : ");
+        	System.out.println("Total armies : ");
+        	
+        	//phase view
+        	System.out.println("Reinforcement Phase");
+        	System.out.println("Player : "+player_names[i]);
+        	System.out.println("This phase will give players reinforcement army for each turn according to countries and continents owned along with by treding cards player can get some extra army. Player can put that armies into the countries owned accordingly.");
         	System.out.println("=========================================");
         	o_printtable.getTable(file,i,country_per_player,army_per_country);
         	
         	//reinforce armies
         	System.out.println("Reinforcement Phase");
     		System.out.println("=====================================");
+    		
+    		//card exchange view
+    		int extra_army=0;
+    		if(i==0) {
+    			System.out.println(card_1);
+    			extra_army = o_card.trade_card(card_1);
+    		}else if(i==1) {
+    			System.out.println(card_2);
+    			extra_army = o_card.trade_card(card_2);
+    		}else if(i==2) {
+    			System.out.println(card_3);
+    			extra_army = o_card.trade_card(card_3);
+    		}else if(i==3) {
+    			System.out.println(card_4);
+    			extra_army = o_card.trade_card(card_4);
+    		}else if(i==4) {
+    			System.out.println(card_5);
+    			extra_army = o_card.trade_card(card_5);
+    		}else if(i==5) {
+    			System.out.println(card_6);
+    			extra_army = o_card.trade_card(card_6);
+    		}
+    		
+    		System.out.println("Extra armies : "+extra_army);
+    		
+    		//calculate total reinforcement army
         	int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1, country_continent, contvalue);
+        	z+=extra_army;
         	System.out.println("Number of armies to Reinforcement : "+z);
         	
         	army_per_country = o_reinforcement.placeReinforceArmies(z, i, country_per_player, army_per_country);
@@ -68,6 +115,12 @@ public class main {
         	String ans = ab.next();
         	if(ans.equalsIgnoreCase("y")) {
         		//attack phase
+        		//Phase view
+        		System.out.println("Attack Phase");
+            	System.out.println("Player : "+player_names[i]);
+            	System.out.println("Describe.");
+            	System.out.println("=========================================");
+        		
         		int flag = 0, g = 0;
         		String attack_country = null;
         		String defend_country = null;
@@ -141,10 +194,21 @@ public class main {
         		//System.out.println("=====================================");
         		//o_fortification.fortify(file,country_per_player.get(i),army_per_country);
         		//o_printtable.getTable(file,i,country_per_player,army_per_country);
-        	o_fortification.fortification(file,i,country_per_player,army_per_country);
+        	Scanner abc = new Scanner(System.in);
+        	System.out.println("Do you want to fortify?(y/n) : ");
+        	String ans1 = abc.next();
+        	if(ans1=="y") {
+        		//Phase view
+        		System.out.println("Fortification Phase");
+            	System.out.println("Player : "+player_names[i]);
+            	System.out.println("Describe.");
+            	System.out.println("=========================================");
+            	
+        		o_fortification.fortification(file,i,country_per_player,army_per_country);
+        	}
         	//break;
         }
-        
+        System.out.println("The End.");
         
     }
     
@@ -225,6 +289,7 @@ public class main {
             }
         }
         total_players = o_namingplayers.pinp;
+        player_names = o_namingplayers.names;
     }
 	
 }

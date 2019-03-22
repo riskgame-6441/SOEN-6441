@@ -28,7 +28,7 @@ public class RGPnamingPlayers  {
      * @return total players
      * @throws Exception
      */
-    public int namep(File file) throws Exception{
+    public String[] namep(File file) throws Exception{
     	
     	RGPmap o_map = new RGPmap();
     	int a = o_map.validateConnectedContinents(file);
@@ -68,6 +68,6 @@ public class RGPnamingPlayers  {
                 System.out.println("Player name : " + pname);
             }
         }
-        return pinp;
+        return names;
     }
 }

@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.HashMap;
 
 	/**
 	 * This class is about Card Dealing in the Game. 
@@ -35,7 +34,7 @@ public class RGPcardDivision {
 			System.out.println("Elements in hashmap "+hm);
 			
 			HashMap<String,Integer> hm1= new HashMap<String,Integer>();
-			HashMap<Object, Integer> hm2= new HashMap<Object,Integer>();
+			HashMap<String, Integer> hm2= new HashMap<String,Integer>();
 			HashMap<String,Integer> hm3= new HashMap<String,Integer>();
 
 			hm1.put("hi",1);
@@ -89,24 +88,29 @@ public class RGPcardDivision {
 	 * @return This method returns the additional number of Reinforcement armies for a particular Player. 
 	 *
 	 */
-		public static void check_cards_deal(HashMap<String,Integer> a, HashMap<Object,Integer> b, HashMap<String,Integer> c)
+		public static int check_cards_deal(HashMap<String,Integer> a, HashMap<String,Integer> b, HashMap<String,Integer> c)
 		{
 			HashMap<String,Integer> a1 =new HashMap<String,Integer>();
-			HashMap<Object,Integer> b1 =new HashMap<Object,Integer>();
+			HashMap<String,Integer> b1 =new HashMap<String,Integer>();
 			HashMap<String,Integer> c1 =new HashMap<String,Integer>();
 			a1=a; 
 			b1=b;
 			c1=c;
+			int extra_army=0;
+			
 		 if(a1.containsValue(3) && b1.containsValue(3) && c1.containsValue(3))
 		 {
+			 extra_army+=8;
 			 System.out.println("Reinforcement +8");
 		 }
 		 else if(a1.containsValue(2) && b1.containsValue(2) && c1.containsValue(2))
 		 {
+			 extra_army+=6;
 			 System.out.println("Reinforcement +6");
 		 }
 		 else if(a1.containsValue(1) && b1.containsValue(1) && c1.containsValue(1))
 		 {
+			 extra_army+=4;
 			 System.out.println("Reinforcement +4");
 		 }
 		 else if(a1.containsValue(1) && b1.containsValue(2) && c1.containsValue(3)||
@@ -117,12 +121,14 @@ public class RGPcardDivision {
 				 a1.containsValue(3) && b1.containsValue(2) && c1.containsValue(1))
 				 
 		 {
+			 extra_army+=10;
 			 System.out.println("Reinforcement +10");
 		 }
 		 else
 		 {
 			 System.out.println("No Reinforcement");
 		 }
+		 return extra_army;
 		}
 
 	/**
@@ -159,17 +165,17 @@ public class RGPcardDivision {
 	 *
 	 * @return This method will return two updated HashMap.
 	 */
-		public static void hash_add_sub(HashMap<String,Integer> a, HashMap<Object,Integer> b)
+		public static void hash_add_sub(HashMap<String,Integer> a, HashMap<String,Integer> b)
 		{
 			HashMap<String,Integer> asd1 = new HashMap<String,Integer>();
-			HashMap<Object,Integer> asd2 = new HashMap<Object,Integer>();
+			HashMap<String,Integer> asd2 = new HashMap<String,Integer>();
 			asd1=a;
 			asd2=b;
 			asd1.put("A",1);
 			asd1.put("B",2);
 			asd1.put("C",3);
 			int n=asd1.get("C");
-			Object keys=getting_key(asd1,3);
+			String keys=getting_key(asd1,3);
 			asd2.put(keys,n);
 			System.out.println("hashmap 1 before deletion "+asd1);
 			System.out.println("hashmap 2 "+asd2);
@@ -188,9 +194,9 @@ public class RGPcardDivision {
 	 * @return This Method will Return the Key to the given value if true.
 	 *          if false will return null.
 	 */
-		public static Object getting_key(HashMap<String,Integer> a, Object value)
+		public static String getting_key(HashMap<String,Integer> a, int value)
 		{
-			for(Object o:a.keySet())
+			for(String o:a.keySet())
 			{
 				if(a.get(o).equals(value))
 				{
@@ -201,4 +207,48 @@ public class RGPcardDivision {
 		}
 		
 	
+		public static int trade_card(HashMap<String,Integer> cards) {
+			int extra_army=0;
+			HashMap<String,Integer> a_1 =new HashMap<String,Integer>();
+			HashMap<String,Integer> b_1 =new HashMap<String,Integer>();
+			HashMap<String,Integer> c_1 =new HashMap<String,Integer>();
+			if(cards.size()<5 && cards.size()>=3) {
+				Scanner a = new Scanner(System.in);
+				System.out.println("Do you want to trade cards?(y/n) : ");
+				String a1 = a.next();
+				if(a1=="y") {
+   					a_1 = get_card(cards);
+					b_1 = get_card(cards);
+					c_1 = get_card(cards);
+					extra_army = check_cards_deal(a_1, b_1, c_1);
+					System.out.println(extra_army);
+					System.out.println("Card treding.");
+				}	
+			}else {
+				System.out.println("Card treding.");
+			}
+			return extra_army;
+		}
+		
+		public static HashMap<String,Integer> get_card(HashMap<String,Integer> cards){
+			HashMap<String,Integer> card = new HashMap<String,Integer>();
+			String c1 = "";
+			Scanner ab = new Scanner(System.in);
+			int flag=0;
+			while(flag==0) {
+    			while(flag==0) {
+    				System.out.println("Enter card(country name) : ");
+    				c1 = ab.next();
+    				if(!cards.containsValue(c1)) {
+    					System.out.println("Please enter card that you own.");
+    					break;
+    				}else {
+    					flag=1;
+    				}
+    			}
+    		}
+			int key = cards.get(c1);
+			card.put(c1,key);
+			return card;
+		}
 }
