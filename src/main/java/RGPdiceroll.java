@@ -48,8 +48,8 @@ public class RGPdiceroll {
 	/**
 	 * This method find outs the maximum value of dice values
 	 * 
-	 * @param
-	 *            dicevalues consists of different dice values
+	 * @param dicevalues
+	 *            consists of different dice values
 	 * @return Returns the maximum value
 	 */
 	public static int maxOfArray(int[] dicevalues) {
@@ -130,128 +130,210 @@ public class RGPdiceroll {
 		r = randomNumberGenerator.nextInt(numberOfSides) + 1;
 		return r;
 	}
-    /**
-     * 
-     * @param attack_armies
-     * @param defend_armies
-     * @return
-     * @throws Exception 
-     */
-	public HashMap<Integer,Integer> rollDice(int attack_armies, int defend_armies,File file, int p, List<List<String>> country_per_player, HashMap<String,Integer> army_per_country) throws Exception {
-		HashMap<Integer,Integer> armies = new HashMap<Integer,Integer>();
+
+	/**
+	 * This method decided the winner of roll dice
+	 * 
+	 * @param attack_armies
+	 *            no of attacker armies
+	 * @param defend_armies
+	 *            no of defender armies
+	 * @param file
+	 *            is file name
+	 * @param p
+	 *            is player index
+	 * @param country_per_player
+	 *            no of countries per player
+	 * @param army_per_country
+	 *            no of armies per country
+	 * @param attack_country
+	 *            is name of attacker country
+	 * @param defend_country
+	 *            is name of defender country
+	 * @return returns hashmap with armies and winner
+	 * @throws Exception
+	 */
+	public HashMap<String, Integer> rollDice(int attack_armies, int defend_armies, File file, int p,
+			List<List<String>> country_per_player, HashMap<String, Integer> army_per_country, String attack_country,
+			String defend_country) throws Exception {
+		HashMap<Integer, Integer> armies = new HashMap<Integer, Integer>();
 		RGPfortification o_fortification = new RGPfortification();
 		int attacker_armies = attack_armies;
 		int defender_armies = defend_armies;
 		int noOfAttackerDice = 0;
+		Scanner scan = new Scanner(System.in);
 		int z = 1;
-		if ((attacker_armies > 1) && (defender_armies < attacker_armies)) {
-			while (attacker_armies != 0 && defender_armies != 0) {
-				if (attacker_armies < 2) {
-					System.out.println("Please enter yes to move to fortifiaction phase");
-					break;
+		String ans = null;
+		if (attacker_armies >= 2) {
+			System.out.println("Do you want go with 'all out mode'?(yes/no)");
+			 ans = scan.next();
+			if(ans.equalsIgnoreCase("yes")){
+				while((attacker_armies != 0) && (defender_armies != 0)){
+				int[] minattckerarmy = new int[2];
+				minattckerarmy[0] = attacker_armies;
+				minattckerarmy[1] = 3;
+				int noofattackerdice = minOfArray(minattckerarmy);
+				int noofdefenderdice = 2;
+				//System.out.println("Enter no of dice you want to play with "+ "(maximum of" + (noofattackerdice-1)+")" );
+				// noOfAttackerDice = string.nextInt();
+				int a[] = rollOfDice(noofattackerdice);
+
+				if (defender_armies < 2) {
+					noofdefenderdice1 = noofdefenderdice - 1;
+
+				} else {
+					noofdefenderdice1 = noofdefenderdice;
 				}
-				if (attacker_armies >= 2) {
-					System.out.println("Do you want to attack on the country(yes/no)");
-					string = new Scanner(System.in);
-					String str = string.nextLine();
-					if (str.equalsIgnoreCase("yes")) {
-						int[] minattckerarmy = new int[2];
-						minattckerarmy[0] = attacker_armies;
-						minattckerarmy[1] = 3;
-						int noofattackerdice = minOfArray(minattckerarmy);
-						int noofdefenderdice = 2;
-						System.out.println("Enter no of dice you want to play with "+ "(maximum of" + noofattackerdice+")" );
-						 noOfAttackerDice = string.nextInt();
-						int a[] = rollOfDice(noOfAttackerDice);
 
-						if (defender_armies < 2) {
-							noofdefenderdice1 = noofdefenderdice - 1;
+				int b[] = rollOfDice(noofdefenderdice1);
 
-						} else {
-							noofdefenderdice1 = noofdefenderdice;
-						}
-
-						int b[] = rollOfDice(noofdefenderdice1);
-
-						int minvalue = minOfArray(a);
-						System.out.println("Attacker Dice values");
-						for (int i = 0; i < a.length; i++) {
-							System.out.println(a[i]);
-						}
-						System.out.println("Min value in three dice");
-						System.out.println(minvalue);
-
-						int indexv = minIndexValue(a);
-						System.out.println("index is" + indexv);
-						if (attacker_armies > 2) {
-							a = deleteMinNum(a, indexv);
-						}
-						System.out.println("Attacker Dice values after deleting min value");
-						for (int i = 0; i < a.length; i++) {
-							System.out.println(a[i]);
-						}
-						System.out.println("Defender Dice values");
-						for (int i = 0; i < b.length; i++) {
-							System.out.println(b[i]);
-						}
-
-						int max_dicevalue_attacker = maxOfArray(a);
-						int max_dicevalue_defender = maxOfArray(b);
-						int min_dicevalue_attacker = minOfArray(a);
-						int min_dicevalue_defender = maxOfArray(b);
-						if (max_dicevalue_attacker > max_dicevalue_defender
-								&& min_dicevalue_attacker > min_dicevalue_defender) {
-						
-							RGPattackerCount++;
-						} else if (max_dicevalue_attacker >= max_dicevalue_defender
-								&& min_dicevalue_attacker > min_dicevalue_defender) {
-							RGPattackerCount++;
-						} else if (max_dicevalue_attacker > max_dicevalue_defender
-								&& min_dicevalue_attacker >= min_dicevalue_defender) {
-							RGPattackerCount++;
-						} else if (max_dicevalue_attacker < max_dicevalue_defender
-								&& min_dicevalue_attacker < min_dicevalue_defender) {
-							RGPdefenderCount++;
-						} else if (max_dicevalue_attacker <= max_dicevalue_defender
-								&& min_dicevalue_attacker < min_dicevalue_defender) {
-							RGPdefenderCount++;
-						} else if (max_dicevalue_attacker < max_dicevalue_defender
-								&& min_dicevalue_attacker <= min_dicevalue_defender) {
-							RGPdefenderCount++;
-						} else {
-							RGPdefenderCount++;
-						}
-						if (RGPattackerCount > 0) {
-							defender_armies = defender_armies - 1;
-							System.out.println(" Defender Armies count value" + defender_armies);
-							RGPattackerCount = 0;
-						}
-						if (RGPdefenderCount > 0) {
-							attacker_armies = attacker_armies - 1;
-							System.out.println("Attacker Armies count value" + attacker_armies);
-							RGPdefenderCount = 0;
-						}
-					}
-					if (str.equalsIgnoreCase("no")) {
-						//System.out.println("Please enter yes to move to fortification phase");
-						o_fortification.fortification(file,p,country_per_player,army_per_country);
-					}
+				int minvalue = minOfArray(a);
+				System.out.println("Attacker Dice values");
+				for (int i = 0; i < a.length; i++) {
+					System.out.println(a[i]);
 				}
-			}
-			if (attacker_armies < 1) {
-				System.out.println("defender_armies:"+defender_armies);
-				z = 0;
-				armies.put(z,defender_armies);
-			}
-			if (defender_armies < 1) {
-				System.out.println("Attacker Armies:"+attacker_armies);
-				z = 1;
-				armies.put(z,attacker_armies);			}
+				System.out.println("Min value in three dice");
+				System.out.println(minvalue);
 
-		} else {
-			System.out.println("Attacking country armies should be higher than defender countries");
+				int indexv = minIndexValue(a);
+				System.out.println("index is" + indexv);
+				if (attacker_armies > 2) {
+					a = deleteMinNum(a, indexv);
+				}
+				System.out.println("Attacker Dice values after deleting min value");
+				for (int i = 0; i < a.length; i++) {
+					System.out.println(a[i]);
+				}
+				System.out.println("Defender Dice values");
+				for (int i = 0; i < b.length; i++) {
+					System.out.println(b[i]);
+				}
+
+				int max_dicevalue_attacker = maxOfArray(a);
+				int max_dicevalue_defender = maxOfArray(b);
+				int min_dicevalue_attacker = minOfArray(a);
+				int min_dicevalue_defender = maxOfArray(b);
+				if (max_dicevalue_attacker > max_dicevalue_defender
+						&& min_dicevalue_attacker > min_dicevalue_defender) {
+				
+					RGPattackerCount++;
+				} else if (max_dicevalue_attacker >= max_dicevalue_defender
+						&& min_dicevalue_attacker > min_dicevalue_defender) {
+					RGPattackerCount++;
+				} else if (max_dicevalue_attacker > max_dicevalue_defender
+						&& min_dicevalue_attacker >= min_dicevalue_defender) {
+					RGPattackerCount++;
+				} else if (max_dicevalue_attacker < max_dicevalue_defender
+						&& min_dicevalue_attacker < min_dicevalue_defender) {
+					RGPdefenderCount++;
+				} else if (max_dicevalue_attacker <= max_dicevalue_defender
+						&& min_dicevalue_attacker < min_dicevalue_defender) {
+					RGPdefenderCount++;
+				} else if (max_dicevalue_attacker < max_dicevalue_defender
+						&& min_dicevalue_attacker <= min_dicevalue_defender) {
+					RGPdefenderCount++;
+				} else {
+					RGPdefenderCount++;
+				}
+				if (RGPattackerCount > 0) {
+					defender_armies = defender_armies - 1;
+					System.out.println(" Defender Armies count value" + defender_armies);
+					System.out.println("Attacker Armies count value" + attacker_armies);
+					RGPattackerCount = 0;
+				}
+				if (RGPdefenderCount > 0) {
+					attacker_armies = attacker_armies - 1;
+					System.out.println("Attacker Armies count value" + attacker_armies);
+					System.out.println(" Defender Armies count value" + defender_armies);
+					RGPdefenderCount = 0;
+				}
+				}
+				if (attacker_armies < 1) {
+					army_per_country.put(attack_country, attacker_armies);
+					army_per_country.put(defend_country, defender_armies);
+				}
+				if (defender_armies < 1) {
+					army_per_country.put(attack_country, attacker_armies);
+					army_per_country.put(defend_country, defender_armies);
+				}
+							
+
+			}
+			
+		else if(ans.equalsIgnoreCase("no")){
+			string = new Scanner(System.in);
+			int[] minattckerarmy = new int[2];
+			minattckerarmy[0] = attacker_armies;
+			minattckerarmy[1] = 3;
+			int noofattackerdice = minOfArray(minattckerarmy);
+			int noofdefenderdice = 2;
+			System.out.println("Enter no of dice you want to play with " + "(maximum of" + (noofattackerdice) + ")");
+			noOfAttackerDice = string.nextInt();
+			int a[] = rollOfDice(noOfAttackerDice);
+
+			if (defender_armies < 2) {
+				noofdefenderdice1 = noofdefenderdice - 1;
+
+			} else {
+				noofdefenderdice1 = noofdefenderdice;
+			}
+
+			int b[] = rollOfDice(noofdefenderdice1);
+
+			int minvalue = minOfArray(a);
+			System.out.println("Attacker Dice values");
+			for (int i = 0; i < a.length; i++) {
+				System.out.print(a[i]);
+				System.out.println(" ");
+			}
+
+			System.out.println("Defender Dice values");
+			for (int i = 0; i < b.length; i++) {
+				System.out.print(b[i]);
+				System.out.println(" ");
+			}
+
+			int max_dicevalue_attacker = maxOfArray(a);
+			int max_dicevalue_defender = maxOfArray(b);
+			int min_dicevalue_attacker = minOfArray(a);
+			int min_dicevalue_defender = maxOfArray(b);
+			if ((max_dicevalue_attacker >= max_dicevalue_defender) && (defender_armies > 0)) {
+
+				defender_armies = defender_armies - 1;
+				System.out.println("Attacker Dice Won");
+				System.out.println("Attacker: " + attack_country + "(" + attacker_armies + ")");
+				System.out.println(" Defender: " + defend_country + "(" + defender_armies + ")");
+
+			}
+			if (max_dicevalue_attacker <= max_dicevalue_defender && (defender_armies > 0)) {
+				attacker_armies = attacker_armies - 1;
+				System.out.println("Defender Dice Won");
+				System.out.println("Attacker: " + attack_country + "(" + attacker_armies + ")");
+				System.out.println(" Defender: " + defend_country + "(" + defender_armies + ")");
+
+			}
+			if (min_dicevalue_attacker <= min_dicevalue_defender && (defender_armies > 0)) {
+				attacker_armies = attacker_armies - 1;
+				System.out.println("Defender Dice Won");
+				System.out.println("Attacker: " + attack_country + "(" + attacker_armies + ")");
+				System.out.println(" Defender: " + defend_country + "(" + defender_armies + ")");
+
+			}
+			if ((min_dicevalue_attacker >= min_dicevalue_defender) && (defender_armies > 0)) {
+
+				defender_armies = defender_armies - 1;
+				System.out.println("Attacker Dice Won");
+				System.out.println("Attacker: " + attack_country + "(" + attacker_armies + ")");
+				System.out.println(" Defender: " + defend_country + "(" + defender_armies + ")");
+
+			}
+
 		}
-		return armies;
+		}
+		army_per_country.put(attack_country, attacker_armies);
+		army_per_country.put(defend_country, defender_armies);
+
+		return army_per_country;
 	}
-	
+
 }
