@@ -44,6 +44,8 @@ public class main {
 		System.out.println("No. of armies per country");
 		System.out.println(army_per_country);
 
+	        
+
 		RGPprintTable o_printtable = new RGPprintTable();
 
 		for (int i = 0; i < total_players; i++) {
@@ -295,5 +297,6 @@ public class main {
 		}
 		total_players = o_namingplayers.pinp;
 	}
+
 
 }
