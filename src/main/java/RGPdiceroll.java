@@ -118,6 +118,38 @@ public class RGPdiceroll {
 
 	}
 
+	public int validattcacker(String attack_country, List<List<String>> country_per_player,int i){
+		int value;
+		if (!country_per_player.get(i).contains(attack_country)) {
+			//System.out.println("Please enter country that you own.");
+			//break;
+			 value = 0;
+		} else {
+		 value = 1;
+			
+		}
+		return value;
+	}
+	public int validdefender(File file,List<List<String>> country_per_player, String attack_country, String defend_country,ArrayList<String>country_list,int i,int f) throws Exception{
+		RGPfortification o_fortification = new RGPfortification();
+		int value;
+		List<String> list = new ArrayList<String>();
+		int g = o_fortification.checkConnection(file, attack_country, defend_country, country_list, list);
+		if (country_per_player.get(i).contains(defend_country)) {
+			f = 1;
+		} else {
+			f = 0;
+		}
+		if (g != 1 || f == 1) {
+			System.out.println("Enter correct neighbouring country or other player country to attack");
+			value = 0;
+		}
+		else{
+			value = 1;
+		}
+		return value;
+	}
+
 	/**
 	 * This method generates random dice value
 	 * 
@@ -335,5 +367,6 @@ public class RGPdiceroll {
 
 		return army_per_country;
 	}
+	
 
 }
