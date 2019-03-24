@@ -111,7 +111,7 @@ public class main {
 						}
 							if ( h == m){
 								p = 0;
-								System.out.println("You can't attack with country as adjacent countries own by you.");
+								System.out.println("You can't attack adjacent country which is owned by you.");
 							}
 							else{
 								p = 1;
@@ -174,8 +174,8 @@ public class main {
 
 								else if (defender_armies < 1) {
 									System.out.println("Attacker Armies:" + attacker_armies);
-									System.out.println("Attacker has won" + defend_country + "country");
-									System.out.println("Enter no of armies to place in " + defend_country + "up to ("
+									System.out.println("Attacker has won" + " " +defend_country +" country");
+									System.out.println("Enter no of armies to place in " + defend_country + " up to ("
 											+ (attacker_armies - 1) + "armies)");
 									armies1 = ab.nextInt();
 									j = 0;
@@ -197,7 +197,7 @@ public class main {
 
 						}
 					}else{
-						System.out.println("You can'y attack with 1 country");
+						System.out.println("You can't attack with 1 Army");
 					}
 					System.out.println(country_per_player.get(i));
 						o_printtable.getTable(file, i, country_per_player, army_per_country);			

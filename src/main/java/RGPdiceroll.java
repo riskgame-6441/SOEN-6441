@@ -237,14 +237,14 @@ public class RGPdiceroll {
 				}
 				if (RGPattackerCount > 0) {
 					defender_armies = defender_armies - 1;
-					System.out.println(" Defender Armies count value" + defender_armies);
+					System.out.println("Defender Armies count value" + defender_armies);
 					System.out.println("Attacker Armies count value" + attacker_armies);
 					RGPattackerCount = 0;
 				}
 				if (RGPdefenderCount > 0) {
 					attacker_armies = attacker_armies - 1;
 					System.out.println("Attacker Armies count value" + attacker_armies);
-					System.out.println(" Defender Armies count value" + defender_armies);
+					System.out.println("Defender Armies count value" + defender_armies);
 					RGPdefenderCount = 0;
 				}
 				}
@@ -302,21 +302,21 @@ public class RGPdiceroll {
 				defender_armies = defender_armies - 1;
 				System.out.println("Attacker Dice Won");
 				System.out.println("Attacker: " + attack_country + "(" + attacker_armies + ")");
-				System.out.println(" Defender: " + defend_country + "(" + defender_armies + ")");
+				System.out.println("Defender: " + defend_country + "(" + defender_armies + ")");
 
 			}
 			if (max_dicevalue_attacker <= max_dicevalue_defender && (defender_armies > 0)) {
 				attacker_armies = attacker_armies - 1;
 				System.out.println("Defender Dice Won");
 				System.out.println("Attacker: " + attack_country + "(" + attacker_armies + ")");
-				System.out.println(" Defender: " + defend_country + "(" + defender_armies + ")");
+				System.out.println("Defender: " + defend_country + "(" + defender_armies + ")");
 
 			}
 			if (min_dicevalue_attacker <= min_dicevalue_defender && (defender_armies > 0)) {
 				attacker_armies = attacker_armies - 1;
 				System.out.println("Defender Dice Won");
 				System.out.println("Attacker: " + attack_country + "(" + attacker_armies + ")");
-				System.out.println(" Defender: " + defend_country + "(" + defender_armies + ")");
+				System.out.println("Defender: " + defend_country + "(" + defender_armies + ")");
 
 			}
 			if ((min_dicevalue_attacker >= min_dicevalue_defender) && (defender_armies > 0)) {
@@ -324,7 +324,7 @@ public class RGPdiceroll {
 				defender_armies = defender_armies - 1;
 				System.out.println("Attacker Dice Won");
 				System.out.println("Attacker: " + attack_country + "(" + attacker_armies + ")");
-				System.out.println(" Defender: " + defend_country + "(" + defender_armies + ")");
+				System.out.println("Defender: " + defend_country + "(" + defender_armies + ")");
 
 			}
 
