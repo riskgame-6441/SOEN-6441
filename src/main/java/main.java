@@ -93,13 +93,21 @@ public class main {
 						while ( p == 0){
 						System.out.println("Enter country name from which you want to attack");
 						attack_country = ab.next();
-						if (!country_per_player.get(i).contains(attack_country)) {
+					int value =	o_dice.validattcacker(attack_country,country_per_player,i);
+						/**if (!country_per_player.get(i).contains(attack_country)) {
 							System.out.println("Please enter country that you own.");
 							break;
 						} else {
 							flag = 1;
 							
-						}
+						}*/
+					if (value == 0) {
+					System.out.println("Please enter country that you own.");
+					break;
+				} else {
+					flag = 1;
+					
+				}
 						int j;
 						ArrayList<String> neighbour_countries = o_printtable.getNeighbour(file, attack_country);
 						int m = neighbour_countries.size();
@@ -124,7 +132,8 @@ public class main {
 					while (g == 0 || f == 1) {
 						System.out.println("Enter country name on which you want to attack");
 						defend_country = ab.next();
-						List<String> list = new ArrayList<String>();
+						int value = o_dice.validdefender(file,country_per_player,attack_country, defend_country,country_list,i,f);
+						/**List<String> list = new ArrayList<String>();
 						g = o_fortification.checkConnection(file, attack_country, defend_country, country_list, list);
 						if (country_per_player.get(i).contains(defend_country)) {
 							f = 1;
@@ -133,7 +142,7 @@ public class main {
 						}
 						if (g != 1 || f == 1) {
 							System.out.println("Enter correct neighbouring country or other player country to attack");
-						}
+						}*/
 					}
 					attacker_armies = army_per_country.get(attack_country);
 					defender_armies = army_per_country.get(defend_country);
