@@ -117,7 +117,13 @@ public class RGPdiceroll {
 		return (att);
 
 	}
-
+   /**
+    * This method check the give country is valid to attack or not
+    * @param attack_country is attacking country
+    * @param country_per_player is country list per player
+    * @param i is player index
+    * @return returns where it is valid or not through int
+    */
 	public int validattcacker(String attack_country, List<List<String>> country_per_player,int i){
 		int value;
 		if (!country_per_player.get(i).contains(attack_country)) {
@@ -130,6 +136,18 @@ public class RGPdiceroll {
 		}
 		return value;
 	}
+	/**
+	 * This method check the  valid defender
+	 * @param file
+	 * @param country_per_player is country list per player
+	 * @param attack_country is attacking country
+	 * @param defend_country is defending country
+	 * @param country_list is total country list
+	 * @param i is player index
+	 * @param f is count
+	 * @return returns where it is valid or not through int
+	 * @throws Exception
+	 */
 	public int validdefender(File file,List<List<String>> country_per_player, String attack_country, String defend_country,ArrayList<String>country_list,int i,int f) throws Exception{
 		RGPfortification o_fortification = new RGPfortification();
 		int value;
@@ -149,7 +167,59 @@ public class RGPdiceroll {
 		}
 		return value;
 	}
-
+	public HashMap<String, Integer> placeDefendArmies(int defender_armies, String attack_country,String defend_country,HashMap<String, Integer> army_per_country){
+		int armies1,army1;
+		Scanner ans = new Scanner(System.in);
+		System.out.println("defender_armies:" + defender_armies);
+		System.out.println("Defender has won" + attack_country + "country");
+		System.out.println("Enter no of armies to place in " + attack_country + "up to ("
+				+ (defender_armies - 1) + "armies)");
+		armies1 = ans.nextInt();
+		//j = 0;
+		armies1 += army_per_country.get(attack_country);
+		army_per_country.put(attack_country, armies1);
+		army1 = defender_armies - (armies1 - 1);
+		army_per_country.put(defend_country, army1);
+		return army_per_country;
+	}
+	public List<List<String>> placeDefendCountry(int total_players,String attack_country,String defend_country,List<List<String>> country_per_player,int i){
+		int j = 0;
+		for (int l = 0; l < total_players; l++) {
+			if (country_per_player.get(l).contains(defend_country)) {
+				j = l;
+				country_per_player.get(j).add(attack_country);
+			}
+		}
+		country_per_player.get(i).remove(attack_country);
+		return country_per_player;
+	}
+	public HashMap<String, Integer> placeAttackArmies(int attacker_armies, String attack_country,String defend_country,HashMap<String, Integer> army_per_country){
+		int armies1,army1;
+		Scanner ans = new Scanner(System.in);
+		System.out.println("Attacker Armies:" + attacker_armies);
+		System.out.println("Attacker has won" + " " +defend_country +" country");
+		System.out.println("Enter no of armies to place in " + defend_country + " up to ("
+				+ (attacker_armies - 1) + "armies)");
+		armies1 = ans.nextInt();
+		//j = 0;
+		armies1 += army_per_country.get(defend_country);
+		army_per_country.put(defend_country, armies1);
+		army1 = attacker_armies - armies1;
+		army_per_country.put(attack_country, army1);
+		return army_per_country;
+	}
+	public List<List<String>> placeAttackCountry(int total_players,String attack_country,String defend_country,List<List<String>> country_per_player,int i){
+		int j = 0;
+		for (int l = 0; l < total_players; l++) {
+			if (country_per_player.get(l).contains(defend_country)) {
+				j = l;
+				country_per_player.get(j).remove(defend_country);
+			}
+		}
+		country_per_player.get(i).add(defend_country);
+		return country_per_player;
+	}
+    
 	/**
 	 * This method generates random dice value
 	 * 
