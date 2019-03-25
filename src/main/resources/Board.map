@@ -39,15 +39,15 @@ Egypt,480,249,Africa,SouthernEurope,NorthAfrica,MiddleEast,EastAfrica
 Iceland,380,126,Europe,Greenland,GreatBritain,Scandinavia
 GreatBritain,419,169,Europe,Iceland,Scandinavia,WesternEurope,NorthernEurope
 WesternEurope,423,202,Europe,GreatBritain,NorthernEurope,SouthernEurope,NorthAfrica
-Scandinavia,463,127,Europe,Iceland,Great Britain,NorthernEurope,Ukraine
+Scandinavia,463,127,Europe,Iceland,GreatBritain,NorthernEurope,Ukraine
 NorthernEurope,460,173,Europe,GreatBritain,Scandinavia,Ukraine,SouthernEurope,WesternEurope
 SouthernEurope,473,197,Europe,NorthernEurope,Ukraine,MiddleEast,Egypt,NorthAfrica,WesternEurope
 Ukraine,524,157,Europe,Ural,Afghanistan,MiddleEast,SouthernEurope,NorthernEurope,Scandinavia
 
-Middle East,530,234,Asia,Ukraine,Afghanistan,India,SouthernEurope,Egypt,EastAfrica
+MiddleEast,530,234,Asia,Ukraine,Afghanistan,India,SouthernEurope,Egypt,EastAfrica
 Ural,613,136,Asia,Siberia,China,Afghanistan,Ukraine
 Afghanistan,585,192,Asia,Ural,China,India,MiddleEast,Ukraine
-India,612,249,Asia,China,Siam,Afghanistan,Middle East
+India,612,249,Asia,China,Siam,Afghanistan,MiddleEast
 Siberia,666,110,Asia,Yatusk,Irkutsk,Mongolia,China,Ural
 China,662,217,Asia,Ural,Siberia,Mongolia,Siam,India,Afghanistan
 Siam,671,270,Asia,China,India,Indonesia

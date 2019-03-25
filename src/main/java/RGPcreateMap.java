@@ -31,14 +31,17 @@ public class RGPcreateMap {
 	 *            gives the adjacent countries
 	 * @throws FileNotFoundException
 	 */
+
+
 	public void file_creation(File file,String[] continent_name1, int contint1, int cntry1, int[] continent_countries1,
 			String[] country_name1, String[] country_cordinates1, String[] country_continent1,
 			String[] adjacent_countries1) throws FileNotFoundException {
 		PrintWriter mapcreation = new PrintWriter(file);
 
+
 		mapcreation.println("[Map]");
-		mapcreation.println("author=charan");
-		mapcreation.println("image=world.map");
+		mapcreation.println("author=");
+		mapcreation.println("image=Board.map");
 		mapcreation.println("wrap=no");
 		mapcreation.println("scroll=horizontal");
 		mapcreation.println("warn=yes");
@@ -65,6 +68,7 @@ public class RGPcreateMap {
 		mapcreation.close();
 
 	}
+
    /**
     * This method takes input from user and create map file
     * @param file contains file path 

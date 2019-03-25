@@ -63,7 +63,7 @@ public class RGPlisting extends RGPcalcLine{
         File file = file1;
         Scanner sc = new Scanner(file);
         int j = 0;
-        int n = line2();
+        int n = line2(file);
         while (sc.hasNextLine()) {
             if (j == 1) {
                 break;
@@ -126,7 +126,7 @@ public class RGPlisting extends RGPcalcLine{
         int i;
         Scanner sc = new Scanner(file1);
         int j = 0;
-        int n = line1();
+        int n = line1(file1);
         while (sc.hasNextLine()) {
             if (j == 1) {
                 break;
@@ -337,7 +337,10 @@ public class RGPlisting extends RGPcalcLine{
                     }
                 	String text = sc.next();
                     String[] input = text.split(",");
-                    country_continent.put(input[0], input[3]);
+                    //System.out.println(input[0]);
+                    //System.out.println(input[3]);
+                   // System.exit(0);
+                    country_continent.put(input[0],input[3]);
             	}
             }
             
