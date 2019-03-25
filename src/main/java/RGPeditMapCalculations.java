@@ -9,7 +9,8 @@ import java.util.Scanner;
 public class RGPeditMapCalculations {
 	
 	main o_main = new main();
-	File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
+	File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+	//File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
 	/**
 	 * This method is to add continent to map file
 	 * @throws Exception

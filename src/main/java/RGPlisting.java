@@ -337,7 +337,10 @@ public class RGPlisting extends RGPcalcLine{
                     }
                 	String text = sc.next();
                     String[] input = text.split(",");
-                    country_continent.put(input[0], input[3]);
+                    //System.out.println(input[0]);
+                    //System.out.println(input[3]);
+                   // System.exit(0);
+                    country_continent.put(input[0],input[3]);
             	}
             }
             
