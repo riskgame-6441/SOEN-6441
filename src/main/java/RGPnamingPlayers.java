@@ -28,12 +28,14 @@ public class RGPnamingPlayers  {
      * @return total players
      * @throws Exception
      */
-    public int namep(File file) throws Exception{
+    public String[] namep(File file) throws Exception{
     	
     	RGPmap o_map = new RGPmap();
     	int a = o_map.validateConnectedContinents(file);
     	int b = o_map.validateConnectedCountries(file);
-    	
+    	//System.out.println(a);
+    	//System.out.println(b);
+    	//System.exit(0);
     	if(a==0) {
     		System.out.println("Invalid map.(Countries are not connected.)");
     		System.exit(0);
@@ -68,6 +70,6 @@ public class RGPnamingPlayers  {
                 System.out.println("Player name : " + pname);
             }
         }
-        return pinp;
+        return names;
     }
 }

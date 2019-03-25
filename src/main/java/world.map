@@ -6,6 +6,7 @@ scroll=horizontal
 warn=yes
 
 [Continents]
+NorthAmerica=5
 SouthAmerica=2
 Africa=3
 Europe=5
@@ -60,4 +61,3 @@ Indonesia,698,314,Australia,Siam,NewGuinea,WesternAustralia
 NewGuinea,768,325,Australia,Indonesia,WesternAustralia,EasternAustralia
 WesternAustralia,729,373,Australia,Indonesia,NewGuinea,EasternAustralia
 EasternAustralia,779,381,Australia,WesternAustralia,NewGuinea
-
