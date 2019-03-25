@@ -129,10 +129,11 @@ public class main {
 						}
 					}
 					int f = 1;
-					while (g == 0 || f == 1) {
+					int value = 0;
+					while (value == 0) {
 						System.out.println("Enter country name on which you want to attack");
 						defend_country = ab.next();
-						int value = o_dice.validdefender(file,country_per_player,attack_country, defend_country,country_list,i,f);
+						 value = o_dice.validdefender(file,country_per_player,attack_country, defend_country,country_list,i,f);
 						/**List<String> list = new ArrayList<String>();
 						g = o_fortification.checkConnection(file, attack_country, defend_country, country_list, list);
 						if (country_per_player.get(i).contains(defend_country)) {
@@ -161,7 +162,7 @@ public class main {
 
 							if ((attacker_armies < 1) || (defender_armies < 1)) {
 								if (attacker_armies < 1) {
-									System.out.println("defender_armies:" + defender_armies);
+									/*System.out.println("defender_armies:" + defender_armies);
 									System.out.println("Defender has won" + attack_country + "country");
 									System.out.println("Enter no of armies to place in " + attack_country + "up to ("
 											+ (defender_armies - 1) + "armies)");
@@ -171,18 +172,21 @@ public class main {
 									army_per_country.put(attack_country, armies1);
 									army1 = defender_armies - (armies1 - 1);
 									army_per_country.put(defend_country, army1);
-									
-									for (int l = 0; l < total_players; l++) {
+									*/
+									army_per_country =o_dice.placeDefendArmies(defender_armies, attack_country, defend_country,army_per_country);
+									country_per_player= o_dice.placeDefendCountry(total_players,attack_country,defend_country,country_per_player, i);
+									/*for (int l = 0; l < total_players; l++) {
 										if (country_per_player.get(l).contains(defend_country)) {
 											j = l;
 											country_per_player.get(j).add(attack_country);
 										}
 									}
 									country_per_player.get(i).remove(attack_country);
+									*/
 								}
 
 								else if (defender_armies < 1) {
-									System.out.println("Attacker Armies:" + attacker_armies);
+									/*System.out.println("Attacker Armies:" + attacker_armies);
 									System.out.println("Attacker has won" + " " +defend_country +" country");
 									System.out.println("Enter no of armies to place in " + defend_country + " up to ("
 											+ (attacker_armies - 1) + "armies)");
@@ -192,15 +196,18 @@ public class main {
 									army_per_country.put(defend_country, armies1);
 									army1 = attacker_armies - armies1;
 									army_per_country.put(attack_country, army1);
-									
+									*/
 									//System.out.println(country_per_player.get(i));
-									for (int l = 0; l < total_players; l++) {
+									army_per_country =o_dice.placeAttackArmies(attacker_armies, attack_country, defend_country,army_per_country);
+									country_per_player= o_dice.placeAttackCountry(total_players,attack_country,defend_country,country_per_player, i);
+									/*for (int l = 0; l < total_players; l++) {
 										if (country_per_player.get(l).contains(defend_country)) {
 											j = l;
 											country_per_player.get(j).remove(defend_country);
 										}
 									}
 									country_per_player.get(i).add(defend_country);
+									*/
 								}
 							}
 
