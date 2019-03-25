@@ -11,6 +11,15 @@ public class main {
 	static File file;
 
 	public static void main(String[] args) throws Exception {
+		
+		RGPobserverSubject subject = new RGPobserverSubject();
+		RGPobserverObserver RGPobserverName =  new RGPobserverName(subject);
+		String phase1 = "REINFORCEMENT PHASE";
+		String phase2 = "ATTACK PHASE";
+		String phase3 = "FORTIFICATION PHASE";
+		String message1 = "This phase will give players reinforcement army for each turn according to countries and continents owned along with by treding cards player can get some extra army. Player can put that armies into the countries owned accordingly.";
+		String message2 = "This phase will give players reinforcement army for each turn according to countries and continents owned along with by treding cards player can get some extra army. Player can put that armies into the countries owned accordingly.";
+		String message3 = "This phase will give players reinforcement army for each turn according to countries and continents owned along with by treding cards player can get some extra army. Player can put that armies into the countries owned accordingly.";
 
 		RGParmy o_army = new RGParmy();
 		RGPlisting o_uem = new RGPlisting();
@@ -80,10 +89,9 @@ public class main {
         	
         	//System.exit(0);
         	//phase view
-        	System.out.println("Reinforcement Phase");
-        	System.out.println("Player : "+player_names[i]);
-        	System.out.println("This phase will give players reinforcement army for each turn according to countries and continents owned along with by treding cards player can get some extra army. Player can put that armies into the countries owned accordingly.");
-        	System.out.println("=========================================");
+        	System.out.println("\n=============================");
+        	subject.setNameState(player_names[i],phase1,message1);
+        	System.out.println("=============================\n");
         	o_printtable.getTable(file,i,country_per_player,army_per_country);
         	
         	//reinforce armies
@@ -141,8 +149,9 @@ public class main {
 			int armies1 = 0;
 			int army1 = 0;
 			Scanner ab = new Scanner(System.in);
-			System.out.println("Attack Phase");
-			System.out.println("=====================================");
+			System.out.println("\n=============================");
+        	subject.setNameState(player_names[i],phase2,message2);
+        	System.out.println("=============================\n");
 
 			for (int k = 0; k < 100; k++) {
 
@@ -288,8 +297,9 @@ public class main {
 					}
 
 				}
-			System.out.println("Fortification Phase");
-			System.out.println("=====================================");
+			System.out.println("\n=============================");
+        	subject.setNameState(player_names[i],phase3,message3);
+        	System.out.println("=============================\n");
 			
 			o_fortification.fortify(file,country_per_player.get(i),army_per_country);
 			o_printtable.getTable(file,i,country_per_player,army_per_country);
