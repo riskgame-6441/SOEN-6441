@@ -231,7 +231,7 @@ public class main {
 		Scanner a = new Scanner(System.in);
 
 		while (i == 0) {
-			System.out.println("************");
+			System.out.println("*************");
 			System.out.println("* 1- Start *");
 			System.out.println("* 2- Help  *");
 			System.out.println("* 3- Exit  *");
