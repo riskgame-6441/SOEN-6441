@@ -31,7 +31,7 @@ public class RGPprintTable {
 		File file = file1;
         Scanner sc = new Scanner(file);
         int j = 0;
-        int n = a.line2();
+        int n = a.line2(file);
         while (sc.hasNextLine()) {
         	if(!sc.hasNext()) {
         		break;

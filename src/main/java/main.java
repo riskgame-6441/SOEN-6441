@@ -7,13 +7,24 @@ import java.util.Scanner;
 public class main {
 
 	static int total_players;
+	static String[] player_names;
 	static File file;
 
 	public static void main(String[] args) throws Exception {
+		
+		RGPobserverSubject subject = new RGPobserverSubject();
+		RGPobserverObserver RGPobserverName =  new RGPobserverName(subject);
+		String phase1 = "REINFORCEMENT PHASE";
+		String phase2 = "ATTACK PHASE";
+		String phase3 = "FORTIFICATION PHASE";
+		String message1 = "This phase will give players reinforcement army for each turn according to countries and continents owned along with by treding cards player can get some extra army. Player can put that armies into the countries owned accordingly.";
+		String message2 = "This phase will give players reinforcement army for each turn according to countries and continents owned along with by treding cards player can get some extra army. Player can put that armies into the countries owned accordingly.";
+		String message3 = "This phase will give players reinforcement army for each turn according to countries and continents owned along with by treding cards player can get some extra army. Player can put that armies into the countries owned accordingly.";
 
 		RGParmy o_army = new RGParmy();
 		RGPlisting o_uem = new RGPlisting();
 		RGPfortification o_fortification = new RGPfortification();
+		RGPcardDivision o_card = new RGPcardDivision();
 
 		System.out.println("--------WELCOME TO RISK--------\n");
 		menu();
@@ -43,12 +54,74 @@ public class main {
 		army_per_country = o_army.armyPerCountry(total_players, armies_per_player, country_per_player);
 		System.out.println("No. of armies per country");
 		System.out.println(army_per_country);
-
-	        
+		
+		HashMap<String,Integer> cards = new HashMap<String,Integer>();
+		HashMap<String,Integer> card_1 = new HashMap<String,Integer>();
+		HashMap<String,Integer> card_2 = new HashMap<String,Integer>();
+		HashMap<String,Integer> card_3 = new HashMap<String,Integer>();
+		HashMap<String,Integer> card_4 = new HashMap<String,Integer>();
+		HashMap<String,Integer> card_5 = new HashMap<String,Integer>();
+		HashMap<String,Integer> card_6 = new HashMap<String,Integer>();
+		cards = o_card.hm1(country_name);
 
 		RGPprintTable o_printtable = new RGPprintTable();
 
 		for (int i = 0; i < total_players; i++) {
+			//Players world domination view
+        	for(int j=0;j<total_players;j++) {
+        		int total_country_num = country_list.size();
+        		int player_country_num = (country_per_player.get(j)).size();
+        		float map_per_player = (float)(100*player_country_num)/total_country_num;
+        		System.out.println("Map(%) : "+map_per_player+" %");
+        		
+        		ArrayList<String> continent_list_per_player;
+        		for(int k=0;k<country_per_player.get(j).size();k++){
+        			
+        		}
+            	//System.out.println("Continents : "+continent_list_per_player);
+            	
+            	int total_army_per_player=0;
+            	for(int k=0;k<country_per_player.get(j).size();k++){
+            		total_army_per_player+=army_per_country.get(country_per_player.get(j).get(k));
+            	}
+            	System.out.println("Total armies : "+total_army_per_player);
+        	}
+        	
+        	//System.exit(0);
+        	//phase view
+        	System.out.println("\n=============================");
+        	subject.setNameState(player_names[i],phase1,message1);
+        	System.out.println("=============================\n");
+        	o_printtable.getTable(file,i,country_per_player,army_per_country);
+        	
+        	//reinforce armies
+        	//System.out.println("Reinforcement Phase");
+    		//System.out.println("=====================================");
+    		
+    		//card exchange view
+    		int extra_army=0;
+    		if(i==0 && !card_1.isEmpty()) {
+    			System.out.println(card_1);
+    			extra_army = o_card.trade_card(card_1);
+    		}else if(i==1 && !card_2.isEmpty()) {
+    			System.out.println(card_2);
+    			extra_army = o_card.trade_card(card_2);
+    		}else if(i==2 && !card_3.isEmpty()) {
+    			System.out.println(card_3);
+    			extra_army = o_card.trade_card(card_3);
+    		}else if(i==3 && !card_4.isEmpty()) {
+    			System.out.println(card_4);
+    			extra_army = o_card.trade_card(card_4);
+    		}else if(i==4 && !card_5.isEmpty()) {
+    			System.out.println(card_5);
+    			extra_army = o_card.trade_card(card_5);
+    		}else if(i==5 && !card_6.isEmpty()) {
+    			System.out.println(card_6);
+    			extra_army = o_card.trade_card(card_6);
+    		}
+    		
+    		System.out.println("Extra armies : "+extra_army);
+			/*
 			// print table
 			System.out.println("Player : " + (i + 1));
 			System.out.println("=========================================");
@@ -56,9 +129,9 @@ public class main {
 
 			// reinforce armies
 			System.out.println("Reinforcement Phase");
-			System.out.println("=====================================");
-			int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1, country_continent,
-					contvalue);
+			System.out.println("=====================================");*/
+			int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1, country_continent, contvalue);
+			z+=extra_army;
 			System.out.println("Number of armies to Reinforcement : " + z);
 
 			army_per_country = o_reinforcement.placeReinforceArmies(z, i, country_per_player, army_per_country);
@@ -76,8 +149,9 @@ public class main {
 			int armies1 = 0;
 			int army1 = 0;
 			Scanner ab = new Scanner(System.in);
-			System.out.println("Attack Phase");
-			System.out.println("=====================================");
+			System.out.println("\n=============================");
+        	subject.setNameState(player_names[i],phase2,message2);
+        	System.out.println("=============================\n");
 
 			for (int k = 0; k < 100; k++) {
 
@@ -94,7 +168,7 @@ public class main {
 						System.out.println("Enter country name from which you want to attack");
 						attack_country = ab.next();
 					int value =	o_dice.validattcacker(attack_country,country_per_player,i);
-						/**if (!country_per_player.get(i).contains(attack_country)) {
+						/*if (!country_per_player.get(i).contains(attack_country)) {
 							System.out.println("Please enter country that you own.");
 							break;
 						} else {
@@ -134,7 +208,7 @@ public class main {
 						System.out.println("Enter country name on which you want to attack");
 						defend_country = ab.next();
 						 value = o_dice.validdefender(file,country_per_player,attack_country, defend_country,country_list,i,f);
-						/**List<String> list = new ArrayList<String>();
+						/*List<String> list = new ArrayList<String>();
 						g = o_fortification.checkConnection(file, attack_country, defend_country, country_list, list);
 						if (country_per_player.get(i).contains(defend_country)) {
 							f = 1;
@@ -223,8 +297,9 @@ public class main {
 					}
 
 				}
-			System.out.println("Fortification Phase");
-			System.out.println("=====================================");
+			System.out.println("\n=============================");
+        	subject.setNameState(player_names[i],phase3,message3);
+        	System.out.println("=============================\n");
 			
 			o_fortification.fortify(file,country_per_player.get(i),army_per_country);
 			o_printtable.getTable(file,i,country_per_player,army_per_country);
@@ -238,7 +313,7 @@ public class main {
 		Scanner a = new Scanner(System.in);
 
 		while (i == 0) {
-			System.out.println("************");
+			System.out.println("*************");
 			System.out.println("* 1- Start *");
 			System.out.println("* 2- Help  *");
 			System.out.println("* 3- Exit  *");
@@ -312,6 +387,7 @@ public class main {
 			}
 		}
 		total_players = o_namingplayers.pinp;
+		player_names = o_namingplayers.names;
 	}
 
 
