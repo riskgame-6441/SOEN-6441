@@ -1,1 +1,17 @@
+[Map]
+author=
+image=Board.map
+wrap=no
+scroll=horizontal
+warn=yes
+ 
+[Continents]
+asia=2
+sa=2
+ 
+[Territories]
+india,1,2,asia,china,brazil 
+china,2,3,asia,india,africa 
 
+brazil,2,4,sa,africa,india 
+africa,3,4,sa,brazil,china  

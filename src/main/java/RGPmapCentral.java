@@ -23,7 +23,7 @@ public class RGPmapCentral {
 		if (option == 2)
 		{
 	         //file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
-			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\cmap.map");
 		}
 		if (option == 3)
 		{
