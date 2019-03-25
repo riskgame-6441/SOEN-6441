@@ -137,7 +137,7 @@ public class RGPfortification {
 	 * @param defend_country is name of defender country
 	 * @throws Exception
 	 */
-	public void fortification(File file, int i, List<List<String>> country_per_player, HashMap<String,Integer> army_per_country) throws Exception
+	public void fortification(File file, int i, List<List<String>> country_per_player, HashMap<String,Integer> army_per_country,int attack_army,int defend_army,String attack_country,String defend_country) throws Exception
 	{
 		 RGPfortification o_fortification = new RGPfortification();
 		 RGPprintTable o_printtable = new RGPprintTable();

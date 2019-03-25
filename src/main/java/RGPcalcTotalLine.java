@@ -14,12 +14,7 @@ public class RGPcalcTotalLine {
 	 * @throws Exception
 	 */
     public int totallines() throws Exception{
-<<<<<<< HEAD:src/main/java/calculatinglines.java
-    	File file = new File("D:\\\\Risk game Git\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
-    	//File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
-=======
     	File file = o_main.file;
->>>>>>> upstream/master:src/main/java/RGPcalcTotalLine.java
         Scanner sc = new Scanner(file);
         int count = 0;
         while (sc.hasNextLine()) {
@@ -35,12 +30,7 @@ public class RGPcalcTotalLine {
      */
     public int countrylines() throws Exception{
         int a = 0;
-<<<<<<< HEAD:src/main/java/calculatinglines.java
-        File file = new File("D:\\\\Risk game Git\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
-        //File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
-=======
     	File file = o_main.file;
->>>>>>> upstream/master:src/main/java/RGPcalcTotalLine.java
         Scanner sc = new Scanner(file);
         while (sc.hasNextLine()){
             a++;
@@ -57,12 +47,7 @@ public class RGPcalcTotalLine {
      */
     public int continentlines() throws Exception{
         int b = 0;
-<<<<<<< HEAD:src/main/java/calculatinglines.java
-        File file = new File("D:\\\\Risk game Git\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
-        //File file = new File("E:/Risk Game Git/SOEN-6441/src/main/java/world.map");
-=======
     	File file = o_main.file;
->>>>>>> upstream/master:src/main/java/RGPcalcTotalLine.java
         Scanner sc = new Scanner(file);
         while (sc.hasNextLine()){
             b++;
