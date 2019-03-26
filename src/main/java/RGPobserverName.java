@@ -10,7 +10,6 @@ public class RGPobserverName extends RGPobserverObserver{
 	public void update() {
 		System.out.println("NAME: " + subject.getName());
 		System.out.println("PHASE: " + subject.getState());
-
 		System.out.println("MESSAGE: " + subject.getMessage());
 
 		
