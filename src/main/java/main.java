@@ -14,6 +14,8 @@ public class main {
 		
 		RGPobserverSubject subject = new RGPobserverSubject();
 		RGPobserverObserver RGPobserverName =  new RGPobserverName(subject);
+		RGPworldDominationSubject subject1 = new RGPworldDominationSubject();
+		RGPworldDominationObserver RGPworldDominationDetails =  new RGPworldDominationDetails(subject1);
 		String phase1 = "REINFORCEMENT PHASE";
 		String phase2 = "ATTACK PHASE";
 		String phase3 = "FORTIFICATION PHASE";
@@ -47,8 +49,8 @@ public class main {
 
 		List<List<String>> country_per_player = new ArrayList<List<String>>();
 		country_per_player = o_army.divideCountry(total_players, country_name);
-		System.out.println("\nList of country per player");
-		System.out.println(country_per_player);
+		//System.out.println("\nList of country per player");
+		//System.out.println(country_per_player);
 
 		HashMap<String, Integer> army_per_country = new HashMap<String, Integer>();
 		army_per_country = o_army.armyPerCountry(total_players, armies_per_player, country_per_player);
@@ -65,6 +67,8 @@ public class main {
 		cards = o_card.hm1(country_name);
 
 		RGPprintTable o_printtable = new RGPprintTable();
+		System.out.println("\nWORLD DOMINATION VIEW\n");
+		System.out.println("==========================");
 
 		for (int i = 0; i < total_players; i++) {
 			//Players world domination view
@@ -72,7 +76,7 @@ public class main {
         		int total_country_num = country_list.size();
         		int player_country_num = (country_per_player.get(j)).size();
         		float map_per_player = (float)(100*player_country_num)/total_country_num;
-        		System.out.println("Map(%) : "+map_per_player+" %");
+        		//System.out.println("Map(%) : "+map_per_player+" %");
         		
         		ArrayList<String> continent_list_per_player;
         		for(int k=0;k<country_per_player.get(j).size();k++){
@@ -84,11 +88,16 @@ public class main {
             	for(int k=0;k<country_per_player.get(j).size();k++){
             		total_army_per_player+=army_per_country.get(country_per_player.get(j).get(k));
             	}
-            	System.out.println("Total armies : "+total_army_per_player);
+            	//System.out.println("Total armies : "+total_army_per_player);
+            	subject1.setNameState(j+1,(int)map_per_player,country_per_player.get(i),total_army_per_player);
+            	System.out.println("\n");
+            	
         	}
+        	System.out.println("==========================");
         	
         	//System.exit(0);
         	//phase view
+        	System.out.println("\nPHASE VIEW");
         	System.out.println("\n=============================");
         	subject.setNameState(player_names[i],phase1,message1);
         	System.out.println("=============================\n");
@@ -149,6 +158,7 @@ public class main {
 			int armies1 = 0;
 			int army1 = 0;
 			Scanner ab = new Scanner(System.in);
+			System.out.println("\nPHASE VIEW");
 			System.out.println("\n=============================");
         	subject.setNameState(player_names[i],phase2,message2);
         	System.out.println("=============================\n");
@@ -297,6 +307,7 @@ public class main {
 					}
 
 				}
+			System.out.println("\nPHASE VIEW");
 			System.out.println("\n=============================");
         	subject.setNameState(player_names[i],phase3,message3);
         	System.out.println("=============================\n");
