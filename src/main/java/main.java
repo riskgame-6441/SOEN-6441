@@ -122,22 +122,34 @@ public class main {
     		int extra_army=0;
     		if(i==0 && !card_1.isEmpty()) {
     			System.out.println(card_1);
-    			extra_army = o_card.trade_card(card_1);
+    			if(card_1.size()>=3) {
+    				extra_army = o_card.trade_card(card_1);
+    			}
     		}else if(i==1 && !card_2.isEmpty()) {
     			System.out.println(card_2);
-    			extra_army = o_card.trade_card(card_2);
+    			if(card_2.size()>=3) {
+    				extra_army = o_card.trade_card(card_2);
+    			}
     		}else if(i==2 && !card_3.isEmpty()) {
     			System.out.println(card_3);
-    			extra_army = o_card.trade_card(card_3);
+    			if(card_3.size()>=3) {
+    				extra_army = o_card.trade_card(card_3);
+    			}
     		}else if(i==3 && !card_4.isEmpty()) {
     			System.out.println(card_4);
-    			extra_army = o_card.trade_card(card_4);
+    			if(card_4.size()>=3) {
+    				extra_army = o_card.trade_card(card_4);
+    			}
     		}else if(i==4 && !card_5.isEmpty()) {
     			System.out.println(card_5);
-    			extra_army = o_card.trade_card(card_5);
+    			if(card_5.size()>=3) {
+    				extra_army = o_card.trade_card(card_5);
+    			}
     		}else if(i==5 && !card_6.isEmpty()) {
     			System.out.println(card_6);
-    			extra_army = o_card.trade_card(card_6);
+    			if(card_6.size()>=3) {
+    				extra_army = o_card.trade_card(card_6);
+    			}
     		}
     		
     		System.out.println("Extra armies : "+extra_army);
