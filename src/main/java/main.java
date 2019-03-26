@@ -11,11 +11,13 @@ public class main {
 	static File file;
 
 	public static void main(String[] args) throws Exception {
-		
+
 		RGPobserverSubject subject = new RGPobserverSubject();
 		RGPobserverObserver RGPobserverName =  new RGPobserverName(subject);
 		RGPworldDominationSubject subject1 = new RGPworldDominationSubject();
 		RGPworldDominationObserver RGPworldDominationDetails =  new RGPworldDominationDetails(subject1);
+
+
 		String phase1 = "REINFORCEMENT PHASE";
 		String phase2 = "ATTACK PHASE";
 		String phase3 = "FORTIFICATION PHASE";
@@ -56,14 +58,14 @@ public class main {
 		army_per_country = o_army.armyPerCountry(total_players, armies_per_player, country_per_player);
 		System.out.println("No. of armies per country");
 		System.out.println(army_per_country);
-		
-		HashMap<String,Integer> cards = new HashMap<String,Integer>();
-		HashMap<String,Integer> card_1 = new HashMap<String,Integer>();
-		HashMap<String,Integer> card_2 = new HashMap<String,Integer>();
-		HashMap<String,Integer> card_3 = new HashMap<String,Integer>();
-		HashMap<String,Integer> card_4 = new HashMap<String,Integer>();
-		HashMap<String,Integer> card_5 = new HashMap<String,Integer>();
-		HashMap<String,Integer> card_6 = new HashMap<String,Integer>();
+
+		HashMap<String, Integer> cards = new HashMap<String, Integer>();
+		HashMap<String, Integer> card_1 = new HashMap<String, Integer>();
+		HashMap<String, Integer> card_2 = new HashMap<String, Integer>();
+		HashMap<String, Integer> card_3 = new HashMap<String, Integer>();
+		HashMap<String, Integer> card_4 = new HashMap<String, Integer>();
+		HashMap<String, Integer> card_5 = new HashMap<String, Integer>();
+		HashMap<String, Integer> card_6 = new HashMap<String, Integer>();
 		cards = o_card.hm1(country_name);
 
 		RGPprintTable o_printtable = new RGPprintTable();
@@ -71,6 +73,7 @@ public class main {
 		System.out.println("==========================");
 
 		for (int i = 0; i < total_players; i++) {
+
 			//Players world domination view
         	for(int j=0;j<total_players;j++) {
         		int total_country_num = country_list.size();
@@ -134,13 +137,75 @@ public class main {
 			// print table
 			System.out.println("Player : " + (i + 1));
 			System.out.println("=========================================");
+=======
+			// Players world domination view
+			for (int j = 0; j < total_players; j++) {
+				int total_country_num = country_list.size();
+				int player_country_num = (country_per_player.get(j)).size();
+				float map_per_player = (float) (100 * player_country_num) / total_country_num;
+				System.out.println("Map(%) : " + map_per_player + " %");
+
+				ArrayList<String> continent_list_per_player;
+				for (int k = 0; k < country_per_player.get(j).size(); k++) {
+
+				}
+				// System.out.println("Continents :
+				// "+continent_list_per_player);
+
+				int total_army_per_player = 0;
+				for (int k = 0; k < country_per_player.get(j).size(); k++) {
+					total_army_per_player += army_per_country.get(country_per_player.get(j).get(k));
+				}
+				System.out.println("Total armies : " + total_army_per_player);
+			}
+
+			// System.exit(0);
+			// phase view
+			System.out.println("\n=============================");
+			subject.setNameState(player_names[i], phase1, message1);
+			System.out.println("=============================\n");
+>>>>>>> upstream/master
 			o_printtable.getTable(file, i, country_per_player, army_per_country);
 
 			// reinforce armies
-			System.out.println("Reinforcement Phase");
-			System.out.println("=====================================");*/
-			int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1, country_continent, contvalue);
-			z+=extra_army;
+			// System.out.println("Reinforcement Phase");
+			// System.out.println("=====================================");
+
+			// card exchange view
+			int extra_army = 0;
+			if (i == 0 && !card_1.isEmpty()) {
+				System.out.println(card_1);
+				extra_army = o_card.trade_card(card_1);
+			} else if (i == 1 && !card_2.isEmpty()) {
+				System.out.println(card_2);
+				extra_army = o_card.trade_card(card_2);
+			} else if (i == 2 && !card_3.isEmpty()) {
+				System.out.println(card_3);
+				extra_army = o_card.trade_card(card_3);
+			} else if (i == 3 && !card_4.isEmpty()) {
+				System.out.println(card_4);
+				extra_army = o_card.trade_card(card_4);
+			} else if (i == 4 && !card_5.isEmpty()) {
+				System.out.println(card_5);
+				extra_army = o_card.trade_card(card_5);
+			} else if (i == 5 && !card_6.isEmpty()) {
+				System.out.println(card_6);
+				extra_army = o_card.trade_card(card_6);
+			}
+
+			System.out.println("Extra armies : " + extra_army);
+			/*
+			 * // print table System.out.println("Player : " + (i + 1));
+			 * System.out.println("=========================================");
+			 * o_printtable.getTable(file, i, country_per_player,
+			 * army_per_country);
+			 * 
+			 * // reinforce armies System.out.println("Reinforcement Phase");
+			 * System.out.println("=====================================");
+			 */
+			int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1, country_continent,
+					contvalue);
+			z += extra_army;
 			System.out.println("Number of armies to Reinforcement : " + z);
 
 			army_per_country = o_reinforcement.placeReinforceArmies(z, i, country_per_player, army_per_country);
@@ -160,56 +225,47 @@ public class main {
 			Scanner ab = new Scanner(System.in);
 			System.out.println("\nPHASE VIEW");
 			System.out.println("\n=============================");
-        	subject.setNameState(player_names[i],phase2,message2);
-        	System.out.println("=============================\n");
+			subject.setNameState(player_names[i], phase2, message2);
+			System.out.println("=============================\n");
 
 			for (int k = 0; k < 100; k++) {
 
 				System.out.println("Do you want to attack ?(y/n)");
 				String ans = ab.next();
 				if (ans.equalsIgnoreCase("y")) {
-					
+
 					// attack phase
-					int flag = 0, g = 0,p =0,h=0;
+					int flag = 0, g = 0, p = 0, h = 0;
 					RGPdiceroll o_dice = new RGPdiceroll();
 
 					while (flag == 0) {
-						while ( p == 0){
-						System.out.println("Enter country name from which you want to attack");
-						attack_country = ab.next();
-					int value =	o_dice.validattcacker(attack_country,country_per_player,i);
-						/*if (!country_per_player.get(i).contains(attack_country)) {
-							System.out.println("Please enter country that you own.");
-							break;
-						} else {
-							flag = 1;
-							
-						}*/
-					if (value == 0) {
-					System.out.println("Please enter country that you own.");
-					break;
-				} else {
-					flag = 1;
-					
-				}
-						int j;
-						ArrayList<String> neighbour_countries = o_printtable.getNeighbour(file, attack_country);
-						int m = neighbour_countries.size();
-						for(j=0;j<m;j++) {
-							if (country_per_player.get(i).contains(neighbour_countries.get(j))) {
-								
-								h++;
-							} 
-						}
-							if ( h == m){
+						while (p == 0) {
+							System.out.println("Enter country name from which you want to attack");
+							attack_country = ab.next();
+							int value = o_dice.validattcacker(attack_country, country_per_player, i);
+							if (value == 0) {
+								System.out.println("Please enter country that you own.");
+								break;
+							} else {
+								flag = 1;
+
+							}
+							int j;
+							ArrayList<String> neighbour_countries = o_printtable.getNeighbour(file, attack_country);
+							int m = neighbour_countries.size();
+							for (j = 0; j < m; j++) {
+								if (country_per_player.get(i).contains(neighbour_countries.get(j))) {
+
+									h++;
+								}
+							}
+							if (h == m) {
 								p = 0;
 								System.out.println("You can't attack adjacent country which is owned by you.");
-							}
-							else{
+							} else {
 								p = 1;
 							}
-						
-							
+
 						}
 					}
 					int f = 1;
@@ -217,17 +273,9 @@ public class main {
 					while (value == 0) {
 						System.out.println("Enter country name on which you want to attack");
 						defend_country = ab.next();
-						 value = o_dice.validdefender(file,country_per_player,attack_country, defend_country,country_list,i,f);
-						/*List<String> list = new ArrayList<String>();
-						g = o_fortification.checkConnection(file, attack_country, defend_country, country_list, list);
-						if (country_per_player.get(i).contains(defend_country)) {
-							f = 1;
-						} else {
-							f = 0;
-						}
-						if (g != 1 || f == 1) {
-							System.out.println("Enter correct neighbouring country or other player country to attack");
-						}*/
+						value = o_dice.validdefender(file, country_per_player, attack_country, defend_country,
+								country_list, i, f);
+
 					}
 					attacker_armies = army_per_country.get(attack_country);
 					defender_armies = army_per_country.get(defend_country);
@@ -245,76 +293,40 @@ public class main {
 							int j = 0;
 
 							if ((attacker_armies < 1) || (defender_armies < 1)) {
-								if (attacker_armies < 1) {
-									/*System.out.println("defender_armies:" + defender_armies);
-									System.out.println("Defender has won" + attack_country + "country");
-									System.out.println("Enter no of armies to place in " + attack_country + "up to ("
-											+ (defender_armies - 1) + "armies)");
-									armies1 = ab.nextInt();
-									j = 0;
-									armies1 += army_per_country.get(attack_country);
-									army_per_country.put(attack_country, armies1);
-									army1 = defender_armies - (armies1 - 1);
-									army_per_country.put(defend_country, army1);
-									*/
-									army_per_country =o_dice.placeDefendArmies(defender_armies, attack_country, defend_country,army_per_country);
-									country_per_player= o_dice.placeDefendCountry(total_players,attack_country,defend_country,country_per_player, i);
-									/*for (int l = 0; l < total_players; l++) {
-										if (country_per_player.get(l).contains(defend_country)) {
-											j = l;
-											country_per_player.get(j).add(attack_country);
-										}
-									}
-									country_per_player.get(i).remove(attack_country);
-									*/
-								}
 
-								else if (defender_armies < 1) {
-									/*System.out.println("Attacker Armies:" + attacker_armies);
-									System.out.println("Attacker has won" + " " +defend_country +" country");
-									System.out.println("Enter no of armies to place in " + defend_country + " up to ("
-											+ (attacker_armies - 1) + "armies)");
-									armies1 = ab.nextInt();
-									j = 0;
-									armies1 += army_per_country.get(defend_country);
-									army_per_country.put(defend_country, armies1);
-									army1 = attacker_armies - armies1;
-									army_per_country.put(attack_country, army1);
-									*/
-									//System.out.println(country_per_player.get(i));
-									army_per_country =o_dice.placeAttackArmies(attacker_armies, attack_country, defend_country,army_per_country);
-									country_per_player= o_dice.placeAttackCountry(total_players,attack_country,defend_country,country_per_player, i);
-									/*for (int l = 0; l < total_players; l++) {
-										if (country_per_player.get(l).contains(defend_country)) {
-											j = l;
-											country_per_player.get(j).remove(defend_country);
-										}
-									}
-									country_per_player.get(i).add(defend_country);
-									*/
+								if (defender_armies < 1) {
+
+									army_per_country = o_dice.placeAttackArmies(attacker_armies, attack_country,
+											defend_country, army_per_country);
+									country_per_player = o_dice.placeAttackCountry(total_players, attack_country,
+											defend_country, country_per_player, i);
+
 								}
 							}
 
 						}
-					}else{
-						System.out.println("You can't attack with 1 Army");
+					} else {
+						System.out.println("You can't attack with one Army");
 					}
 					System.out.println(country_per_player.get(i));
-						o_printtable.getTable(file, i, country_per_player, army_per_country);			
+					o_printtable.getTable(file, i, country_per_player, army_per_country);
 				}
-					if (ans.equalsIgnoreCase("n")) {
-						break;
-					}
+				if (ans.equalsIgnoreCase("n")) {
+					break;
+				}
 
-				}
 			System.out.println("\nPHASE VIEW");
+
+
+			}
+
 			System.out.println("\n=============================");
-        	subject.setNameState(player_names[i],phase3,message3);
-        	System.out.println("=============================\n");
-			
-			o_fortification.fortify(file,country_per_player.get(i),army_per_country);
-			o_printtable.getTable(file,i,country_per_player,army_per_country);
-			
+			subject.setNameState(player_names[i], phase3, message3);
+			System.out.println("=============================\n");
+
+			o_fortification.fortify(file, country_per_player.get(i), army_per_country);
+			o_printtable.getTable(file, i, country_per_player, army_per_country);
+
 		}
 
 	}
@@ -400,6 +412,5 @@ public class main {
 		total_players = o_namingplayers.pinp;
 		player_names = o_namingplayers.names;
 	}
-
 
 }
