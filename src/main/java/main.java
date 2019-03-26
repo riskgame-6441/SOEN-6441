@@ -1,3 +1,5 @@
+
+    
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -133,76 +135,6 @@ public class main {
     		}
     		
     		System.out.println("Extra armies : "+extra_army);
-			/*
-			// print table
-			System.out.println("Player : " + (i + 1));
-			System.out.println("=========================================");
-=======
-			// Players world domination view
-			for (int j = 0; j < total_players; j++) {
-				int total_country_num = country_list.size();
-				int player_country_num = (country_per_player.get(j)).size();
-				float map_per_player = (float) (100 * player_country_num) / total_country_num;
-				System.out.println("Map(%) : " + map_per_player + " %");
-
-				ArrayList<String> continent_list_per_player;
-				for (int k = 0; k < country_per_player.get(j).size(); k++) {
-
-				}
-				// System.out.println("Continents :
-				// "+continent_list_per_player);
-
-				int total_army_per_player = 0;
-				for (int k = 0; k < country_per_player.get(j).size(); k++) {
-					total_army_per_player += army_per_country.get(country_per_player.get(j).get(k));
-				}
-				System.out.println("Total armies : " + total_army_per_player);
-			}
-
-			// System.exit(0);
-			// phase view
-			System.out.println("\n=============================");
-			subject.setNameState(player_names[i], phase1, message1);
-			System.out.println("=============================\n");
->>>>>>> upstream/master
-			o_printtable.getTable(file, i, country_per_player, army_per_country);
-
-			// reinforce armies
-			// System.out.println("Reinforcement Phase");
-			// System.out.println("=====================================");
-
-			// card exchange view
-			int extra_army = 0;
-			if (i == 0 && !card_1.isEmpty()) {
-				System.out.println(card_1);
-				extra_army = o_card.trade_card(card_1);
-			} else if (i == 1 && !card_2.isEmpty()) {
-				System.out.println(card_2);
-				extra_army = o_card.trade_card(card_2);
-			} else if (i == 2 && !card_3.isEmpty()) {
-				System.out.println(card_3);
-				extra_army = o_card.trade_card(card_3);
-			} else if (i == 3 && !card_4.isEmpty()) {
-				System.out.println(card_4);
-				extra_army = o_card.trade_card(card_4);
-			} else if (i == 4 && !card_5.isEmpty()) {
-				System.out.println(card_5);
-				extra_army = o_card.trade_card(card_5);
-			} else if (i == 5 && !card_6.isEmpty()) {
-				System.out.println(card_6);
-				extra_army = o_card.trade_card(card_6);
-			}
-
-			System.out.println("Extra armies : " + extra_army);
-			/*
-			 * // print table System.out.println("Player : " + (i + 1));
-			 * System.out.println("=========================================");
-			 * o_printtable.getTable(file, i, country_per_player,
-			 * army_per_country);
-			 * 
-			 * // reinforce armies System.out.println("Reinforcement Phase");
-			 * System.out.println("=====================================");
-			 */
 			int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1, country_continent,
 					contvalue);
 			z += extra_army;
