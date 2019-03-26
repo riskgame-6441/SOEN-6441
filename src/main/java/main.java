@@ -16,14 +16,16 @@ public class main {
 		RGPobserverObserver RGPobserverName =  new RGPobserverName(subject);
 		RGPworldDominationSubject subject1 = new RGPworldDominationSubject();
 		RGPworldDominationObserver RGPworldDominationDetails =  new RGPworldDominationDetails(subject1);
+		RGPcardViewSubject subject3 = new RGPcardViewSubject();
+		RGPcardViewObserver RGPcardViewDetails =  new RGPcardViewDetails(subject3);
 
 
 		String phase1 = "REINFORCEMENT PHASE";
 		String phase2 = "ATTACK PHASE";
 		String phase3 = "FORTIFICATION PHASE";
 		String message1 = "This phase will give players reinforcement army for each turn according to countries and continents owned along with by treding cards player can get some extra army. Player can put that armies into the countries owned accordingly.";
-		String message2 = "This phase will give players reinforcement army for each turn according to countries and continents owned along with by treding cards player can get some extra army. Player can put that armies into the countries owned accordingly.";
-		String message3 = "This phase will give players reinforcement army for each turn according to countries and continents owned along with by treding cards player can get some extra army. Player can put that armies into the countries owned accordingly.";
+		String message2 = "This phase is to attack on neighbouring countries and to conquer countries.";
+		String message3 = "This phase is fortify armies in player owned countries.";
 
 		RGParmy o_army = new RGParmy();
 		RGPlisting o_uem = new RGPlisting();
@@ -121,32 +123,38 @@ public class main {
     		//card exchange view
     		int extra_army=0;
     		if(i==0 && !card_1.isEmpty()) {
-    			System.out.println(card_1);
+    			System.out.println("\nCARD EXCHANGE VIEW\n");
+    			subject3.setNameState(card_1);
     			if(card_1.size()>=3) {
     				extra_army = o_card.trade_card(card_1);
     			}
     		}else if(i==1 && !card_2.isEmpty()) {
-    			System.out.println(card_2);
+    			System.out.println("\nCARD EXCHANGE VIEW\n");
+    			subject3.setNameState(card_2);
     			if(card_2.size()>=3) {
     				extra_army = o_card.trade_card(card_2);
     			}
     		}else if(i==2 && !card_3.isEmpty()) {
-    			System.out.println(card_3);
+    			System.out.println("\nCARD EXCHANGE VIEW\n");
+    			subject3.setNameState(card_3);
     			if(card_3.size()>=3) {
     				extra_army = o_card.trade_card(card_3);
     			}
     		}else if(i==3 && !card_4.isEmpty()) {
-    			System.out.println(card_4);
+    			System.out.println("\nCARD EXCHANGE VIEW\n");
+    			subject3.setNameState(card_4);
     			if(card_4.size()>=3) {
     				extra_army = o_card.trade_card(card_4);
     			}
     		}else if(i==4 && !card_5.isEmpty()) {
-    			System.out.println(card_5);
+    			System.out.println("\nCARD EXCHANGE VIEW\n");
+    			subject3.setNameState(card_5);
     			if(card_5.size()>=3) {
     				extra_army = o_card.trade_card(card_5);
     			}
     		}else if(i==5 && !card_6.isEmpty()) {
-    			System.out.println(card_6);
+    			System.out.println("\nCARD EXCHANGE VIEW\n");
+    			subject3.setNameState(card_6);
     			if(card_6.size()>=3) {
     				extra_army = o_card.trade_card(card_6);
     			}
