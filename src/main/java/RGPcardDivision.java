@@ -65,13 +65,13 @@ public class RGPcardDivision {
 		
 		if(a1.containsValue(3) && b1.containsValue(3) && c1.containsValue(3)) {
 			extra_army+=8;
-			System.out.println("Reinforcement +8");
+			//System.out.println("Reinforcement +8");
 		} else if(a1.containsValue(2) && b1.containsValue(2) && c1.containsValue(2)) {
 			extra_army+=6;
-			System.out.println("Reinforcement +6");
+			//System.out.println("Reinforcement +6");
 		} else if(a1.containsValue(1) && b1.containsValue(1) && c1.containsValue(1)) {
 			extra_army+=4;
-			System.out.println("Reinforcement +4");
+			//System.out.println("Reinforcement +4");
 		} else if(a1.containsValue(1) && b1.containsValue(2) && c1.containsValue(3)||
 		 a1.containsValue(1) && b1.containsValue(3) && c1.containsValue(2)||
 		 a1.containsValue(2) && b1.containsValue(1) && c1.containsValue(3)||
@@ -79,9 +79,9 @@ public class RGPcardDivision {
 		 a1.containsValue(3) && b1.containsValue(1) && c1.containsValue(2)||
 		 a1.containsValue(3) && b1.containsValue(2) && c1.containsValue(1)) {
 			extra_army+=10;
-			System.out.println("Reinforcement +10");
+			//System.out.println("Reinforcement +10");
 		} else {
-			System.out.println("No Reinforcement");
+			System.out.println("No Reinforcement : check the cards you entered.");
 		}
 		return extra_army;
 	}

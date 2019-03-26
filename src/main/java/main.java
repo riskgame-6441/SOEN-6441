@@ -69,8 +69,7 @@ public class main {
 		cards = o_card.hm1(country_name);
 
 		RGPprintTable o_printtable = new RGPprintTable();
-		System.out.println("\nWORLD DOMINATION VIEW\n");
-		System.out.println("==========================");
+		
 		List<Integer> out_players = null;
 		int player_flag = 1;
 		int i;
@@ -82,6 +81,8 @@ public class main {
 				}
 				
 			}
+			System.out.println("\nWORLD DOMINATION VIEW\n");
+			System.out.println("==========================");
 			//Players world domination view
         	for(int j=0;j<total_players;j++) {
         		int total_country_num = country_list.size();
@@ -89,12 +90,10 @@ public class main {
         		float map_per_player = (float)(100*player_country_num)/total_country_num;
         		//System.out.println("Map(%) : "+map_per_player+" %");
         		
-        		ArrayList<String> continent_list_per_player;
-        		for(int k=0;k<country_per_player.get(j).size();k++){
-        			
-        		}
+        		List<List<String>> continent_list_per_player = o_reinforcement.getContinent(country_per_player, country_continent, contvalue1);
+        		System.out.println(continent_list_per_player);
             	//System.out.println("Continents : "+continent_list_per_player);
-            	
+            	System.exit(0);
             	int total_army_per_player=0;
             	for(int k=0;k<country_per_player.get(j).size();k++){
             		total_army_per_player+=army_per_country.get(country_per_player.get(j).get(k));
