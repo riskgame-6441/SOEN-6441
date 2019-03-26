@@ -5,7 +5,6 @@ public class RGPobserverSubject {
 	private List<RGPobserverObserver> observers = new ArrayList<RGPobserverObserver>();
 	private String state;
 	private String name;
-
 	private String message;
 
 	public String getName() {
@@ -14,7 +13,6 @@ public class RGPobserverSubject {
 	public String getState() {
 		return state;
 	}
-
 	public String getMessage() {
 		return message;
 	}
@@ -29,7 +27,6 @@ public class RGPobserverSubject {
 	}
 	public void setPhaseState(String state) {
 		this.state = state;
-
 		notifyAllObservers();
 	}
 	public void attach(RGPobserverObserver observer) {
