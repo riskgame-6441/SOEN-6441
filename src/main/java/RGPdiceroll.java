@@ -512,4 +512,14 @@ public class RGPdiceroll {
 		return army_per_country;
 	}
 
+	public static int getDefenderIndex(String defender_country, List<List<String>> country_per_player) {
+		int n = -1;
+		for(int i=0;i<country_per_player.size();i++) {
+			List<String> list = country_per_player.get(i);
+			if(list.contains(defender_country)) {
+				n = country_per_player.indexOf(list);
+			}
+		}
+		return n;
+	}
 }
