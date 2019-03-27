@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * @author pavan
  *  @version 1.0.0
  */
-class RGPMapValidationTest {
+public class RGPMapValidationTest {
 	File file = new File("D:/Projects/Risk/SOEN-6441/src/main/java/cmap.map");
 	
 	@Test

@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
  * @author pavan
  * @version 1.0.0
  */
-class RGPnamingPlayersTest {
+public class RGPnamingPlayersTest {
 
 	@Test
-	void test() {
+	public void test() {
 		RGPnamingPlayers a = new RGPnamingPlayers();
 		int f = a.getPlayers();
 		Assertions.assertEquals(1, f);
