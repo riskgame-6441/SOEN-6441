@@ -4,9 +4,18 @@ import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * This class is for testing cards functionality
+ * 
+ *  @author Dhruvi Gadhiya
+ *  @version 1.0.0
+ * */
 class RGPcardsTest {
 	
 	@Test
+	/**
+	 * This method will test trading value for three different types of card
+	 * */
 	void test() {
 		RGPcardDivision o_card = new RGPcardDivision();
 		HashMap<String,Integer> c1 =new HashMap<String,Integer>();
@@ -20,6 +29,9 @@ class RGPcardsTest {
 	}
 	
 	@Test
+	/**
+	 * This method will test trading value for three Infantry cards  
+	 * */
 	void test1() {
 		RGPcardDivision o_card = new RGPcardDivision();
 		HashMap<String,Integer> c1 =new HashMap<String,Integer>();
@@ -33,6 +45,9 @@ class RGPcardsTest {
 	}
 	
 	@Test
+	/**
+	 * This method will test trading value for three Cavalry cards  
+	 * */
 	void test2() {
 		RGPcardDivision o_card = new RGPcardDivision();
 		HashMap<String,Integer> c1 =new HashMap<String,Integer>();
@@ -46,6 +61,9 @@ class RGPcardsTest {
 	}
 	
 	@Test
+	/**
+	 * This method will test trading value for three Artillery cards  
+	 * */
 	void test3() {
 		RGPcardDivision o_card = new RGPcardDivision();
 		HashMap<String,Integer> c1 =new HashMap<String,Integer>();
@@ -59,6 +77,9 @@ class RGPcardsTest {
 	}
 
 	@Test
+	/**
+	 * This method will test input of cards and trading of cards
+	 * */
 	void test4() {
 		RGPcardDivision o_card = new RGPcardDivision();
 		HashMap<String,Integer> cards =new HashMap<String,Integer>();

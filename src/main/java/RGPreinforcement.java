@@ -125,6 +125,19 @@ public class RGPreinforcement {
     	return army_per_country; 
 	}
 
+	/**
+	 * This function used to access continents owned by players.
+	 * 
+	 *  @author Dhruvi Gadhiya
+	 * 
+	 *  @param country_per_player This parameter contains List of List that contains country list for each player
+	 *  
+	 *  @param country_continent This parameter contains HashMap of country and it's continent
+	 *  
+	 *  @param contvalue This parameter contains HashMap of continent and number of countries in that continent.
+	 *  
+	 *  @return This method will return list of continents owned by each player.
+	 */
 	public static List<List<String>> getContinent(List<List<String>> country_per_player, HashMap<String, String> country_continent, HashMap<String, Integer> contvalue){
 		List<List<String>> continents = new ArrayList<List<String>>();
 		for(int i=0;i<country_per_player.size();i++) {

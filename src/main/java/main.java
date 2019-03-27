@@ -93,7 +93,7 @@ public class main {
         		List<List<String>> continent_list_per_player = o_reinforcement.getContinent(country_per_player, country_continent, contvalue1);
         		System.out.println(continent_list_per_player);
             	//System.out.println("Continents : "+continent_list_per_player);
-            	System.exit(0);
+            	//System.exit(0);
             	int total_army_per_player=0;
             	for(int k=0;k<country_per_player.get(j).size();k++){
             		total_army_per_player+=army_per_country.get(country_per_player.get(j).get(k));
