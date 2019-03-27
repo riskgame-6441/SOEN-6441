@@ -10,13 +10,13 @@ import org.junit.jupiter.api.Test;
  *  @author Dhruvi Gadhiya
  *  @version 1.0.0
  * */
-class RGPcardsTest {
+public class RGPcardsTest {
 	
 	@Test
 	/**
 	 * This method will test trading value for three different types of card
 	 * */
-	void test() {
+	public void test() {
 		RGPcardDivision o_card = new RGPcardDivision();
 		HashMap<String,Integer> c1 =new HashMap<String,Integer>();
 		HashMap<String,Integer> c2 =new HashMap<String,Integer>();
@@ -32,7 +32,7 @@ class RGPcardsTest {
 	/**
 	 * This method will test trading value for three Infantry cards  
 	 * */
-	void test1() {
+	public void test1() {
 		RGPcardDivision o_card = new RGPcardDivision();
 		HashMap<String,Integer> c1 =new HashMap<String,Integer>();
 		HashMap<String,Integer> c2 =new HashMap<String,Integer>();
@@ -48,7 +48,7 @@ class RGPcardsTest {
 	/**
 	 * This method will test trading value for three Cavalry cards  
 	 * */
-	void test2() {
+	public void test2() {
 		RGPcardDivision o_card = new RGPcardDivision();
 		HashMap<String,Integer> c1 =new HashMap<String,Integer>();
 		HashMap<String,Integer> c2 =new HashMap<String,Integer>();
@@ -64,7 +64,7 @@ class RGPcardsTest {
 	/**
 	 * This method will test trading value for three Artillery cards  
 	 * */
-	void test3() {
+	public void test3() {
 		RGPcardDivision o_card = new RGPcardDivision();
 		HashMap<String,Integer> c1 =new HashMap<String,Integer>();
 		HashMap<String,Integer> c2 =new HashMap<String,Integer>();
@@ -80,7 +80,7 @@ class RGPcardsTest {
 	/**
 	 * This method will test input of cards and trading of cards
 	 * */
-	void test4() {
+	public void test4() {
 		RGPcardDivision o_card = new RGPcardDivision();
 		HashMap<String,Integer> cards =new HashMap<String,Integer>();
 		cards.put("India", 1);
