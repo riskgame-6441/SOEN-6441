@@ -114,7 +114,19 @@ public class RGPreinforcementTest {
 			assertEquals(3,i);
 	}
 	
-	
+	@Test
+	public void endOfGameTest() {
+		ArrayList<String> country_list = new ArrayList<String>();
+		List<List<String>> country_per_player = new ArrayList<List<String>>();
+		country_list.add("Alaska");
+		country_list.add("Alberta");
+		country_list.add("Siam");
+		country_list.add("India");
+		country_per_player.add(country_list);
+		int i=0;
+		int x = ra.endOfGame(country_list,country_per_player,i);
+		assertEquals(1,x);
+	}
 }
 
 
