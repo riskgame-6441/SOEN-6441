@@ -142,4 +142,55 @@ public class RGPreinforcement {
     	return army_per_country; 
 	}
 
+	/**
+	 * This function used to access continents owned by players.
+	 * 
+	 *  @author Dhruvi Gadhiya
+	 * 
+	 *  @param country_per_player This parameter contains List of List that contains country list for each player
+	 *  
+	 *  @param country_continent This parameter contains HashMap of country and it's continent
+	 *  
+	 *  @param contvalue This parameter contains HashMap of continent and number of countries in that continent.
+	 *  
+	 *  @return This method will return list of continents owned by each player.
+	 */
+	public static List<List<String>> getContinent(List<List<String>> country_per_player, HashMap<String, String> country_continent, HashMap<String, Integer> contvalue){
+		List<List<String>> continents = new ArrayList<List<String>>();
+		for(int i=0;i<country_per_player.size();i++) {
+			HashMap<String,Integer> e = new HashMap<String,Integer>();
+			//add continents and its count in hashmap to check how many countries of same continent
+			for(int j=0;j<country_per_player.get(i).size();j++) {
+				String continent = country_continent.get(country_per_player.get(i).get(j));
+				if(e.containsKey(continent)) {
+					int v = e.get(continent);
+					e.put(continent, v+1);
+				}else {
+					e.put(continent, 1);
+				}
+			}
+			//get continents own by player by compairing two hashmap
+			List<String> keys = new ArrayList(e.keySet());
+			//System.out.println(keys);
+			//System.out.println(contvalue);
+			//System.out.println(e);
+			int v = 0;
+			int v1 = 0;
+			for(int k=0;k<keys.size();k++) {
+				//System.out.println(keys.get(k));
+				v = e.get(keys.get(k));
+				v1 = contvalue.get(keys.get(k));
+				//System.out.println(v);
+				//System.out.println(v1);
+				if(v != v1) {
+					e.remove(keys.get(k));
+					keys.remove(k);
+					k--;
+				}
+			}
+			List<String> final_continent = new ArrayList(e.keySet());
+			continents.add(final_continent);
+		}
+		return continents;
+	}
 }

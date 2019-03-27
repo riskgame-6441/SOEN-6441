@@ -24,7 +24,7 @@ public class RGPfortification {
 	 * @param army_per_country This parameter contains hash map of armies for each country.
 	 * */
 	public void  fortify(File file,List<String> country_list,HashMap<String,Integer> army_per_country) throws Exception {
-		System.out.println(country_list);
+		//System.out.println(country_list);
 		Scanner a = new Scanner(System.in);
 		int flag = 0;
 		String country1 = " ";

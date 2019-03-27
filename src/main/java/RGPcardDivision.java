@@ -1,14 +1,13 @@
 import java.util.*;
 
-	/**
-	 * This class is about Card Dealing in the Game. 
-	 * 
-	 * 
-	 * @author Krisha Patel
-	 * @version 1.0.0
-	 *
-	 */
-
+/**
+ * This class is about Card Dealing in the Game. 
+ * 
+ * 
+ * @author Krisha Patel
+ * @version 1.0.0
+ *
+ */
 public class RGPcardDivision {
 	
 	private static HashMap<String,Integer> asd1 = new HashMap<String,Integer>();
@@ -65,13 +64,13 @@ public class RGPcardDivision {
 		
 		if(a1.containsValue(3) && b1.containsValue(3) && c1.containsValue(3)) {
 			extra_army+=8;
-			System.out.println("Reinforcement +8");
+			//System.out.println("Reinforcement +8");
 		} else if(a1.containsValue(2) && b1.containsValue(2) && c1.containsValue(2)) {
 			extra_army+=6;
-			System.out.println("Reinforcement +6");
+			//System.out.println("Reinforcement +6");
 		} else if(a1.containsValue(1) && b1.containsValue(1) && c1.containsValue(1)) {
 			extra_army+=4;
-			System.out.println("Reinforcement +4");
+			//System.out.println("Reinforcement +4");
 		} else if(a1.containsValue(1) && b1.containsValue(2) && c1.containsValue(3)||
 		 a1.containsValue(1) && b1.containsValue(3) && c1.containsValue(2)||
 		 a1.containsValue(2) && b1.containsValue(1) && c1.containsValue(3)||
@@ -79,9 +78,9 @@ public class RGPcardDivision {
 		 a1.containsValue(3) && b1.containsValue(1) && c1.containsValue(2)||
 		 a1.containsValue(3) && b1.containsValue(2) && c1.containsValue(1)) {
 			extra_army+=10;
-			System.out.println("Reinforcement +10");
+			//System.out.println("Reinforcement +10");
 		} else {
-			System.out.println("No Reinforcement");
+			System.out.println("No Reinforcement : check the cards you entered.");
 		}
 		return extra_army;
 	}
@@ -158,6 +157,14 @@ public class RGPcardDivision {
 		return null;
 	}
 		
+	/**
+	 * This method is used to trade cards and to get value of extra armies
+	 * 
+	 * @author Dhruvi Gadhiya
+	 * @param cards This parameter is contains HashMap of cards owned by a player
+	 * 
+	 * @return This method will return number of armies collected by trading cards
+	 * */
 	public static int trade_card(HashMap<String,Integer> cards) {
 		int extra_army=0;
 		HashMap<String,Integer> a_1 =new HashMap<String,Integer>();
@@ -181,7 +188,15 @@ public class RGPcardDivision {
 		}
 		return extra_army;
 	}
-		
+	
+	/**
+	 * This method is used to get cards entered by asking player   
+	 * 
+	 * @author Dhruvi Gadhiya
+	 * @param cards This parameter is contains HashMap of cards owned by a player
+	 * 
+	 * @return This method will return card entered by player to trade in form of HashMap 
+	 * */
 	public static HashMap<String,Integer> get_card(HashMap<String,Integer> cards){
 		HashMap<String,Integer> card = new HashMap<String,Integer>();
 		String c1 = "";
