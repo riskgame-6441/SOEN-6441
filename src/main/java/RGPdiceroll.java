@@ -512,6 +512,14 @@ public class RGPdiceroll {
 		return army_per_country;
 	}
 
+	/**
+	 * This method is used to get index of defender during attack phase
+	 * 
+	 * @author Dhruvi Gadhiya
+	 * @param defender_country This parameter contains value of country which is attacked during attack phase.
+	 * @param country_per_player This parameter contains list of countries for each player
+	 * @return This method will return index of defender
+	 * */
 	public static int getDefenderIndex(String defender_country, List<List<String>> country_per_player) {
 		int n = -1;
 		for(int i=0;i<country_per_player.size();i++) {

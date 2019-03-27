@@ -7,7 +7,6 @@ import java.util.Scanner;
  * @author pavan
  * @version 1.0.0
  */
-
 public class RGPnamingPlayers  {
     RGPlisting a1 = new RGPlisting();
     int pinp = 0;

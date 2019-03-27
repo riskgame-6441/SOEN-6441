@@ -17,6 +17,7 @@ class RGParmyTest {
 		int b = a.totalArmy(2, 35);
 		assertEquals(33,b);
 	}
+	@Test
 	/**
 	 * This method is test case2 for total armies
 	 */
@@ -25,6 +26,7 @@ class RGParmyTest {
 		int b = a.totalArmy(3, 35);
 		assertEquals(29, b);
 	}
+	@Test
 	/**
 	 * This method is test case3 for total armies
 	 */
