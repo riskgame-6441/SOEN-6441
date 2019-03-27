@@ -1,14 +1,13 @@
 import java.util.*;
 
-	/**
-	 * This class is about Card Dealing in the Game. 
-	 * 
-	 * 
-	 * @author Krisha Patel
-	 * @version 1.0.0
-	 *
-	 */
-
+/**
+ * This class is about Card Dealing in the Game. 
+ * 
+ * 
+ * @author Krisha Patel
+ * @version 1.0.0
+ *
+ */
 public class RGPcardDivision {
 	
 	private static HashMap<String,Integer> asd1 = new HashMap<String,Integer>();
@@ -158,6 +157,14 @@ public class RGPcardDivision {
 		return null;
 	}
 		
+	/**
+	 * This method is used to trade cards and to get value of extra armies
+	 * 
+	 * @author Dhruvi Gadhiya
+	 * @param cards This parameter is contains HashMap of cards owned by a player
+	 * 
+	 * @return This method will return number of armies collected by trading cards
+	 * */
 	public static int trade_card(HashMap<String,Integer> cards) {
 		int extra_army=0;
 		HashMap<String,Integer> a_1 =new HashMap<String,Integer>();
@@ -181,7 +188,15 @@ public class RGPcardDivision {
 		}
 		return extra_army;
 	}
-		
+	
+	/**
+	 * This method is used to get cards entered by asking player   
+	 * 
+	 * @author Dhruvi Gadhiya
+	 * @param cards This parameter is contains HashMap of cards owned by a player
+	 * 
+	 * @return This method will return card entered by player to trade in form of HashMap 
+	 * */
 	public static HashMap<String,Integer> get_card(HashMap<String,Integer> cards){
 		HashMap<String,Integer> card = new HashMap<String,Integer>();
 		String c1 = "";
