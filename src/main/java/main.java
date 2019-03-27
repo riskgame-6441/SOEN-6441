@@ -73,6 +73,7 @@ public class main {
 		RGPprintTable o_printtable = new RGPprintTable();
 		
 		List<Integer> out_players = null;
+		List<List<String>> continent_list_per_player = new ArrayList<List<String>>();
 		int player_flag = 1;
 		int i;
 		while(player_flag == 1) {
@@ -92,8 +93,8 @@ public class main {
         		float map_per_player = (float)(100*player_country_num)/total_country_num;
         		//System.out.println("Map(%) : "+map_per_player+" %");
         		
-        		List<List<String>> continent_list_per_player = o_reinforcement.getContinent(country_per_player, country_continent, contvalue1);
-        		System.out.println(continent_list_per_player);
+        		continent_list_per_player = o_reinforcement.getContinent(country_per_player, country_continent, contvalue1);
+        		//System.out.println(continent_list_per_player);
             	//System.out.println("Continents : "+continent_list_per_player);
             	//System.exit(0);
             	int total_army_per_player=0;
@@ -101,7 +102,7 @@ public class main {
             		total_army_per_player+=army_per_country.get(country_per_player.get(j).get(k));
             	}
             	//System.out.println("Total armies : "+total_army_per_player);
-            	subject1.setNameState(j+1,(int)map_per_player,country_per_player.get(i),total_army_per_player);
+            	subject1.setNameState(j+1,(int)map_per_player,continent_list_per_player.get(i),total_army_per_player);
             	System.out.println("\n");
             	
         	}
@@ -158,11 +159,17 @@ public class main {
     				extra_army = o_card.trade_card(card_6);
     			}
     		}
-    		
-    		System.out.println("Extra armies : "+extra_army);
+    		int extra_army_continent = 0;
+    		System.out.println("Extra armies by trading cards : "+extra_army);
 			int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1, country_continent,
 					contvalue);
 			z += extra_army;
+			for(int h=0;h<continent_list_per_player.get(i).size();h++){
+				String continent = continent_list_per_player.get(i).get(h);
+				extra_army_continent = contvalue.get(continent);
+			}
+			System.out.println("Extra armies by continent : "+extra_army_continent);
+			z+=extra_army_continent;
 			System.out.println("Number of armies to Reinforcement : " + z);
 
 			army_per_country = o_reinforcement.placeReinforceArmies(z, i, country_per_player, army_per_country);
