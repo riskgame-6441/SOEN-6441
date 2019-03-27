@@ -475,7 +475,10 @@ public class main {
 		}
 		}
 	}
-
+    /**
+     * This method is for menu options
+     * @throws Exception
+     */
 	public static void menu() throws Exception {
 		int i = 0;
 		Scanner a = new Scanner(System.in);
@@ -510,7 +513,10 @@ public class main {
 		}
 
 	}
-
+   /**
+    * This method is for map options
+    * @throws Exception
+    */
 	public static void mapo() throws Exception {
 		int i = 0;
 		RGPmapCentral mapob = new RGPmapCentral();
