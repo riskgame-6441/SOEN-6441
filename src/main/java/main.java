@@ -459,9 +459,12 @@ public class main {
 			subject.setNameState(player_names[i], phase3, message3);
 			System.out.println("=============================\n");
 
-			o_fortification.fortify(file, country_per_player.get(i), army_per_country);
-			o_printtable.getTable(file, i, country_per_player, army_per_country);
-
+			System.out.println("Do you want to fortify ?(y/n)");
+			String ans = ab.next();
+			if (ans.equalsIgnoreCase("y")) {
+				o_fortification.fortify(file, country_per_player.get(i), army_per_country);
+				o_printtable.getTable(file, i, country_per_player, army_per_country);
+			}
 		}
 		}
 	}
