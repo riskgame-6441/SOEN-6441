@@ -20,15 +20,10 @@ public class RGPobserverSubject {
 		this.name = name;
 		this.state = state;
 		this.message = message;
-	}
-	public void setNameState(String name) {
-		this.name = name;
 		notifyAllObservers();
 	}
-	public void setPhaseState(String state) {
-		this.state = state;
-		notifyAllObservers();
-	}
+
+	
 	public void attach(RGPobserverObserver observer) {
 		observers.add(observer);
 	}
