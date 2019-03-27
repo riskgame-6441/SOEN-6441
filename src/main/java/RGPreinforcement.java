@@ -69,6 +69,23 @@ public class RGPreinforcement {
 		}
 		return reinforced_armies;
 	}
+	/**
+	 * This method is to check the end of game play
+	 * @param country_list is total country list
+	 * @param country_per_player is country per player
+	 * @param i is player index
+	 * @return returns player has won the game or not
+	 */
+	public int endOfGame(ArrayList<String> country_list,List<List<String>> country_per_player,int i){
+		int value = 0;
+		if(country_per_player.get(i).equals(country_list)){
+			value = 1;
+		}
+		else{
+			value = 0;
+		}
+		return value;
+	}
 	
 	/**
 	 * This method will perform placing of reinforced armies to countries.
