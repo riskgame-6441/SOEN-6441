@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 /**
  * This class is to implement Dice functionality to decide who is the winner
@@ -504,6 +505,7 @@ public class RGPdiceroll {
 
 					}
 				}
+				TimeUnit.SECONDS.sleep(3);
 			}
 		}
 		army_per_country.put(attack_country, attacker_armies);

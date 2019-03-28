@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class main {
 
@@ -93,7 +94,7 @@ public class main {
         		//System.out.println("Map(%) : "+map_per_player+" %");
         		
         		List<List<String>> continent_list_per_player = o_reinforcement.getContinent(country_per_player, country_continent, contvalue1);
-        		System.out.println(continent_list_per_player);
+        		//System.out.println(continent_list_per_player);
             	//System.out.println("Continents : "+continent_list_per_player);
             	//System.exit(0);
             	int total_army_per_player=0;
@@ -101,18 +102,19 @@ public class main {
             		total_army_per_player+=army_per_country.get(country_per_player.get(j).get(k));
             	}
             	//System.out.println("Total armies : "+total_army_per_player);
-            	subject1.setNameState(j+1,(int)map_per_player,country_per_player.get(i),total_army_per_player);
+            	subject1.setNameState(j+1,(int)map_per_player,continent_list_per_player.get(i),total_army_per_player);
             	System.out.println("\n");
             	
         	}
         	System.out.println("==========================");
-        	
+        	TimeUnit.SECONDS.sleep(3);
         	//System.exit(0);
         	//phase view
         	System.out.println("\nPHASE VIEW");
         	System.out.println("\n=============================");
         	subject.setNameState(player_names[i],phase1,message1);
         	System.out.println("=============================\n");
+        	TimeUnit.SECONDS.sleep(3);
         	o_printtable.getTable(file,i,country_per_player,army_per_country);
         	
         	//reinforce armies

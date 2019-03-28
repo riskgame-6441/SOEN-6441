@@ -1,18 +1,14 @@
-//import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.Assert.*;
+import org.junit.Test;
 import java.io.File;
-//import java.nio.file.Files;
 
-//import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 /**
  * This class is for test cases of map validation
  * @author pavan
  *  @version 1.0.0
  */
 public class RGPMapValidationTest {
-	File file = new File("D:/Projects/Risk/SOEN-6441/src/main/java/cmap.map");
+	File file = new File("D:/Projects/Risk/SOEN-6441/src/main/java/world.map");
 	
 	@Test
 	public void test() throws Exception{
@@ -31,7 +27,7 @@ public class RGPMapValidationTest {
 		RGPmap a = new RGPmap();
 		//assertThrows(RuntimeException.class, () -> {
 		int b = a.validateConnectedContinents(file);
-		assertEquals(0, b);
+		assertEquals(1, b);
 		//});
 		
 	}
@@ -53,7 +49,7 @@ public class RGPMapValidationTest {
 		RGPmap a = new RGPmap();
 		//assertThrows(RuntimeException.class, () -> {
 		int b = a.validateConnectedCountries(file);
-		assertEquals(0, b);
+		assertEquals(1, b);
 		//});
 		
 	}

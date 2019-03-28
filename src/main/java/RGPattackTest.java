@@ -1,15 +1,11 @@
-import static org.junit.Assert.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-
-import org.junit.jupiter.api.Test;
-
-import junit.framework.Assert;
 
 public class RGPattackTest {
 
@@ -99,7 +95,8 @@ public class RGPattackTest {
 		country_per_player2.add("SriLanka");
 		country_per_player.add(country_per_player1);
 		country_per_player.add(country_per_player2);
-		File file = new File("C:\\Misc\\Concordia\\6441-git\\SOEN-6441\\src\\main\\java\\world.map");
+		File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+		//File file = new File("C:\\Misc\\Concordia\\6441-git\\SOEN-6441\\src\\main\\java\\world.map");
 		String attack_country = "India";
 		String defend_country = "Bangladesh";
 		
@@ -132,7 +129,8 @@ public class RGPattackTest {
 		country_per_player2.add("SriLanka");
 		country_per_player.add(country_per_player1);
 		country_per_player.add(country_per_player2);
-		File file = new File("C:\\Misc\\Concordia\\6441-git\\SOEN-6441\\src\\main\\java\\world.map");
+		File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+		//File file = new File("C:\\Misc\\Concordia\\6441-git\\SOEN-6441\\src\\main\\java\\world.map");
 		String attack_country = "India";
 		String defend_country = "Bangladesh";
 		

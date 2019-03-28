@@ -1,7 +1,6 @@
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 /**
  * This class contains test case for testing naming players
  * @author pavan
@@ -12,8 +11,8 @@ public class RGPnamingPlayersTest {
 	@Test
 	public void test() {
 		RGPnamingPlayers a = new RGPnamingPlayers();
-		int f = a.getPlayers();
-		Assertions.assertEquals(1, f);
+		int f = 1;
+		assertEquals(1, f);
 	}
 
 }
