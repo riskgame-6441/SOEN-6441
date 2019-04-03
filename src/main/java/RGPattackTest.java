@@ -11,7 +11,9 @@ import org.junit.jupiter.api.Test;
 
 import junit.framework.Assert;
 
-class RGPattackTest {
+
+public class RGPattackTest {
+
 
 	RGPdiceroll o_dice = new RGPdiceroll();
 
