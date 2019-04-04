@@ -211,6 +211,16 @@ public class RGPdiceroll {
 		army_per_country.put(attack_country, army1);
 		return army_per_country;
 	}
+	
+	public HashMap<String, Integer> placeAttackArmiesAggressive(int attacker_armies, String attack_country, String defend_country, HashMap<String, Integer> army_per_country) {
+		int armies1, army1;
+		armies1 = 1;
+		armies1 += army_per_country.get(defend_country);
+		army_per_country.put(defend_country, armies1);
+		army1 = attacker_armies - armies1;
+		army_per_country.put(attack_country, army1);
+		return army_per_country;
+	}
 
 	/**
 	 * This method is place country in players list
@@ -236,6 +246,12 @@ public class RGPdiceroll {
 				country_per_player.get(j).remove(defend_country);
 			}
 		}
+		country_per_player.get(i).add(defend_country);
+		return country_per_player;
+	}
+	
+	public List<List<String>> placeAttackCountryAggressive(String attack_country, String defend_country, List<List<String>> country_per_player, int i, int d) {
+		country_per_player.get(d).remove(defend_country);
 		country_per_player.get(i).add(defend_country);
 		return country_per_player;
 	}
@@ -508,6 +524,109 @@ public class RGPdiceroll {
 				TimeUnit.SECONDS.sleep(3);
 			}
 		}
+		army_per_country.put(attack_country, attacker_armies);
+		army_per_country.put(defend_country, defender_armies);
+
+		return army_per_country;
+	}
+	
+	public HashMap<String, Integer> rollDiceAggressive(int attack_armies, int defend_armies, File file, int p, List<List<String>> country_per_player, HashMap<String, Integer> army_per_country, String attack_country, String defend_country) throws Exception {
+		HashMap<Integer, Integer> armies = new HashMap<Integer, Integer>();
+		int attacker_armies = attack_armies;
+		int defender_armies = defend_armies;
+		int noOfAttackerDice = 0;
+		int z = 1;
+		String ans = null;
+			
+		while (attacker_armies > 1 && defender_armies > 0) {
+				int[] minattckerarmy = new int[2];
+				minattckerarmy[0] = attacker_armies-1;
+				minattckerarmy[1] = 3;
+				int noofattackerdice = minOfArray(minattckerarmy);
+				int a[] = rollOfDice(noofattackerdice);
+
+				int noofdefenderdice;
+				if (defender_armies < 2) {
+					noofdefenderdice1 = 1;
+				} else {
+					noofdefenderdice1 = 2;
+				}
+				if (noofattackerdice < 2) {
+					noofdefenderdice1 = noofattackerdice;
+				}
+				int b[] = rollOfDice(noofdefenderdice1);
+
+				int minvalue = minOfArray(a);
+				System.out.println("Attacker Dice values");
+				for (int i = 0; i < a.length; i++) {
+					System.out.println(a[i]);
+				}
+				// System.out.println("Min value in three dice");
+				// System.out.println(minvalue);
+
+				int indexv = minIndexValue(a);
+				// System.out.println("index is" + indexv);
+				if (attacker_armies > 2) {
+					a = deleteMinNum(a, indexv);
+				}
+				
+				System.out.println("Defender Dice values");
+				for (int i = 0; i < b.length; i++) {
+					System.out.println(b[i]);
+				}
+
+				int max_dicevalue_attacker = maxOfArray(a);
+				int max_dicevalue_defender = maxOfArray(b);
+				int min_dicevalue_attacker = minOfArray(a);
+				int min_dicevalue_defender = maxOfArray(b);
+				if (max_dicevalue_attacker > max_dicevalue_defender
+						&& min_dicevalue_attacker > min_dicevalue_defender) {
+
+					RGPattackerCount++;
+				} else if (max_dicevalue_attacker >= max_dicevalue_defender
+						&& min_dicevalue_attacker > min_dicevalue_defender) {
+					RGPattackerCount++;
+				} else if (max_dicevalue_attacker > max_dicevalue_defender
+						&& min_dicevalue_attacker >= min_dicevalue_defender) {
+					RGPattackerCount++;
+				} else if (max_dicevalue_attacker < max_dicevalue_defender
+						&& min_dicevalue_attacker < min_dicevalue_defender) {
+					RGPdefenderCount++;
+				} else if (max_dicevalue_attacker <= max_dicevalue_defender
+						&& min_dicevalue_attacker < min_dicevalue_defender) {
+					RGPdefenderCount++;
+				} else if (max_dicevalue_attacker < max_dicevalue_defender
+						&& min_dicevalue_attacker <= min_dicevalue_defender) {
+					RGPdefenderCount++;
+				} else {
+					RGPdefenderCount++;
+				}
+				if (RGPattackerCount > 0) {
+					defender_armies = defender_armies - 1;
+					System.out.println("Defender Armies count value" + defender_armies);
+					System.out.println("Attacker Armies count value" + attacker_armies);
+					RGPattackerCount = 0;
+				}
+				if (RGPdefenderCount > 0) {
+					attacker_armies = attacker_armies - 1;
+					System.out.println("Attacker Armies count value" + attacker_armies);
+					System.out.println("Defender Armies count value" + defender_armies);
+					RGPdefenderCount = 0;
+				}
+			
+
+		}
+		if (attacker_armies < 1) {
+			army_per_country.put(attack_country, attacker_armies);
+			army_per_country.put(defend_country, defender_armies);
+		}
+		if (defender_armies < 1) {
+			army_per_country.put(attack_country, attacker_armies);
+			army_per_country.put(defend_country, defender_armies);
+		}
+
+			
+		
 		army_per_country.put(attack_country, attacker_armies);
 		army_per_country.put(defend_country, defender_armies);
 

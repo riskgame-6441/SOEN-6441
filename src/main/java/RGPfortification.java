@@ -15,6 +15,7 @@ import java.util.Scanner;
 public class RGPfortification {
 
 	RGPprintTable o_printtable = new RGPprintTable();
+	RGPattack o_attack = new RGPattack();
 	
 	/**
 	 * This method will perform fortification.
@@ -80,6 +81,70 @@ public class RGPfortification {
 			fortify(file,country_list,army_per_country);
 		}
 		
+	}
+	
+	public void  fortifyAggressive(File file,List<String> country_list,HashMap<String,Integer> army_per_country) throws Exception {
+		int flag = 0;
+		String country1 = " ";
+		String country2 = " ";
+		
+		for(int i=0;i<country_list.size()-1;i++) {
+			int x = 0;
+			int y = 0;
+			String c1 = " "; 
+			String c2 = country_list.get(i+1);
+			
+			if(c1 != " ") {
+				ArrayList<String> neighbour_countries_x = o_printtable.getNeighbour(file, country2);
+				ArrayList<String> to_be_attacked_countries_x = o_attack.toBeAttackedCountry(country_list, neighbour_countries_x);
+				x = to_be_attacked_countries_x.size();
+			}else {
+				c1 = country_list.get(i);
+				ArrayList<String> neighbour_countries_x = o_printtable.getNeighbour(file, c1);
+				ArrayList<String> to_be_attacked_countries_x = o_attack.toBeAttackedCountry(country_list, neighbour_countries_x);
+				x = to_be_attacked_countries_x.size();
+			}
+			ArrayList<String> neighbour_countries_y = o_printtable.getNeighbour(file, c2);
+			ArrayList<String> to_be_attacked_countries_y = o_attack.toBeAttackedCountry(country_list, neighbour_countries_y);
+			y = to_be_attacked_countries_y.size();
+			if(x>=y) {
+				country2 = c1;
+			}else {
+				country2 = c2;
+			}
+		}
+		
+		for(int i=0;i<country_list.size()-1;i++) {
+			if(country_list.get(i)==country2) {
+				break;
+			}
+			if(country_list.get(i+1)==country2) {
+				break;
+			}
+			int x = 0;
+			int y = 0;
+			String c1 = " "; 
+			String c2 = country_list.get(i+1);
+			
+			if(c1 != " ") {
+				x = army_per_country.get(country1);
+			}else {
+				c1 = country_list.get(i);
+				x = army_per_country.get(country_list.get(i));
+			}
+			y = army_per_country.get(country_list.get(i+1));
+			if(x>=y) {
+				country1 = c1;
+			}else {
+				country1 = c2;
+			}
+		}
+		System.out.println("Country 1 : "+country1);
+		System.out.println("Country 2 : "+country2);
+		int f_army = army_per_country.get(country1)-1;
+		army_per_country.put(country1, 1);
+		f_army += army_per_country.get(country2);
+		army_per_country.put(country2, f_army);	
 	}
 	
 	/**

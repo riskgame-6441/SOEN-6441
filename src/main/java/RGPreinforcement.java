@@ -141,6 +141,35 @@ public class RGPreinforcement {
     	}
     	return army_per_country; 
 	}
+	
+	public HashMap<String, Integer> placeReinforceArmiesAggressive(int z, int i, List<List<String>> country_per_player, HashMap<String, Integer> army_per_country) {
+		
+		String a_country= " ";
+		for(int j=0;j<country_per_player.get(i).size()-1;j++) {
+			int x = 0;
+			String country_x = " ";
+			if(a_country != " ") {
+				x = army_per_country.get(a_country);
+				country_x = a_country;
+			}else {
+				x = army_per_country.get(country_per_player.get(i).get(j));
+				country_x = country_per_player.get(i).get(j);
+			}
+			
+			int y = army_per_country.get(country_per_player.get(i).get(j+1));
+			String country_y = country_per_player.get(i).get(j+1);
+			if(x>=y) {
+				a_country = country_x;
+			}else {
+				a_country = country_y;
+			}
+		}
+		int army = army_per_country.get(a_country);
+		army+=z;
+		army_per_country.put(a_country, army);
+		
+    	return army_per_country; 
+	}
 
 	/**
 	 * This function used to access continents owned by players.
