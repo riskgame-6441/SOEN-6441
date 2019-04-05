@@ -512,11 +512,81 @@ public class main {
 				o_printtable.getTable(file, i, country_per_player, army_per_country);
 				System.exit(0);
 			}else if(player_names.get(player) == 3) {
+				System.out.println("Player : "+player);
+				o_printtable.getTable(file, i, country_per_player, army_per_country);
+				int extra_army=0;    		
+	    		int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1, country_continent, contvalue);
+				z += extra_army;
+				army_per_country = o_reinforcement.placeReinforceArmiesBenevolent(z, i, country_per_player, army_per_country);
+				System.out.println("Reinforced armies : "+z);
 				
+				System.out.println("After Reinforcement : ");
+				o_printtable.getTable(file, i, country_per_player, army_per_country);
+				//no attack phase
+				o_fortification.fortifyBenevolent(file, country_per_player.get(i), army_per_country);
+				System.out.println("Fortification Phase done");
+				o_printtable.getTable(file, i, country_per_player, army_per_country);
+				System.exit(0);
 			}else if(player_names.get(player) == 4) {
+				System.out.println("Player : "+player);
+				o_printtable.getTable(file, i, country_per_player, army_per_country);
+				int extra_army=0;    		
+	    		int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1, country_continent, contvalue);
+				z += extra_army;
+				army_per_country = o_reinforcement.placeReinforceArmiesRandom(z, i, country_per_player, army_per_country);
+				System.out.println("Reinforced armies : "+z);
 				
+				System.out.println("After Reinforcement : ");
+				o_printtable.getTable(file, i, country_per_player, army_per_country);
+				
+				String a_country = o_attack.getAttackingCountryRandom(country_per_player.get(i), army_per_country);
+				System.out.println("Attacker Country : "+a_country);
+				ArrayList<String> neighbour_countries = o_printtable.getNeighbour(file, a_country);
+				ArrayList<String> to_be_attacked_countries = o_attack.toBeAttackedCountry(country_per_player.get(i), neighbour_countries);
+				int a_armies = army_per_country.get(a_country);
+				System.out.println("Attacker Armies : "+a_armies);
+				
+				for(int l=0;l<to_be_attacked_countries.size();l++) {
+					if(a_armies<=1) {
+						break;
+					}
+					String d_country = to_be_attacked_countries.get(l);
+					int d = o_dice.getDefenderIndex(d_country, country_per_player);
+					int d_armies = army_per_country.get(d_country);
+										
+					army_per_country = o_dice.rollDiceRandom(a_armies, d_armies, file, i, country_per_player, army_per_country, a_country, d_country);
+					a_armies = army_per_country.get(a_country);
+					d_armies = army_per_country.get(d_country);
+					
+					if(d_armies == 0) {
+						army_per_country = o_dice.placeAttackArmiesRandom(a_armies, a_country, d_country, army_per_country);
+						country_per_player = o_dice.placeAttackCountryRandom(a_country, d_country, country_per_player, i, d);
+					}
+					System.out.println(army_per_country);
+					System.out.println(country_per_player);
+				}
+				o_printtable.getTable(file, i, country_per_player, army_per_country);
+				System.out.println("Attack Phase done");
+				o_fortification.fortifyRandom(file, country_per_player.get(i), army_per_country);
+				System.out.println("Fortification Phase done");
+				o_printtable.getTable(file, i, country_per_player, army_per_country);
+				System.exit(0);
 			}else if(player_names.get(player) == 5) {
+				System.out.println("Player : "+player);
+				o_printtable.getTable(file, i, country_per_player, army_per_country);
+				army_per_country = o_reinforcement.placeReinforceArmiesCheater(i, country_per_player, army_per_country);
 				
+				System.out.println("After Reinforcement : ");
+				o_printtable.getTable(file, i, country_per_player, army_per_country);
+				
+				country_per_player = o_attack.attackCheater(file, i, country_per_player);
+				System.out.println("Attack Phase done");
+				o_printtable.getTable(file, i, country_per_player, army_per_country);
+
+				o_fortification.fortifyCheater(file, country_per_player.get(i), army_per_country);
+				System.out.println("Fortification Phase done");
+				o_printtable.getTable(file, i, country_per_player, army_per_country);
+				System.exit(0);
 			}
 		}
 		}
