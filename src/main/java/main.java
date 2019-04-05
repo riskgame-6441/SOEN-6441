@@ -76,8 +76,6 @@ public class main {
 		HashMap<String, Integer> card_6 = new HashMap<String, Integer>();
 		cards = o_card.hm1(country_name);
 
-		
-		
 		List<Integer> out_players = new ArrayList<Integer>();
 		List<List<String>> continent_list_per_player = new ArrayList<List<String>>();
 		int player_flag = 1;
