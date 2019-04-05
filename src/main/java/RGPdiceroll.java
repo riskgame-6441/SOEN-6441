@@ -260,15 +260,21 @@ public class RGPdiceroll {
 		return country_per_player;
 	}
 	
-	public List<List<String>> placeAttackCountryAggressive(String attack_country, String defend_country, List<List<String>> country_per_player, int i, int d) {
+	public List<List<String>> placeAttackCountryAggressive(String attack_country, String defend_country, List<List<String>> country_per_player, int i, int d, List<Integer> out_players) {
 		country_per_player.get(d).remove(defend_country);
 		country_per_player.get(i).add(defend_country);
+		if(country_per_player.get(d).size()==0) {
+			out_players.add(d);
+		}
 		return country_per_player;
 	}
 	
-	public List<List<String>> placeAttackCountryRandom(String attack_country, String defend_country, List<List<String>> country_per_player, int i, int d) {
+	public List<List<String>> placeAttackCountryRandom(String attack_country, String defend_country, List<List<String>> country_per_player, int i, int d, List<Integer> out_players) {
 		country_per_player.get(d).remove(defend_country);
 		country_per_player.get(i).add(defend_country);
+		if(country_per_player.get(d).size()==0) {
+			out_players.add(d);
+		}
 		return country_per_player;
 	}
 

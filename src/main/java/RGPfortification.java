@@ -214,19 +214,31 @@ public class RGPfortification {
 		Random rand = new Random();
 		int n = country_list.size();
 		country1 = country_list.get(rand.nextInt(n));
-		country2 = country_list.get(rand.nextInt(n));
-		while(country1 == country2) {
-			country2 = country_list.get(rand.nextInt(n));
-		}
-		
-		System.out.println("Country 1 : "+country1);
-		System.out.println("Country 2 : "+country2);
 		int m = army_per_country.get(country1);
-		int f_army = rand.nextInt(m-1);
-		int new_army = army_per_country.get(country1) - f_army;
-		army_per_country.put(country1, new_army);
-		f_army += army_per_country.get(country2);
-		army_per_country.put(country2, f_army);	
+		int flag=0;
+		while(m == 1) {
+			country1 = country_list.get(rand.nextInt(n));
+			m = army_per_country.get(country1);
+			flag++;
+			if(flag==country_list.size()) {
+				break;
+			}
+		}
+		if(flag!=country_list.size()) {
+			country2 = country_list.get(rand.nextInt(n));
+			while(country1 == country2) {
+				country2 = country_list.get(rand.nextInt(n));
+			}
+			
+			System.out.println("Country 1 : "+country1);
+			System.out.println("Country 2 : "+country2);
+			
+			int f_army = rand.nextInt(m-1);
+			int new_army = army_per_country.get(country1) - f_army;
+			army_per_country.put(country1, new_army);
+			f_army += army_per_country.get(country2);
+			army_per_country.put(country2, f_army);
+		}
 	}
 	
 	public void  fortifyCheater(File file,List<String> country_list,HashMap<String,Integer> army_per_country) throws Exception {

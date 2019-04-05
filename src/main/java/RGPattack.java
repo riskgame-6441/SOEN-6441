@@ -41,7 +41,7 @@ public class RGPattack {
 		return a_country;
 	}
 	
-	public List<List<String>> attackCheater(File file, int i, List<List<String>> country_per_player) throws Exception {
+	public List<List<String>> attackCheater(File file, int i, List<List<String>> country_per_player, List<Integer> out_players) throws Exception {
 		for(int j=0;j<country_per_player.get(i).size();j++) {
 			ArrayList<String> neighbour_countries = o_printtable.getNeighbour(file, country_per_player.get(i).get(j));
 			ArrayList<String> to_be_attacked_countries = new ArrayList<String>(); 
@@ -51,6 +51,9 @@ public class RGPattack {
 				int d = o_dice.getDefenderIndex(country, country_per_player);
 				country_per_player.get(i).add(country);
 				country_per_player.get(d).remove(country);
+				if(country_per_player.get(d).size()==0) {
+					out_players.add(d);
+				}
 			}
 		}
 		return country_per_player;
