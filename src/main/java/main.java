@@ -211,11 +211,12 @@ public class main {
 		Scanner a = new Scanner(System.in);
 
 		while (i == 0) {
-			System.out.println("*************");
-			System.out.println("* 1- Start *");
-			System.out.println("* 2- Help  *");
-			System.out.println("* 3- Exit  *");
-			System.out.println("************\n");
+			System.out.println("*************************");
+			System.out.println("* 1- Single player mode *");
+			System.out.println("* 2- Tournament mode    *");
+			System.out.println("* 3- Help               *");
+			System.out.println("* 4- Exit               *");
+			System.out.println("*************************\n");
 			System.out.println("Enter your option");
 			int option = a.nextInt();
 			switch (option) {
@@ -224,9 +225,11 @@ public class main {
 				i = i + 1;
 				break;
 			case 2:
+				System.out.println("tournament mode");
+			case 3:
 				System.out.println("Risk Game Help");
 				menu();
-			case 3:
+			case 4:
 				System.exit(option);
 				i = i + 1;
 				break;
