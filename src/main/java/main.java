@@ -1,10 +1,11 @@
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
-public class main {
+public class main implements Serializable {
 
 	static int total_players;
 	static String[] player_names;
@@ -18,6 +19,8 @@ public class main {
 		RGPworldDominationObserver RGPworldDominationDetails =  new RGPworldDominationDetails(subject1);
 		RGPcardViewSubject subject3 = new RGPcardViewSubject();
 		RGPcardViewObserver RGPcardViewDetails =  new RGPcardViewDetails(subject3);
+		RGPsaveLoadGame saveload = new RGPsaveLoadGame();
+		RGPGameElements gameElements = new RGPGameElements();
 		
 		RGPplayer player = new RGPplayer();
 
@@ -86,6 +89,7 @@ public class main {
 				}
 				
 			}
+			
 			System.out.println("\nWORLD DOMINATION VIEW\n");
 			System.out.println("==========================");
 			//Players world domination view
@@ -107,7 +111,19 @@ public class main {
             	
         	}
         	System.out.println("==========================");
-        	
+        	gameElements.armies_per_player = armies_per_player;
+        	gameElements.army_per_country = army_per_country;
+        	gameElements.continent_list = continent_list;
+        	gameElements.country_continent = country_continent;
+        	gameElements.country_list =  country_list;
+        	gameElements.country_per_player = country_per_player;
+        	//gameElements.neighbour_countries = neighbour_countries;
+        	Scanner scan = new Scanner(System.in);
+        	System.out.println("Do you want to save the game (yes/no)?");
+        	String ans = scan.next();
+			if (ans.equalsIgnoreCase("yes")){
+				saveload.saveGame(gameElements);
+			}
         	//System.exit(0);
         	//phase view
         	System.out.println("\nPHASE VIEW");
