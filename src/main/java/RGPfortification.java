@@ -88,12 +88,12 @@ public class RGPfortification {
 		int flag = 0;
 		String country1 = " ";
 		String country2 = " ";
-		
+		String c1 = " "; 
+		String c2 = " ";
 		for(int i=0;i<country_list.size()-1;i++) {
 			int x = 0;
 			int y = 0;
-			String c1 = " "; 
-			String c2 = country_list.get(i+1);
+			c2 = country_list.get(i+1);
 			
 			if(c1 != " ") {
 				ArrayList<String> neighbour_countries_x = o_printtable.getNeighbour(file, country2);
@@ -114,18 +114,18 @@ public class RGPfortification {
 				country2 = c2;
 			}
 		}
-		
+		c1 = " ";
+		c2 = " ";
 		for(int i=0;i<country_list.size()-1;i++) {
 			if(country_list.get(i)==country2) {
-				break;
+				continue;
 			}
 			if(country_list.get(i+1)==country2) {
-				break;
+				continue;
 			}
 			int x = 0;
 			int y = 0;
-			String c1 = " "; 
-			String c2 = country_list.get(i+1);
+			c2 = country_list.get(i+1);
 			
 			if(c1 != " ") {
 				x = army_per_country.get(country1);
@@ -152,46 +152,51 @@ public class RGPfortification {
 		int flag = 0;
 		String country1 = " ";
 		String country2 = " ";
+		String c1 = " ";
+		String c2 = " "; 
 		
 		for(int i=0;i<country_list.size()-1;i++) {
 			int x = 0;
 			int y = 0;
-			String c1 = " "; 
-			String c2 = country_list.get(i+1);
+			
+			c2 = country_list.get(i+1);
 			
 			if(c1 != " ") {
-				x = army_per_country.get(country2);
+				c1 = country2;
+				x = army_per_country.get(c1);
 			}else {
 				c1 = country_list.get(i);
-				x = army_per_country.get(country_list.get(i));
+				x = army_per_country.get(c1);
 			}
-			y = army_per_country.get(country_list.get(i+1));
+			y = army_per_country.get(c2);
 			if(x<=y) {
 				country2 = c1;
 			}else {
 				country2 = c2;
 			}
 		}
-		
+		c1 = " ";
+		c2 = " ";
 		for(int i=0;i<country_list.size()-1;i++) {
 			if(country_list.get(i)==country2) {
-				break;
+				continue;
 			}
 			if(country_list.get(i+1)==country2) {
-				break;
+				continue;
 			}
 			int x = 0;
 			int y = 0;
-			String c1 = " "; 
-			String c2 = country_list.get(i+1);
+			 
+			c2 = country_list.get(i+1);
 			
 			if(c1 != " ") {
-				x = army_per_country.get(country1);
+				c1 = country1;
+				x = army_per_country.get(c1);
 			}else {
 				c1 = country_list.get(i);
-				x = army_per_country.get(country_list.get(i));
+				x = army_per_country.get(c1);
 			}
-			y = army_per_country.get(country_list.get(i+1));
+			y = army_per_country.get(c2);
 			if(x>=y) {
 				country1 = c1;
 			}else {

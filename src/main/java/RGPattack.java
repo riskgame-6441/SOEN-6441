@@ -11,9 +11,9 @@ public class RGPattack {
 	
 	public static String getAttackingCountryAggressive(List<String> country_per_player, HashMap<String, Integer> army_per_country) {
 		String a_country= " ";
+		String country_x = " ";
+		int x = 0;
 		for(int j=0;j<country_per_player.size()-1;j++) {
-			int x = 0;
-			String country_x = " ";
 			if(a_country != " ") {
 				x = army_per_country.get(a_country);
 				country_x = a_country;

@@ -37,6 +37,7 @@ public class main {
 		RGPprintTable o_printtable = new RGPprintTable();
 		RGPreinforcement o_reinforcement = new RGPreinforcement();
 		RGPdiceroll o_dice = new RGPdiceroll();
+		RGPaggressive o_aggressive = new RGPaggressive();
 		
 		System.out.println("--------WELCOME TO RISK--------\n");
 		menu();
@@ -79,23 +80,28 @@ public class main {
 		List<Integer> out_players = new ArrayList<Integer>();
 		List<List<String>> continent_list_per_player = new ArrayList<List<String>>();
 		int player_flag = 1;
+		String winner = null;
 		int i;
 		while(player_flag == 1) {
 			for (i = 0; i < total_players; i++) {
-				if(out_players != null) {
-					if(out_players.contains(i)) {
-						break;
-					}
-					if(out_players.size() == player_names.size()-1) {
-						player_flag = 0;
-						break;
-					}
-				}
 				Set<Map.Entry<String, Integer>> mapSet = player_names.entrySet();
 	            Map.Entry<String, Integer> elementAt = (Map.Entry<String, Integer>) mapSet.toArray()[i];
 	            String player = elementAt.getKey();
 	            
-	            System.out.println("\nWORLD DOMINATION VIEW\n");
+				if(out_players != null) {
+					System.out.println(out_players);
+					if(out_players.contains(i)) {
+						continue;
+					}else {
+						winner = player;
+					}
+					if(out_players.size() == (total_players-1)) {
+						player_flag = 0;
+						continue;
+					}
+				}
+
+				System.out.println("\nWORLD DOMINATION VIEW\n");
 				System.out.println("==========================");
 				//Players world domination view
 	        	for(int j=0;j<total_players;j++) {
@@ -180,16 +186,16 @@ public class main {
 					o_printtable.getTable(file, i, country_per_player, army_per_country);
 		
 					// reinforcement ends
-					HashMap<Integer, Integer> armies = new HashMap<Integer, Integer>();
+					//HashMap<Integer, Integer> armies = new HashMap<Integer, Integer>();
 					int attacker_armies = 0;
 					int defender_armies = 0;
 					int attacker_armies1 = 0;
 					int defender_armies1 = 0;
 					String attack_country = null;
 					String defend_country = null;
-					int armies1 = 0;
-					int army1 = 0;
-					Scanner ab = new Scanner(System.in);
+					//int armies1 = 0;
+					//int army1 = 0;
+					//Scanner ab = new Scanner(System.in);
 					System.out.println("\nPHASE VIEW");
 					System.out.println("\n=============================");
 					subject.setNameState(player, phase2, message2);
@@ -214,6 +220,17 @@ public class main {
 					System.out.println("After Reinforcement : ");
 					o_printtable.getTable(file, i, country_per_player, army_per_country);
 					//System.exit(0);
+					int attacker_armies = 0;
+					int defender_armies = 0;
+					int attacker_armies1 = 0;
+					int defender_armies1 = 0;
+					String attack_country = null;
+					String defend_country = null;
+					System.out.println("\nPHASE VIEW");
+					System.out.println("\n=============================");
+					subject.setNameState(player, phase2, message2);
+					System.out.println("=============================\n");
+					//o_aggressive.attack(attack_country, armies_per_player, country_per_player, file, defend_country, country_list, attacker_armies, defender_armies, attacker_armies1, defender_armies1, army_per_country, cards, card_1, card_2, card_3, card_4, card_5, card_6, out_players, z);
 					String a_country = o_attack.getAttackingCountryAggressive(country_per_player.get(i), army_per_country);
 					System.out.println("Attacker Country : "+a_country);
 					ArrayList<String> neighbour_countries = o_printtable.getNeighbour(file, a_country);
@@ -242,6 +259,10 @@ public class main {
 					}
 					o_printtable.getTable(file, i, country_per_player, army_per_country);
 					System.out.println("Attack Phase done");
+					System.out.println("\n=============================");
+					subject.setNameState(player, phase3, message3);
+					System.out.println("=============================\n");
+					//o_aggressive.fortify(file, defender_armies1, country_per_player, army_per_country);
 					o_fortification.fortifyAggressive(file, country_per_player.get(i), army_per_country);
 					System.out.println("Fortification Phase done");
 					o_printtable.getTable(file, i, country_per_player, army_per_country);
@@ -258,6 +279,9 @@ public class main {
 					System.out.println("After Reinforcement : ");
 					o_printtable.getTable(file, i, country_per_player, army_per_country);
 					//no attack phase
+					System.out.println("\n=============================");
+					subject.setNameState(player, phase3, message3);
+					System.out.println("=============================\n");
 					o_fortification.fortifyBenevolent(file, country_per_player.get(i), army_per_country);
 					System.out.println("Fortification Phase done");
 					o_printtable.getTable(file, i, country_per_player, army_per_country);
@@ -273,7 +297,10 @@ public class main {
 					
 					System.out.println("After Reinforcement : ");
 					o_printtable.getTable(file, i, country_per_player, army_per_country);
-					
+					System.out.println("\nPHASE VIEW");
+					System.out.println("\n=============================");
+					subject.setNameState(player, phase2, message2);
+					System.out.println("=============================\n");
 					String a_country = o_attack.getAttackingCountryRandom(country_per_player.get(i), army_per_country);
 					System.out.println("Attacker Country : "+a_country);
 					ArrayList<String> neighbour_countries = o_printtable.getNeighbour(file, a_country);
@@ -302,6 +329,9 @@ public class main {
 					}
 					o_printtable.getTable(file, i, country_per_player, army_per_country);
 					System.out.println("Attack Phase done");
+					System.out.println("\n=============================");
+					subject.setNameState(player, phase3, message3);
+					System.out.println("=============================\n");
 					o_fortification.fortifyRandom(file, country_per_player.get(i), army_per_country);
 					System.out.println("Fortification Phase done");
 					o_printtable.getTable(file, i, country_per_player, army_per_country);
@@ -313,11 +343,17 @@ public class main {
 					
 					System.out.println("After Reinforcement : ");
 					o_printtable.getTable(file, i, country_per_player, army_per_country);
-					
+					System.out.println("\nPHASE VIEW");
+					System.out.println("\n=============================");
+					subject.setNameState(player, phase2, message2);
+					System.out.println("=============================\n");
 					country_per_player = o_attack.attackCheater(file, i, country_per_player, out_players);
 					System.out.println("Attack Phase done");
-					o_printtable.getTable(file, i, country_per_player, army_per_country);
 
+					o_printtable.getTable(file, i, country_per_player, army_per_country);
+					System.out.println("\n=============================");
+					subject.setNameState(player, phase3, message3);
+					System.out.println("=============================\n");
 					o_fortification.fortifyCheater(file, country_per_player.get(i), army_per_country);
 					System.out.println("Fortification Phase done");
 					o_printtable.getTable(file, i, country_per_player, army_per_country);
@@ -327,6 +363,7 @@ public class main {
 	            }
 			}
 		}
+		System.out.println("Winner : "+winner);
 		System.out.println("The End");
 	}
     /**
