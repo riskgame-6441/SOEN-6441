@@ -39,6 +39,8 @@ public class main {
 		RGPdiceroll o_dice = new RGPdiceroll();
 		RGPaggressive o_aggressive = new RGPaggressive();
 		
+		
+		
 		System.out.println("--------WELCOME TO RISK--------\n");
 		menu();
 
