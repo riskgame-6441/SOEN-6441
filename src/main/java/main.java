@@ -391,7 +391,9 @@ public class main {
 				i = i + 1;
 				break;
 			case 2:
-				System.out.println("tournament mode");
+				mapo();
+				i = i + 1;
+				break;
 			case 3:
 				System.out.println("Risk Game Help");
 				menu();
