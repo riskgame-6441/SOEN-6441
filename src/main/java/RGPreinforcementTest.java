@@ -1,13 +1,8 @@
 import static org.junit.Assert.*;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import org.junit.Test;
-
-
-
 
 /**
  * 
@@ -16,7 +11,6 @@ import org.junit.Test;
  * @since 04-03-2019
  *
  */
-
 public class RGPreinforcementTest {
 	
 	RGPreinforcement ra = new RGPreinforcement();

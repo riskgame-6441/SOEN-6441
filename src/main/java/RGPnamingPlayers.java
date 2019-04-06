@@ -1,6 +1,7 @@
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 /**
  * This class is for naming players
@@ -10,7 +11,7 @@ import java.util.Scanner;
 public class RGPnamingPlayers  {
     RGPlisting a1 = new RGPlisting();
     int pinp = 0;
-    String[] names = new String[5];
+    HashMap<String,Integer> names = new HashMap<String,Integer>();
     /**
      * This method returns the total no of players
      * @return no of players
@@ -27,7 +28,7 @@ public class RGPnamingPlayers  {
      * @return total players
      * @throws Exception
      */
-    public String[] namep(File file) throws Exception{
+    public HashMap<String,Integer> namep(File file) throws Exception{
     	
     	RGPmap o_map = new RGPmap();
     	int a = o_map.validateConnectedContinents(file);
@@ -44,30 +45,19 @@ public class RGPnamingPlayers  {
     	}
     	
         Scanner ab = new Scanner(System.in);
-
+        System.out.println("Player Type : \nHuman(1)\nAggressive(2)\nBenevolent(3)\nRandom(4)\nCheater(5)");
         pinp = getPlayers();
         String pname;
+        int ptype;
         int i;
         for (i = 0; i < pinp; i++) {
-            System.out.print("Enter the name of the player " + (i+1) + ":");
+            System.out.print("Enter the name of the player " + (i+1) + " and type of player :");
             pname = ab.next();
-            names[i] = pname;
-            if (i == 0){
-                System.out.println("Player name : " + pname);
-            }
-            else if (i == 1){
-                System.out.println("Player name : " + pname);
-            }
-            else if (i == 2){
-                System.out.println("Player name : " + pname);
-            }
-            else if (i == 3){
-                System.out.println("Player name : " + pname);
-            }
-            else
-            {
-                System.out.println("Player name : " + pname);
-            }
+            ptype = Integer.parseInt(ab.next());
+            //System.out.println(pname);
+            //System.out.println(ptype);
+            names.put(pname, ptype);            
+            //System.out.println("Player name : " + pname);
         }
         return names;
     }

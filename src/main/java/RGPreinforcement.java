@@ -2,6 +2,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -139,6 +140,86 @@ public class RGPreinforcement {
         		}
     		}
     	}
+    	return army_per_country; 
+	}
+	
+	public HashMap<String, Integer> placeReinforceArmiesAggressive(int z, int i, List<List<String>> country_per_player, HashMap<String, Integer> army_per_country) {
+		
+		String a_country= " ";
+		for(int j=0;j<country_per_player.get(i).size()-1;j++) {
+			int x = 0;
+			String country_x = " ";
+			if(a_country != " ") {
+				x = army_per_country.get(a_country);
+				country_x = a_country;
+			}else {
+				x = army_per_country.get(country_per_player.get(i).get(j));
+				country_x = country_per_player.get(i).get(j);
+			}
+			
+			int y = army_per_country.get(country_per_player.get(i).get(j+1));
+			String country_y = country_per_player.get(i).get(j+1);
+			if(x>=y) {
+				a_country = country_x;
+			}else {
+				a_country = country_y;
+			}
+		}
+		int army = army_per_country.get(a_country);
+		army+=z;
+		army_per_country.put(a_country, army);
+		
+    	return army_per_country; 
+	}
+	
+	public HashMap<String, Integer> placeReinforceArmiesBenevolent(int z, int i, List<List<String>> country_per_player, HashMap<String, Integer> army_per_country) {
+		
+		String a_country= " ";
+		for(int j=0;j<country_per_player.get(i).size()-1;j++) {
+			int x = 0;
+			String country_x = " ";
+			if(a_country != " ") {
+				x = army_per_country.get(a_country);
+				country_x = a_country;
+			}else {
+				x = army_per_country.get(country_per_player.get(i).get(j));
+				country_x = country_per_player.get(i).get(j);
+			}
+			
+			int y = army_per_country.get(country_per_player.get(i).get(j+1));
+			String country_y = country_per_player.get(i).get(j+1);
+			if(x<=y) {
+				a_country = country_x;
+			}else {
+				a_country = country_y;
+			}
+		}
+		int army = army_per_country.get(a_country);
+		army+=z;
+		army_per_country.put(a_country, army);
+		
+    	return army_per_country; 
+	}
+	
+	public HashMap<String, Integer> placeReinforceArmiesRandom(int z, int i, List<List<String>> country_per_player, HashMap<String, Integer> army_per_country) {
+		Random rand = new Random();
+		String a_country= " ";
+		int n = country_per_player.get(i).size();
+		a_country = country_per_player.get(i).get(rand.nextInt(n));
+		int army = army_per_country.get(a_country);
+		army+=z;
+		army_per_country.put(a_country, army);
+		
+    	return army_per_country; 
+	}
+	
+	public HashMap<String, Integer> placeReinforceArmiesCheater(int i, List<List<String>> country_per_player, HashMap<String, Integer> army_per_country) {
+		for(int j=0;j<country_per_player.get(i).size();j++) {
+			String country = country_per_player.get(i).get(j);
+			int army = army_per_country.get(country);
+			army += army;
+			army_per_country.put(country, army);
+		}
     	return army_per_country; 
 	}
 
