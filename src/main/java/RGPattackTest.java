@@ -1,15 +1,12 @@
-import static org.junit.Assert.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-
-import org.junit.jupiter.api.Test;
-
-import junit.framework.Assert;
 
 
 public class RGPattackTest {
