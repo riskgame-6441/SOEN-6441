@@ -1,15 +1,16 @@
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class TestAll {
+
+
+public class TestAll {
 
 	//for army test
 	@Test
@@ -367,7 +368,7 @@ class TestAll {
 	public void test22() {
 		RGPnamingPlayers a = new RGPnamingPlayers();
 		int f = a.getPlayers();
-		Assertions.assertEquals(1, f);
+		assertEquals(1, f);
 	}
 	
 	//for reinforcement test
