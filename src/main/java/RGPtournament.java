@@ -8,9 +8,9 @@ import java.util.Set;
 
 public class RGPtournament {
 
-	static int total_players;
-	static HashMap<String,Integer> player_names;
-	static File file;
+	static int total_players = 2;
+	static HashMap<String,Integer> player_names = new HashMap<String,Integer>();;
+	static File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
 	static int i = 0;
 	static ArrayList<Integer> names = new ArrayList<Integer>();
 	
@@ -28,7 +28,9 @@ public class RGPtournament {
 			
 			System.out.println("Enter player "+(i+1)+" behaviour :");
 			int opt = a.nextInt();
-			names.add(opt);
+			System.out.println("Enter player "+(i+1)+" name :");
+			String opt1 = a.next();
+			player_names.put(opt1, opt);
 		}
 		System.out.println("Number of games to be played on each map");
 		int g = a.nextInt();
