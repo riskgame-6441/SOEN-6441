@@ -435,7 +435,9 @@ public class RGPdiceroll {
 				int a_army = minOfArray(minattckerarmy);
 				int noofdefenderdice = 2;
 				int noofattackerdice = 0;
+				int defenderdice = 0;
 				int flag = 0;
+				int flag1 = 0;
 				if (a_army < 3)
 					noofattackerdice = a_army - 1;
 				else
@@ -453,7 +455,7 @@ public class RGPdiceroll {
 					}
 				}
 				int a[] = rollOfDice(noOfAttackerDice);
-
+                
 				if (defender_armies < 2) {
 					noofdefenderdice1 = noofdefenderdice - 1;
 
@@ -464,8 +466,18 @@ public class RGPdiceroll {
 				if (noOfAttackerDice < 2) {
 					noofdefenderdice1 = noOfAttackerDice;
 				}
-
-				int b[] = rollOfDice(noofdefenderdice1);
+				while(flag1 == 0) {
+					System.out.println("Enter no of dice for defender " + "(maximum of" + (noofdefenderdice1) + ")");
+		          	defenderdice = string.nextInt();
+		          	System.out.println(defenderdice);
+					if (defenderdice > noofdefenderdice1) {
+						System.out.println("Please enter correct no of dice");
+						continue;
+					} else {
+						flag1 = 1;
+					}
+				}
+				int b[] = rollOfDice(defenderdice);
 
 				int minvalue = minOfArray(a);
 				System.out.println("Attacker Dice values");
