@@ -39,7 +39,7 @@ public class RGPtournament {
 		
 	}
 
-	public static void main(String[] args) throws Exception {
+	public static void tournamentstart() throws Exception {
 		
 		
 		tournament();
