@@ -27,5 +27,6 @@ public class RGPGameElements implements Serializable {
 	int r_flag = 0;
 	int a_flag = 0;
 	int f_flag = 0;
+			int i;
 	
 }

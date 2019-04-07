@@ -90,6 +90,7 @@ public class RGPsaveLoadGame implements Serializable{
 		gameElements.total_country = total_country;
 		gameElements.country_name = country_name;
 		gameElements.file = file;
+		gameElements.i = i;
 		return gameElements;
  }
 }

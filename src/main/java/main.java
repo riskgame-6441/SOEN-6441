@@ -282,7 +282,7 @@ public class main implements Serializable {
 					System.out.println("\n=============================");
 					subject.setNameState(player, phase3, message3);
 					System.out.println("=============================\n");
-
+                    
 					o_player.fortify(file, i, country_per_player, army_per_country);
 					gameElements = saveload.gameelements(armies_per_player, army_per_country, continent_list,
 							country_continent, country_list, country_per_player, 
