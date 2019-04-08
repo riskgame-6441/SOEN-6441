@@ -1,3 +1,4 @@
+
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -29,4 +30,5 @@ public class RGPGameElements implements Serializable {
 	int f_flag = 0;
 			int i;
 	
+
 }

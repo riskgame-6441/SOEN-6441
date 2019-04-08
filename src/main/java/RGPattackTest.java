@@ -6,7 +6,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+
 public class RGPattackTest {
+
 
 	RGPdiceroll o_dice = new RGPdiceroll();
 
@@ -87,8 +89,8 @@ public class RGPattackTest {
 		country_per_player2.add("SriLanka");
 		country_per_player.add(country_per_player1);
 		country_per_player.add(country_per_player2);
-		File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
-		//File file = new File("C:\\Misc\\Concordia\\6441-git\\SOEN-6441\\src\\main\\java\\world.map");
+		//File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+		File file = new File("C:\\Misc\\Concordia\\6441-git\\SOEN-6441\\src\\main\\java\\world.map");
 		String attack_country = "India";
 		String defend_country = "Bangladesh";
 		ArrayList<String> country_list = new ArrayList<String>();
@@ -117,8 +119,8 @@ public class RGPattackTest {
 		country_per_player2.add("SriLanka");
 		country_per_player.add(country_per_player1);
 		country_per_player.add(country_per_player2);
-		File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
-		//File file = new File("C:\\Misc\\Concordia\\6441-git\\SOEN-6441\\src\\main\\java\\world.map");
+		//File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+		File file = new File("C:\\Misc\\Concordia\\6441-git\\SOEN-6441\\src\\main\\java\\world.map");
 		String attack_country = "India";
 		String defend_country = "Bangladesh";
 		ArrayList<String> country_list = new ArrayList<String>();
