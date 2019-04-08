@@ -14,6 +14,8 @@ public class main implements Serializable {
 	static File file;
 
 	public static void main(String[] args) throws Exception {
+		
+		RGPtournament o_tourny = new RGPtournament();
 
 		RGParmy o_army = new RGParmy();
 		RGPlisting o_uem = new RGPlisting();
@@ -489,6 +491,7 @@ public class main implements Serializable {
 	public static void menu() throws Exception {
 		int i = 0;
 		Scanner a = new Scanner(System.in);
+		RGPtournament o_tourny = new RGPtournament();
 
 		while (i == 0) {
 			System.out.println("*************************");
@@ -505,7 +508,10 @@ public class main implements Serializable {
 				i = i + 1;
 				break;
 			case 2:
-				System.out.println("tournament mode");
+				o_tourny.tournament();
+				o_tourny.tournamentstart();
+				i = i + 1;
+				break;
 			case 3:
 				System.out.println("Risk Game Help");
 				menu();
