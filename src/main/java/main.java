@@ -508,7 +508,8 @@ public class main implements Serializable {
 				i = i + 1;
 				break;
 			case 2:
-				o_tourney.tournamentstart();
+				o_tourny.tournament();
+				o_tourny.tournamentstart();
 				i = i + 1;
 				break;
 			case 3:

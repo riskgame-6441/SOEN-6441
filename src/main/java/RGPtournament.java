@@ -13,6 +13,8 @@ public class RGPtournament {
 	static File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
 	static int i = 0;
 	static ArrayList<Integer> names = new ArrayList<Integer>();
+	static int d = 0;
+	static int k = 0;
 	
 	public static void tournament() {
 		Scanner a = new Scanner(System.in);
@@ -35,14 +37,14 @@ public class RGPtournament {
 		System.out.println("Number of games to be played on each map");
 		int g = a.nextInt();
 		System.out.println("Number of turns each game should be played");
-		int d = a.nextInt();
+		d = a.nextInt();
 		
 	}
 
 	public static void tournamentstart() throws Exception {
 		
 		
-		tournament();
+		
 		RGPobserverSubject subject = new RGPobserverSubject();
 		RGPobserverObserver RGPobserverName =  new RGPobserverName(subject);
 		RGPworldDominationSubject subject1 = new RGPworldDominationSubject();
@@ -110,7 +112,8 @@ public class RGPtournament {
 		int player_flag = 1;
 		String winner = null;
 		int i;
-		while(player_flag == 1) {
+		while(k != d) {
+			
 			for (i = 0; i < total_players; i++) {
 				Set<Map.Entry<String, Integer>> mapSet = player_names.entrySet();
 	            Map.Entry<String, Integer> elementAt = (Map.Entry<String, Integer>) mapSet.toArray()[i];
@@ -150,7 +153,9 @@ public class RGPtournament {
 	        	}
 	        	System.out.println("==========================");
 	        	
-	            if(player_names.get(player) == 1) {
+	            
+	        	
+	        	if(player_names.get(player) == 0) {
 		        	//phase view
 		        	System.out.println("\nPHASE VIEW");
 		        	System.out.println("\n=============================");
@@ -236,7 +241,11 @@ public class RGPtournament {
 					System.out.println("=============================\n");
 		
 					o_player.fortify( file, i, country_per_player, army_per_country);
-	            }else if(player_names.get(player) == 2) {
+	            }
+	            
+	            
+	            
+	            else if(player_names.get(player) == 1) {
 	            	System.out.println("Player : "+player);
 					o_printtable.getTable(file, i, country_per_player, army_per_country);
 					int extra_army=0;    		
@@ -295,7 +304,10 @@ public class RGPtournament {
 					System.out.println("Fortification Phase done");
 					o_printtable.getTable(file, i, country_per_player, army_per_country);
 					//System.exit(0);
-	            }else if(player_names.get(player) == 3) {
+	            }
+	            
+	            
+	            else if(player_names.get(player) == 2) {
 	            	System.out.println("Player : "+player);
 					o_printtable.getTable(file, i, country_per_player, army_per_country);
 					int extra_army=0;    		
@@ -314,7 +326,12 @@ public class RGPtournament {
 					System.out.println("Fortification Phase done");
 					o_printtable.getTable(file, i, country_per_player, army_per_country);
 					//System.exit(0);
-	            }else if(player_names.get(player) == 4) {
+	            }
+	            
+	            
+	            
+	            
+	            else if(player_names.get(player) == 3) {
 	            	System.out.println("Player : "+player);
 					o_printtable.getTable(file, i, country_per_player, army_per_country);
 					int extra_army=0;    		
@@ -364,7 +381,12 @@ public class RGPtournament {
 					System.out.println("Fortification Phase done");
 					o_printtable.getTable(file, i, country_per_player, army_per_country);
 					//System.exit(0);
-	            }else if(player_names.get(player) == 5) {
+	            }
+	            
+	            
+	            
+	            
+	            else if(player_names.get(player) == 4) {
 	            	System.out.println("Player : "+player);
 					o_printtable.getTable(file, i, country_per_player, army_per_country);
 					army_per_country = o_reinforcement.placeReinforceArmiesCheater(i, country_per_player, army_per_country);
@@ -390,6 +412,7 @@ public class RGPtournament {
 					//System.exit(0);
 	            }
 			}
+			k = k + 1;
 		}
 		System.out.println("Winner : "+winner);
 		System.out.println("The End");
