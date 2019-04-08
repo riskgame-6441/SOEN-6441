@@ -10,7 +10,8 @@ import org.junit.runners.Suite;
 	RGPMapValidationTest.class,
 	RGPreinforcementTest.class,
 	RGPnamingPlayersTest.class,
-	RGPattackTest.class
+	RGPattackTest.class,
+	RGPsaveTest.class
 })
 
 public class TestSuite {
