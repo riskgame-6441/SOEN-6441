@@ -9,7 +9,7 @@ import java.io.File;
  *  @version 1.0.0
  */
 public class RGPMapValidationTest {
-	File file = new File("C:\\Misc\\Concordia\\6441-git\\SOEN-6441\\src\\main\\java\\world.map");
+	File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
 
 	@Test
 	public void test() throws Exception{
