@@ -85,131 +85,184 @@ public class RGPfortification {
 	}
 	
 	public void  fortifyAggressive(File file,List<String> country_list,HashMap<String,Integer> army_per_country) throws Exception {
-		int flag = 0;
-		String country1 = " ";
-		String country2 = " ";
-		String c1 = " "; 
-		String c2 = " ";
-		for(int i=0;i<country_list.size()-1;i++) {
-			int x = 0;
-			int y = 0;
-			c2 = country_list.get(i+1);
+		if(country_list.size()==1) {
 			
-			if(c1 != " ") {
-				ArrayList<String> neighbour_countries_x = o_printtable.getNeighbour(file, country2);
-				ArrayList<String> to_be_attacked_countries_x = o_attack.toBeAttackedCountry(country_list, neighbour_countries_x);
-				x = to_be_attacked_countries_x.size();
-			}else {
-				c1 = country_list.get(i);
-				ArrayList<String> neighbour_countries_x = o_printtable.getNeighbour(file, c1);
-				ArrayList<String> to_be_attacked_countries_x = o_attack.toBeAttackedCountry(country_list, neighbour_countries_x);
-				x = to_be_attacked_countries_x.size();
+		}else {
+			int flag = 0;
+			String country1 = " ";
+			String country2 = " ";
+			String c1 = " "; 
+			String c2 = " ";
+			for(int i=0;i<country_list.size()-1;i++) {
+				int x = 0;
+				int y = 0;
+				c2 = country_list.get(i+1);
+				
+				if(c1 != " ") {
+					ArrayList<String> neighbour_countries_x = o_printtable.getNeighbour(file, country2);
+					ArrayList<String> to_be_attacked_countries_x = o_attack.toBeAttackedCountry(country_list, neighbour_countries_x);
+					x = to_be_attacked_countries_x.size();
+				}else {
+					c1 = country_list.get(i);
+					ArrayList<String> neighbour_countries_x = o_printtable.getNeighbour(file, c1);
+					ArrayList<String> to_be_attacked_countries_x = o_attack.toBeAttackedCountry(country_list, neighbour_countries_x);
+					x = to_be_attacked_countries_x.size();
+				}
+				ArrayList<String> neighbour_countries_y = o_printtable.getNeighbour(file, c2);
+				ArrayList<String> to_be_attacked_countries_y = o_attack.toBeAttackedCountry(country_list, neighbour_countries_y);
+				y = to_be_attacked_countries_y.size();
+				if(x>=y) {
+					country2 = c1;
+				}else {
+					country2 = c2;
+				}
 			}
-			ArrayList<String> neighbour_countries_y = o_printtable.getNeighbour(file, c2);
-			ArrayList<String> to_be_attacked_countries_y = o_attack.toBeAttackedCountry(country_list, neighbour_countries_y);
-			y = to_be_attacked_countries_y.size();
-			if(x>=y) {
-				country2 = c1;
-			}else {
-				country2 = c2;
+			c1 = " ";
+			c2 = " ";
+			for(int i=0;i<country_list.size()-1;i++) {
+				if(country_list.size() == 2) {
+					if(country_list.get(0)==country2) {
+						country1 = country_list.get(1);
+					}else {
+						country1 = country_list.get(0);
+					}
+				}else {
+					if(country_list.get(i)!=country2) {
+						int x = 0;
+						int y = 0;
+						c2 = country_list.get(i+1);
+						if(country_list.get(i+1)==country2) {
+							i++;
+							c2 = country_list.get(i);
+							if(c1 != " ") {
+								x = army_per_country.get(country1);
+							}else {
+								c1 = country_list.get(i);
+								x = army_per_country.get(country_list.get(i));
+							}
+							y = army_per_country.get(c2);
+							if(x>=y) {
+								country1 = c1;
+							}else {
+								country1 = c2;
+							}
+							continue;
+						}else {
+							if(c1 != " ") {
+								x = army_per_country.get(country1);
+							}else {
+								c1 = country_list.get(i);
+								x = army_per_country.get(country_list.get(i));
+							}
+							y = army_per_country.get(country_list.get(i+1));
+							if(x>=y) {
+								country1 = c1;
+							}else {
+								country1 = c2;
+							}
+						}
+					}
+				}
 			}
+			System.out.println("Country 1 : "+country1);
+			System.out.println("Country 2 : "+country2);
+			int f_army = army_per_country.get(country1)-1;
+			army_per_country.put(country1, 1);
+			f_army += army_per_country.get(country2);
+			army_per_country.put(country2, f_army);
 		}
-		c1 = " ";
-		c2 = " ";
-		for(int i=0;i<country_list.size()-1;i++) {
-			if(country_list.get(i)==country2) {
-				continue;
-			}
-			if(country_list.get(i+1)==country2) {
-				continue;
-			}
-			int x = 0;
-			int y = 0;
-			c2 = country_list.get(i+1);
-			
-			if(c1 != " ") {
-				x = army_per_country.get(country1);
-			}else {
-				c1 = country_list.get(i);
-				x = army_per_country.get(country_list.get(i));
-			}
-			y = army_per_country.get(country_list.get(i+1));
-			if(x>=y) {
-				country1 = c1;
-			}else {
-				country1 = c2;
-			}
-		}
-		System.out.println("Country 1 : "+country1);
-		System.out.println("Country 2 : "+country2);
-		int f_army = army_per_country.get(country1)-1;
-		army_per_country.put(country1, 1);
-		f_army += army_per_country.get(country2);
-		army_per_country.put(country2, f_army);	
 	}
 	
 	public void  fortifyBenevolent(File file,List<String> country_list,HashMap<String,Integer> army_per_country) throws Exception {
-		int flag = 0;
-		String country1 = " ";
-		String country2 = " ";
-		String c1 = " ";
-		String c2 = " "; 
-		
-		for(int i=0;i<country_list.size()-1;i++) {
-			int x = 0;
-			int y = 0;
+		if(country_list.size()==1) {
 			
-			c2 = country_list.get(i+1);
+		}else {
+			int flag = 0;
+			String country1 = " ";
+			String country2 = " ";
+			String c1 = " ";
+			String c2 = " "; 
 			
-			if(c1 != " ") {
-				c1 = country2;
-				x = army_per_country.get(c1);
-			}else {
-				c1 = country_list.get(i);
-				x = army_per_country.get(c1);
+			for(int i=0;i<country_list.size()-1;i++) {
+				int x = 0;
+				int y = 0;
+				
+				c2 = country_list.get(i+1);
+				
+				if(c1 != " ") {
+					c1 = country2;
+					x = army_per_country.get(c1);
+				}else {
+					c1 = country_list.get(i);
+					x = army_per_country.get(c1);
+				}
+				y = army_per_country.get(c2);
+				if(x<=y) {
+					country2 = c1;
+				}else {
+					country2 = c2;
+				}
 			}
-			y = army_per_country.get(c2);
-			if(x<=y) {
-				country2 = c1;
-			}else {
-				country2 = c2;
+			c1 = " ";
+			c2 = " ";
+			for(int i=0;i<country_list.size()-1;i++) {
+				if(country_list.size() == 2) {
+					if(country_list.get(0)==country2) {
+						country1 = country_list.get(1);
+					}else {
+						country1 = country_list.get(0);
+					}
+				}else {
+					if(country_list.get(i)!=country2) {
+						int x = 0;
+						int y = 0;
+						 
+						c2 = country_list.get(i+1);
+						if(country_list.get(i+1)==country2) {
+							i++;
+							c2 = country_list.get(i);
+							if(c1 != " ") {
+								c1 = country1;
+								x = army_per_country.get(c1);
+							}else {
+								c1 = country_list.get(i);
+								x = army_per_country.get(c1);
+							}
+							y = army_per_country.get(c2);
+							if(x>=y) {
+								country1 = c1;
+							}else {
+								country1 = c2;
+							}
+							continue;
+						}
+						
+						if(c1 != " ") {
+							c1 = country1;
+							x = army_per_country.get(c1);
+						}else {
+							c1 = country_list.get(i);
+							x = army_per_country.get(c1);
+						}
+						y = army_per_country.get(c2);
+						if(x>=y) {
+							country1 = c1;
+						}else {
+							country1 = c2;
+						}
+					}else {
+						continue;
+					}
+				}
 			}
+			System.out.println("Country 1 : "+country1);
+			System.out.println("Country 2 : "+country2);
+			int f_army = army_per_country.get(country1)/2;
+			int new_army = army_per_country.get(country1) - f_army;
+			army_per_country.put(country1, new_army);
+			f_army += army_per_country.get(country2);
+			army_per_country.put(country2, f_army);	
 		}
-		c1 = " ";
-		c2 = " ";
-		for(int i=0;i<country_list.size()-1;i++) {
-			if(country_list.get(i)==country2) {
-				continue;
-			}
-			if(country_list.get(i+1)==country2) {
-				continue;
-			}
-			int x = 0;
-			int y = 0;
-			 
-			c2 = country_list.get(i+1);
-			
-			if(c1 != " ") {
-				c1 = country1;
-				x = army_per_country.get(c1);
-			}else {
-				c1 = country_list.get(i);
-				x = army_per_country.get(c1);
-			}
-			y = army_per_country.get(c2);
-			if(x>=y) {
-				country1 = c1;
-			}else {
-				country1 = c2;
-			}
-		}
-		System.out.println("Country 1 : "+country1);
-		System.out.println("Country 2 : "+country2);
-		int f_army = army_per_country.get(country1)/2;
-		int new_army = army_per_country.get(country1) - f_army;
-		army_per_country.put(country1, new_army);
-		f_army += army_per_country.get(country2);
-		army_per_country.put(country2, f_army);	
 	}
 	
 	public void  fortifyRandom(File file,List<String> country_list,HashMap<String,Integer> army_per_country) throws Exception {
