@@ -127,7 +127,7 @@ public class RGPcardDivision {
 		System.out.println(str);
 		int n = asd1.get(key);
 		asd2.put(str,n);
-		asd1.remove(key);
+		//asd1.remove(key);
 	}
 		
 	public static HashMap<String,Integer> getCards(){
@@ -185,6 +185,11 @@ public class RGPcardDivision {
 			b_1 = get_card(cards);
 			c_1 = get_card(cards);
 			extra_army = check_cards_deal(a_1, b_1, c_1);
+		}
+		if(extra_army!=0) {
+			cards.remove(a_1);
+			cards.remove(b_1);
+			cards.remove(c_1);
 		}
 		return extra_army;
 	}

@@ -90,14 +90,14 @@ public class main implements Serializable {
 		} else if (ans.equalsIgnoreCase("no")) {
 			menu();
 
-			contvalue = o_uem.getcontinentandcontrolvalue();
-			contvalue1 = o_uem.getcontinentandcountry();
-			country_continent = o_uem.getCountryContinent();
-			continent_list = o_uem.continentlist();
-			country_list = o_uem.countrylist();
+			contvalue = o_uem.getcontinentandcontrolvalue(file);
+			contvalue1 = o_uem.getcontinentandcountry(file);
+			country_continent = o_uem.getCountryContinent(file);
+			continent_list = o_uem.continentlist(file);
+			country_list = o_uem.countrylist(file);
 
-			total_country = o_uem.countrylist().size();
-			country_name = o_uem.countrylist();
+			total_country = o_uem.countrylist(file).size();
+			country_name = o_uem.countrylist(file);
 			System.out.println(country_name);
 			System.out.println(total_players);
 
@@ -106,8 +106,6 @@ public class main implements Serializable {
 			System.out.println("Per Player armies : " + armies_per_player);
 
 			country_per_player = o_army.divideCountry(total_players, country_name);
-			// System.out.println("\nList of country per player");
-			// System.out.println(country_per_player);
 
 			army_per_country = o_army.armyPerCountry(total_players, armies_per_player, country_per_player);
 			System.out.println("No. of armies per country");
@@ -148,358 +146,432 @@ public class main implements Serializable {
 
 				System.out.println("\nWORLD DOMINATION VIEW\n");
 				System.out.println("==========================");
-				// Players world domination view
-				for (int j = 0; j < total_players; j++) {
-					int total_country_num = country_list.size();
-					int player_country_num = (country_per_player.get(j)).size();
-					float map_per_player = (float) (100 * player_country_num) / total_country_num;
-					continent_list_per_player = o_reinforcement.getContinent(country_per_player, country_continent,
-							contvalue1);
-					int total_army_per_player = 0;
-					for (int d = 0; d < country_per_player.get(j).size(); d++) {
-						String country = country_per_player.get(j).get(d);
-						total_army_per_player += army_per_country.get(country);
-					}
-
-					// o_player.reinforcement(army_per_country,
-					// country_per_player, j, total_army_per_player);
-
-					subject1.setNameState(j + 1, (int) map_per_player, continent_list_per_player.get(i),
-							total_army_per_player);
-					System.out.println("\n");
-				}
-				System.out.println("==========================");
-
-				if (player_names.get(player) == 1) {
-					// phase view
-					if (gameElements.r_flag == 0) {
-						System.out.println("\nPHASE VIEW");
-						System.out.println("\n=============================");
-						subject.setNameState(player, phase1, message1);
-						System.out.println("=============================\n");
-						o_printtable.getTable(file, i, country_per_player, army_per_country);
-
-						// card exchange view
-						int extra_army = 0;
-						if (i == 0 && !card_1.isEmpty()) {
-							System.out.println("\nCARD EXCHANGE VIEW\n");
-							subject3.setNameState(card_1);
-							if (card_1.size() >= 3) {
-								extra_army = o_card.trade_card(card_1);
-							}
-						} else if (i == 1 && !card_2.isEmpty()) {
-							System.out.println("\nCARD EXCHANGE VIEW\n");
-							subject3.setNameState(card_2);
-							if (card_2.size() >= 3) {
-								extra_army = o_card.trade_card(card_2);
-							}
-						} else if (i == 2 && !card_3.isEmpty()) {
-							System.out.println("\nCARD EXCHANGE VIEW\n");
-							subject3.setNameState(card_3);
-							if (card_3.size() >= 3) {
-								extra_army = o_card.trade_card(card_3);
-							}
-						} else if (i == 3 && !card_4.isEmpty()) {
-							System.out.println("\nCARD EXCHANGE VIEW\n");
-							subject3.setNameState(card_4);
-							if (card_4.size() >= 3) {
-								extra_army = o_card.trade_card(card_4);
-							}
-						} else if (i == 4 && !card_5.isEmpty()) {
-							System.out.println("\nCARD EXCHANGE VIEW\n");
-							subject3.setNameState(card_5);
-							if (card_5.size() >= 3) {
-								extra_army = o_card.trade_card(card_5);
-							}
-						} else if (i == 5 && !card_6.isEmpty()) {
-							System.out.println("\nCARD EXCHANGE VIEW\n");
-							subject3.setNameState(card_6);
-							if (card_6.size() >= 3) {
-								extra_army = o_card.trade_card(card_6);
-							}
-						}
-						int extra_army_continent = 0;
-						System.out.println("Extra armies by trading cards : " + extra_army);
-						int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1,
-								country_continent, contvalue);
-						z += extra_army;
-						for (int h = 0; h < continent_list_per_player.get(i).size(); h++) {
-							String continent = continent_list_per_player.get(i).get(h);
-							extra_army_continent = contvalue.get(continent);
-						}
-						System.out.println("Extra armies by continent : " + extra_army_continent);
-						z += extra_army_continent;
-						System.out.println("Number of armies to Reinforcement : " + z);
-
-						army_per_country = o_reinforcement.placeReinforceArmies(z, i, country_per_player,
-								army_per_country);
-						// print table
-						o_printtable.getTable(file, i, country_per_player, army_per_country);
-						gameElements = saveload.gameelements(armies_per_player, army_per_country, continent_list,
-								country_continent, country_list, country_per_player, total_players, file, player_names,
-								continent_list_per_player, contvalue, contvalue1, total_country, country_name, i);
-						System.out.println("Do you want to save the game (yes/no)?");
-						ans = scan.next();
-						if (ans.equalsIgnoreCase("yes")) {
-							gameElements = saveload.gameelements(armies_per_player, army_per_country, continent_list,
-									country_continent, country_list, country_per_player, total_players, file,
-									player_names, continent_list_per_player, contvalue, contvalue1, total_country,
-									country_name, i);
-							gameElements.r_flag = 1;
-							saveload.saveGame(gameElements);
-							System.out
-									.println("Game has been saved and terminated,please restart to continue the game");
-							System.exit(0);
-						}
-						// reinforcement ends
-					} else {
-						gameElements.r_flag = 0;
-						i = gameElements.i;
-						 mapSet = player_names.entrySet();
-						 elementAt = (Map.Entry<String, Integer>) mapSet.toArray()[i];
-						 player = elementAt.getKey();
-					}
-
-					if (gameElements.a_flag == 0) {
-						int attacker_armies = 0;
-						int defender_armies = 0;
-						int attacker_armies1 = 0;
-						int defender_armies1 = 0;
-						String attack_country = null;
-						String defend_country = null;
-
-						System.out.println("\nPHASE VIEW");
-						System.out.println("\n=============================");
-						subject.setNameState(player, phase2, message2);
-						System.out.println("=============================\n");
-						o_printtable.getTable(file, i, country_per_player, army_per_country);
-						o_player.attack(attack_country, i, country_per_player, file, defend_country, country_list,
-								attacker_armies, defender_armies, attacker_armies1, defender_armies1, army_per_country,
-								cards, card_1, card_2, card_3, card_4, card_5, card_6, out_players, total_players);
-
-						System.out.println("Do you want to save the game (yes/no)?");
-						ans = scan.next();
-						if (ans.equalsIgnoreCase("yes")) {
-							gameElements = saveload.gameelements(armies_per_player, army_per_country, continent_list,
-									country_continent, country_list, country_per_player, total_players, file,
-									player_names, continent_list_per_player, contvalue, contvalue1, total_country,
-									country_name, i);
-							gameElements.r_flag = 1;
-							gameElements.a_flag = 1;
-							saveload.saveGame(gameElements);
-							System.out
-									.println("Game has been saved and terminated,please restart to continue the game");
-							System.exit(0);
-						}
-					} else {
-						gameElements.a_flag = 0;
-						gameElements.r_flag = 0;
-						i = gameElements.i;
-						mapSet = player_names.entrySet();
-						 elementAt = (Map.Entry<String, Integer>) mapSet.toArray()[i];
-						 player = elementAt.getKey();
-						 System.out.println(player+""+i);
-					}
-					if (gameElements.f_flag == 0) {
-						System.out.println("\n=============================");
-						subject.setNameState(player, phase3, message3);
-						System.out.println("=============================\n");
-						o_printtable.getTable(file, i, country_per_player, army_per_country);
-						o_player.fortify(file, i, country_per_player, army_per_country);
-
-						System.out.println("Do you want to save the game (yes/no)?");
-						ans = scan.next();
-						if (ans.equalsIgnoreCase("yes")) {
-							gameElements = saveload.gameelements(armies_per_player, army_per_country, continent_list,
-									country_continent, country_list, country_per_player, total_players, file,
-									player_names, continent_list_per_player, contvalue, contvalue1, total_country,
-									country_name, i);
-							gameElements.f_flag = 1;
-							gameElements.r_flag = 1;
-							gameElements.a_flag = 1;
-							saveload.saveGame(gameElements);
-							System.out
-									.println("Game has been saved and terminated,please restart to continue the game");
-							System.exit(0);
-						}
-					} else {
-						gameElements.f_flag = 0;
-						gameElements.a_flag = 0;
-						gameElements.r_flag = 0;
-						i = gameElements.i;
-					}
-				} else if (player_names.get(player) == 2) {
-					System.out.println("Player : " + player);
-					o_printtable.getTable(file, i, country_per_player, army_per_country);
-					int extra_army = 0;
-					int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1,
-							country_continent, contvalue);
+				//Players world domination view
+	        	/*for(int j=0;j<total_players;j++) {
+	        		int total_country_num = country_list.size();
+	        		int player_country_num = (country_per_player.get(j)).size();
+	        		float map_per_player = (float)(100*player_country_num)/total_country_num;
+	        		continent_list_per_player = o_reinforcement.getContinent(country_per_player, country_continent, contvalue1);
+	            	int total_army_per_player=0;
+	            	for(int d=0;d<country_per_player.get(j).size();d++) {
+	            		String country = country_per_player.get(j).get(d);
+	            		total_army_per_player+=army_per_country.get(country);
+	            	}
+	            	
+	            	//	o_player.reinforcement(army_per_country, country_per_player, j, total_army_per_player);
+	            	
+	            	subject1.setNameState(j+1,(int)map_per_player,continent_list_per_player.get(j),total_army_per_player);
+	            	System.out.println("\n");
+	        	}
+	        	System.out.println("==========================");
+	        	
+	            if(player_names.get(player) == 1) {
+		        	//phase view
+		        	System.out.println("\nPHASE VIEW");
+		        	System.out.println("\n=============================");
+		        	subject.setNameState(player,phase1,message1);
+		        	System.out.println("=============================\n");
+		        	o_printtable.getTable(file,i,country_per_player,army_per_country);
+		        	
+		    		//card exchange view
+		    		int extra_army=0;
+		    		if(i==0 && !card_1.isEmpty()) {
+		    			System.out.println("\nCARD EXCHANGE VIEW\n");
+		    			subject3.setNameState(card_1);
+		    			if(card_1.size()>=3) {
+		    				extra_army = o_card.trade_card(card_1);
+		    			}
+		    		}else if(i==1 && !card_2.isEmpty()) {
+		    			System.out.println("\nCARD EXCHANGE VIEW\n");
+		    			subject3.setNameState(card_2);
+		    			if(card_2.size()>=3) {
+		    				extra_army = o_card.trade_card(card_2);
+		    			}
+		    		}else if(i==2 && !card_3.isEmpty()) {
+		    			System.out.println("\nCARD EXCHANGE VIEW\n");
+		    			subject3.setNameState(card_3);
+		    			if(card_3.size()>=3) {
+		    				extra_army = o_card.trade_card(card_3);
+		    			}
+		    		}else if(i==3 && !card_4.isEmpty()) {
+		    			System.out.println("\nCARD EXCHANGE VIEW\n");
+		    			subject3.setNameState(card_4);
+		    			if(card_4.size()>=3) {
+		    				extra_army = o_card.trade_card(card_4);
+		    			}
+		    		}else if(i==4 && !card_5.isEmpty()) {
+		    			System.out.println("\nCARD EXCHANGE VIEW\n");
+		    			subject3.setNameState(card_5);
+		    			if(card_5.size()>=3) {
+		    				extra_army = o_card.trade_card(card_5);
+		    			}
+		    		}else if(i==5 && !card_6.isEmpty()) {
+		    			System.out.println("\nCARD EXCHANGE VIEW\n");
+		    			subject3.setNameState(card_6);
+		    			if(card_6.size()>=3) {
+		    				extra_army = o_card.trade_card(card_6);
+		    			}
+		    		}
+		    		int extra_army_continent = 0;
+		    		System.out.println("Extra armies by trading cards : "+extra_army);
+					int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1, country_continent, contvalue);
 					z += extra_army;
-					army_per_country = o_reinforcement.placeReinforceArmiesAggressive(z, i, country_per_player,
-							army_per_country);
-					System.out.println("Reinforced armies : " + z);
-
-					System.out.println("After Reinforcement : ");
-					o_printtable.getTable(file, i, country_per_player, army_per_country);
-					// System.exit(0);
-					int attacker_armies = 0;
-					int defender_armies = 0;
-					int attacker_armies1 = 0;
-					int defender_armies1 = 0;
-					String attack_country = null;
-					String defend_country = null;
-					System.out.println("\nPHASE VIEW");
-					System.out.println("\n=============================");
-					subject.setNameState(player, phase2, message2);
-					System.out.println("=============================\n");
-					String a_country = o_attack.getAttackingCountryAggressive(country_per_player.get(i),
-							army_per_country);
-					System.out.println("Attacker Country : " + a_country);
-					ArrayList<String> neighbour_countries = o_printtable.getNeighbour(file, a_country);
-					ArrayList<String> to_be_attacked_countries = o_attack.toBeAttackedCountry(country_per_player.get(i),
-							neighbour_countries);
-					int a_armies = army_per_country.get(a_country);
-					System.out.println("Attacker Armies : " + a_armies);
-
-					for (int l = 0; l < to_be_attacked_countries.size(); l++) {
-						if (a_armies <= 1) {
-							break;
+					for(int h=0;h<continent_list_per_player.get(i).size();h++){
+						String continent = continent_list_per_player.get(i).get(h);
+						extra_army_continent = contvalue.get(continent);*/
+						// Players world domination view
+						for (int j = 0; j < total_players; j++) {
+							int total_country_num = country_list.size();
+							int player_country_num = (country_per_player.get(j)).size();
+							float map_per_player = (float) (100 * player_country_num) / total_country_num;
+							continent_list_per_player = o_reinforcement.getContinent(country_per_player, country_continent,
+									contvalue1);
+							int total_army_per_player = 0;
+							for (int d = 0; d < country_per_player.get(j).size(); d++) {
+								String country = country_per_player.get(j).get(d);
+								total_army_per_player += army_per_country.get(country);
+							}
+		
+							// o_player.reinforcement(army_per_country,
+							// country_per_player, j, total_army_per_player);
+		
+							subject1.setNameState(j + 1, (int) map_per_player, continent_list_per_player.get(i),
+									total_army_per_player);
+							System.out.println("\n");
 						}
-						String d_country = to_be_attacked_countries.get(l);
-						int d = o_dice.getDefenderIndex(d_country, country_per_player);
-						int d_armies = army_per_country.get(d_country);
-
-						army_per_country = o_dice.rollDiceAggressive(a_armies, d_armies, file, i, country_per_player,
-								army_per_country, a_country, d_country);
-						a_armies = army_per_country.get(a_country);
-						d_armies = army_per_country.get(d_country);
-
-						if (d_armies == 0) {
-							army_per_country = o_dice.placeAttackArmiesAggressive(a_armies, a_country, d_country,
+						System.out.println("==========================");
+		
+						if (player_names.get(player) == 1) {
+							// phase view
+							if (gameElements.r_flag == 0) {
+								System.out.println("\nPHASE VIEW");
+								System.out.println("\n=============================");
+								subject.setNameState(player, phase1, message1);
+								System.out.println("=============================\n");
+								o_printtable.getTable(file, i, country_per_player, army_per_country);
+		
+								// card exchange view
+								int extra_army = 0;
+								if (i == 0 && !card_1.isEmpty()) {
+									System.out.println("\nCARD EXCHANGE VIEW\n");
+									subject3.setNameState(card_1);
+									if (card_1.size() >= 3) {
+										extra_army = o_card.trade_card(card_1);
+									}
+								} else if (i == 1 && !card_2.isEmpty()) {
+									System.out.println("\nCARD EXCHANGE VIEW\n");
+									subject3.setNameState(card_2);
+									if (card_2.size() >= 3) {
+										extra_army = o_card.trade_card(card_2);
+									}
+								} else if (i == 2 && !card_3.isEmpty()) {
+									System.out.println("\nCARD EXCHANGE VIEW\n");
+									subject3.setNameState(card_3);
+									if (card_3.size() >= 3) {
+										extra_army = o_card.trade_card(card_3);
+									}
+								} else if (i == 3 && !card_4.isEmpty()) {
+									System.out.println("\nCARD EXCHANGE VIEW\n");
+									subject3.setNameState(card_4);
+									if (card_4.size() >= 3) {
+										extra_army = o_card.trade_card(card_4);
+									}
+								} else if (i == 4 && !card_5.isEmpty()) {
+									System.out.println("\nCARD EXCHANGE VIEW\n");
+									subject3.setNameState(card_5);
+									if (card_5.size() >= 3) {
+										extra_army = o_card.trade_card(card_5);
+									}
+								} else if (i == 5 && !card_6.isEmpty()) {
+									System.out.println("\nCARD EXCHANGE VIEW\n");
+									subject3.setNameState(card_6);
+									if (card_6.size() >= 3) {
+										extra_army = o_card.trade_card(card_6);
+									}
+								}
+								int extra_army_continent = 0;
+								System.out.println("Extra armies by trading cards : " + extra_army);
+								int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1,
+										country_continent, contvalue);
+								z += extra_army;
+								for (int h = 0; h < continent_list_per_player.get(i).size(); h++) {
+									String continent = continent_list_per_player.get(i).get(h);
+									extra_army_continent = contvalue.get(continent);
+								}
+								System.out.println("Extra armies by continent : " + extra_army_continent);
+								z += extra_army_continent;
+								System.out.println("Number of armies to Reinforcement : " + z);
+		
+								army_per_country = o_reinforcement.placeReinforceArmies(z, i, country_per_player,
+										army_per_country);
+								// print table
+								o_printtable.getTable(file, i, country_per_player, army_per_country);
+								gameElements = saveload.gameelements(armies_per_player, army_per_country, continent_list,
+										country_continent, country_list, country_per_player, total_players, file, player_names,
+										continent_list_per_player, contvalue, contvalue1, total_country, country_name, i);
+								System.out.println("Do you want to save the game (yes/no)?");
+								ans = scan.next();
+								if (ans.equalsIgnoreCase("yes")) {
+									gameElements = saveload.gameelements(armies_per_player, army_per_country, continent_list,
+											country_continent, country_list, country_per_player, total_players, file,
+											player_names, continent_list_per_player, contvalue, contvalue1, total_country,
+											country_name, i);
+									gameElements.r_flag = 1;
+									saveload.saveGame(gameElements);
+									System.out
+											.println("Game has been saved and terminated,please restart to continue the game");
+									System.exit(0);
+								}
+								// reinforcement ends
+							} else {
+								gameElements.r_flag = 0;
+								i = gameElements.i;
+								 mapSet = player_names.entrySet();
+								 elementAt = (Map.Entry<String, Integer>) mapSet.toArray()[i];
+								 player = elementAt.getKey();
+							}
+		
+							if (gameElements.a_flag == 0) {
+								int attacker_armies = 0;
+								int defender_armies = 0;
+								int attacker_armies1 = 0;
+								int defender_armies1 = 0;
+								String attack_country = null;
+								String defend_country = null;
+		
+								System.out.println("\nPHASE VIEW");
+								System.out.println("\n=============================");
+								subject.setNameState(player, phase2, message2);
+								System.out.println("=============================\n");
+								o_printtable.getTable(file, i, country_per_player, army_per_country);
+								o_player.attack(attack_country, i, country_per_player, file, defend_country, country_list,
+										attacker_armies, defender_armies, attacker_armies1, defender_armies1, army_per_country,
+										cards, card_1, card_2, card_3, card_4, card_5, card_6, out_players, total_players);
+		
+								System.out.println("Do you want to save the game (yes/no)?");
+								ans = scan.next();
+								if (ans.equalsIgnoreCase("yes")) {
+									gameElements = saveload.gameelements(armies_per_player, army_per_country, continent_list,
+											country_continent, country_list, country_per_player, total_players, file,
+											player_names, continent_list_per_player, contvalue, contvalue1, total_country,
+											country_name, i);
+									gameElements.r_flag = 1;
+									gameElements.a_flag = 1;
+									saveload.saveGame(gameElements);
+									System.out
+											.println("Game has been saved and terminated,please restart to continue the game");
+									System.exit(0);
+								}
+							} else {
+								gameElements.a_flag = 0;
+								gameElements.r_flag = 0;
+								i = gameElements.i;
+								mapSet = player_names.entrySet();
+								 elementAt = (Map.Entry<String, Integer>) mapSet.toArray()[i];
+								 player = elementAt.getKey();
+								 System.out.println(player+""+i);
+							}
+							if (gameElements.f_flag == 0) {
+								System.out.println("\n=============================");
+								subject.setNameState(player, phase3, message3);
+								System.out.println("=============================\n");
+								o_printtable.getTable(file, i, country_per_player, army_per_country);
+								o_player.fortify(file, i, country_per_player, army_per_country);
+		
+								System.out.println("Do you want to save the game (yes/no)?");
+								ans = scan.next();
+								if (ans.equalsIgnoreCase("yes")) {
+									gameElements = saveload.gameelements(armies_per_player, army_per_country, continent_list,
+											country_continent, country_list, country_per_player, total_players, file,
+											player_names, continent_list_per_player, contvalue, contvalue1, total_country,
+											country_name, i);
+									gameElements.f_flag = 1;
+									gameElements.r_flag = 1;
+									gameElements.a_flag = 1;
+									saveload.saveGame(gameElements);
+									System.out.println("Game has been saved and terminated,please restart to continue the game");
+									System.exit(0);
+								}
+							} else {
+								gameElements.f_flag = 0;
+								gameElements.a_flag = 0;
+								gameElements.r_flag = 0;
+								i = gameElements.i;
+							}
+						} else if (player_names.get(player) == 2) {
+							System.out.println("Player : " + player);
+							o_printtable.getTable(file, i, country_per_player, army_per_country);
+							int extra_army = 0;
+							int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1,
+									country_continent, contvalue);
+							z += extra_army;
+							army_per_country = o_reinforcement.placeReinforceArmiesAggressive(z, i, country_per_player,
 									army_per_country);
-							country_per_player = o_dice.placeAttackCountryAggressive(a_country, d_country,
-									country_per_player, i, d, out_players);
-						}
-						System.out.println(army_per_country);
-						System.out.println(country_per_player);
-					}
-					o_printtable.getTable(file, i, country_per_player, army_per_country);
-					System.out.println("Attack Phase done");
-					System.out.println("\n=============================");
-					subject.setNameState(player, phase3, message3);
-					System.out.println("=============================\n");
-					// o_aggressive.fortify(file, defender_armies1,
-					// country_per_player, army_per_country);
-					o_fortification.fortifyAggressive(file, country_per_player.get(i), army_per_country);
-					System.out.println("Fortification Phase done");
-					o_printtable.getTable(file, i, country_per_player, army_per_country);
-					// System.exit(0);
-				} else if (player_names.get(player) == 3) {
-					System.out.println("Player : " + player);
-					o_printtable.getTable(file, i, country_per_player, army_per_country);
-					int extra_army = 0;
-					int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1,
-							country_continent, contvalue);
-					z += extra_army;
-					army_per_country = o_reinforcement.placeReinforceArmiesBenevolent(z, i, country_per_player,
-							army_per_country);
-					System.out.println("Reinforced armies : " + z);
-
-					System.out.println("After Reinforcement : ");
-					o_printtable.getTable(file, i, country_per_player, army_per_country);
-					// no attack phase
-					System.out.println("\n=============================");
-					subject.setNameState(player, phase3, message3);
-					System.out.println("=============================\n");
-					o_fortification.fortifyBenevolent(file, country_per_player.get(i), army_per_country);
-					System.out.println("Fortification Phase done");
-					o_printtable.getTable(file, i, country_per_player, army_per_country);
-					// System.exit(0);
-				} else if (player_names.get(player) == 4) {
-					System.out.println("Player : " + player);
-					o_printtable.getTable(file, i, country_per_player, army_per_country);
-					int extra_army = 0;
-					int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1,
-							country_continent, contvalue);
-					z += extra_army;
-					army_per_country = o_reinforcement.placeReinforceArmiesRandom(z, i, country_per_player,
-							army_per_country);
-					System.out.println("Reinforced armies : " + z);
-
-					System.out.println("After Reinforcement : ");
-					o_printtable.getTable(file, i, country_per_player, army_per_country);
-
-					System.out.println("\nPHASE VIEW");
-					System.out.println("\n=============================");
-					subject.setNameState(player, phase2, message2);
-					System.out.println("=============================\n");
-					String a_country = o_attack.getAttackingCountryRandom(country_per_player.get(i), army_per_country);
-					System.out.println("Attacker Country : " + a_country);
-					ArrayList<String> neighbour_countries = o_printtable.getNeighbour(file, a_country);
-					ArrayList<String> to_be_attacked_countries = o_attack.toBeAttackedCountry(country_per_player.get(i),
-							neighbour_countries);
-					int a_armies = army_per_country.get(a_country);
-					System.out.println("Attacker Armies : " + a_armies);
-
-					for (int l = 0; l < to_be_attacked_countries.size(); l++) {
-						if (a_armies <= 1) {
-							break;
-						}
-						String d_country = to_be_attacked_countries.get(l);
-						int d = o_dice.getDefenderIndex(d_country, country_per_player);
-						int d_armies = army_per_country.get(d_country);
-
-						army_per_country = o_dice.rollDiceRandom(a_armies, d_armies, file, i, country_per_player,
-								army_per_country, a_country, d_country);
-						a_armies = army_per_country.get(a_country);
-						d_armies = army_per_country.get(d_country);
-
-						if (d_armies == 0) {
-							army_per_country = o_dice.placeAttackArmiesRandom(a_armies, a_country, d_country,
+							System.out.println("Reinforced armies : " + z);
+		
+							System.out.println("After Reinforcement : ");
+							o_printtable.getTable(file, i, country_per_player, army_per_country);
+							// System.exit(0);
+							int attacker_armies = 0;
+							int defender_armies = 0;
+							int attacker_armies1 = 0;
+							int defender_armies1 = 0;
+							String attack_country = null;
+							String defend_country = null;
+							System.out.println("\nPHASE VIEW");
+							System.out.println("\n=============================");
+							subject.setNameState(player, phase2, message2);
+							System.out.println("=============================\n");
+							String a_country = o_attack.getAttackingCountryAggressive(country_per_player.get(i),
 									army_per_country);
-							country_per_player = o_dice.placeAttackCountryRandom(a_country, d_country,
-									country_per_player, i, d, out_players);
+							System.out.println("Attacker Country : " + a_country);
+							ArrayList<String> neighbour_countries = o_printtable.getNeighbour(file, a_country);
+							ArrayList<String> to_be_attacked_countries = o_attack.toBeAttackedCountry(country_per_player.get(i),
+									neighbour_countries);
+							int a_armies = army_per_country.get(a_country);
+							System.out.println("Attacker Armies : " + a_armies);
+		
+							for (int l = 0; l < to_be_attacked_countries.size(); l++) {
+								if (a_armies <= 1) {
+									break;
+								}
+								String d_country = to_be_attacked_countries.get(l);
+								int d = o_dice.getDefenderIndex(d_country, country_per_player);
+								int d_armies = army_per_country.get(d_country);
+		
+								army_per_country = o_dice.rollDiceAggressive(a_armies, d_armies, file, i, country_per_player,
+										army_per_country, a_country, d_country);
+								a_armies = army_per_country.get(a_country);
+								d_armies = army_per_country.get(d_country);
+		
+								if (d_armies == 0) {
+									army_per_country = o_dice.placeAttackArmiesAggressive(a_armies, a_country, d_country,
+											army_per_country);
+									country_per_player = o_dice.placeAttackCountryAggressive(a_country, d_country,
+											country_per_player, i, d, out_players);
+								}
+								System.out.println(army_per_country);
+								System.out.println(country_per_player);
+							}
+							o_printtable.getTable(file, i, country_per_player, army_per_country);
+							System.out.println("Attack Phase done");
+							System.out.println("\n=============================");
+							subject.setNameState(player, phase3, message3);
+							System.out.println("=============================\n");
+							// o_aggressive.fortify(file, defender_armies1,
+							// country_per_player, army_per_country);
+							o_fortification.fortifyAggressive(file, country_per_player.get(i), army_per_country);
+							System.out.println("Fortification Phase done");
+							o_printtable.getTable(file, i, country_per_player, army_per_country);
+							// System.exit(0);
+						} else if (player_names.get(player) == 3) {
+							System.out.println("Player : " + player);
+							o_printtable.getTable(file, i, country_per_player, army_per_country);
+							int extra_army = 0;
+							int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1,
+									country_continent, contvalue);
+							z += extra_army;
+							army_per_country = o_reinforcement.placeReinforceArmiesBenevolent(z, i, country_per_player,
+									army_per_country);
+							System.out.println("Reinforced armies : " + z);
+		
+							System.out.println("After Reinforcement : ");
+							o_printtable.getTable(file, i, country_per_player, army_per_country);
+							// no attack phase
+							System.out.println("\n=============================");
+							subject.setNameState(player, phase3, message3);
+							System.out.println("=============================\n");
+							o_fortification.fortifyBenevolent(file, country_per_player.get(i), army_per_country);
+							System.out.println("Fortification Phase done");
+							o_printtable.getTable(file, i, country_per_player, army_per_country);
+							// System.exit(0);
+						} else if (player_names.get(player) == 4) {
+							System.out.println("Player : " + player);
+							o_printtable.getTable(file, i, country_per_player, army_per_country);
+							int extra_army = 0;
+							int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1,
+									country_continent, contvalue);
+							z += extra_army;
+							army_per_country = o_reinforcement.placeReinforceArmiesRandom(z, i, country_per_player,
+									army_per_country);
+							System.out.println("Reinforced armies : " + z);
+		
+							System.out.println("After Reinforcement : ");
+							o_printtable.getTable(file, i, country_per_player, army_per_country);
+		
+							System.out.println("\nPHASE VIEW");
+							System.out.println("\n=============================");
+							subject.setNameState(player, phase2, message2);
+							System.out.println("=============================\n");
+							String a_country = o_attack.getAttackingCountryRandom(country_per_player.get(i), army_per_country);
+							System.out.println("Attacker Country : " + a_country);
+							ArrayList<String> neighbour_countries = o_printtable.getNeighbour(file, a_country);
+							ArrayList<String> to_be_attacked_countries = o_attack.toBeAttackedCountry(country_per_player.get(i),
+									neighbour_countries);
+							int a_armies = army_per_country.get(a_country);
+							System.out.println("Attacker Armies : " + a_armies);
+		
+							for (int l = 0; l < to_be_attacked_countries.size(); l++) {
+								if (a_armies <= 1) {
+									break;
+								}
+								String d_country = to_be_attacked_countries.get(l);
+								int d = o_dice.getDefenderIndex(d_country, country_per_player);
+								int d_armies = army_per_country.get(d_country);
+		
+								army_per_country = o_dice.rollDiceRandom(a_armies, d_armies, file, i, country_per_player,
+										army_per_country, a_country, d_country);
+								a_armies = army_per_country.get(a_country);
+								d_armies = army_per_country.get(d_country);
+		
+								if (d_armies == 0) {
+									army_per_country = o_dice.placeAttackArmiesRandom(a_armies, a_country, d_country,
+											army_per_country);
+									country_per_player = o_dice.placeAttackCountryRandom(a_country, d_country,
+											country_per_player, i, d, out_players);
+								}
+								System.out.println(army_per_country);
+								System.out.println(country_per_player);
+							}
+							o_printtable.getTable(file, i, country_per_player, army_per_country);
+							System.out.println("Attack Phase done");
+							System.out.println("\n=============================");
+							subject.setNameState(player, phase3, message3);
+							System.out.println("=============================\n");
+							o_fortification.fortifyRandom(file, country_per_player.get(i), army_per_country);
+							System.out.println("Fortification Phase done");
+							o_printtable.getTable(file, i, country_per_player, army_per_country);
+							// System.exit(0);
+						} else if (player_names.get(player) == 5) {
+							System.out.println("Player : " + player);
+							o_printtable.getTable(file, i, country_per_player, army_per_country);
+							army_per_country = o_reinforcement.placeReinforceArmiesCheater(i, country_per_player,
+									army_per_country);
+		
+							System.out.println("After Reinforcement : ");
+							o_printtable.getTable(file, i, country_per_player, army_per_country);
+							System.out.println("\nPHASE VIEW");
+							System.out.println("\n=============================");
+							subject.setNameState(player, phase2, message2);
+							System.out.println("=============================\n");
+							country_per_player = o_attack.attackCheater(file, i, country_per_player, out_players);
+							System.out.println("Attack Phase done");
+		
+							o_printtable.getTable(file, i, country_per_player, army_per_country);
+							System.out.println("\n=============================");
+							subject.setNameState(player, phase3, message3);
+							System.out.println("=============================\n");
+							o_fortification.fortifyCheater(file, country_per_player.get(i), army_per_country);
+							System.out.println("Fortification Phase done");
+							o_printtable.getTable(file, i, country_per_player, army_per_country);
+							System.out.println(country_per_player);
+							System.out.println(player_names);
+							// System.exit(0);
 						}
-						System.out.println(army_per_country);
-						System.out.println(country_per_player);
 					}
-					o_printtable.getTable(file, i, country_per_player, army_per_country);
-					System.out.println("Attack Phase done");
-					System.out.println("\n=============================");
-					subject.setNameState(player, phase3, message3);
-					System.out.println("=============================\n");
-					o_fortification.fortifyRandom(file, country_per_player.get(i), army_per_country);
-					System.out.println("Fortification Phase done");
-					o_printtable.getTable(file, i, country_per_player, army_per_country);
-					// System.exit(0);
-				} else if (player_names.get(player) == 5) {
-					System.out.println("Player : " + player);
-					o_printtable.getTable(file, i, country_per_player, army_per_country);
-					army_per_country = o_reinforcement.placeReinforceArmiesCheater(i, country_per_player,
-							army_per_country);
-
-					System.out.println("After Reinforcement : ");
-					o_printtable.getTable(file, i, country_per_player, army_per_country);
-					System.out.println("\nPHASE VIEW");
-					System.out.println("\n=============================");
-					subject.setNameState(player, phase2, message2);
-					System.out.println("=============================\n");
-					country_per_player = o_attack.attackCheater(file, i, country_per_player, out_players);
-					System.out.println("Attack Phase done");
-
-					o_printtable.getTable(file, i, country_per_player, army_per_country);
-					System.out.println("\n=============================");
-					subject.setNameState(player, phase3, message3);
-					System.out.println("=============================\n");
-					o_fortification.fortifyCheater(file, country_per_player.get(i), army_per_country);
-					System.out.println("Fortification Phase done");
-					o_printtable.getTable(file, i, country_per_player, army_per_country);
-					System.out.println(country_per_player);
-					System.out.println(player_names);
-					// System.exit(0);
-				}
-			}
-		}
+				}	
+			
+		
 		System.out.println("Winner : " + winner);
 		System.out.println("The End");
 	}
@@ -530,7 +602,6 @@ public class main implements Serializable {
 				break;
 			case 2:
 				o_tourny.tournament();
-				o_tourny.tournamentstart();
 				i = i + 1;
 				break;
 			case 3:

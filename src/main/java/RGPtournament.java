@@ -8,25 +8,26 @@ import java.util.Set;
 
 public class RGPtournament {
 
-	static int total_players = 2;
+	static int total_players;
 	static HashMap<String,Integer> player_names = new HashMap<String,Integer>();;
-	static File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
+	static File file;
 	static int i = 0;
 	static ArrayList<Integer> names = new ArrayList<Integer>();
 	static int d = 0;
 	static int k = 0;
+	static int b;
 	
-	public static void tournament() {
+	public static void tournament() throws Exception {
 		Scanner a = new Scanner(System.in);
 		System.out.println("Enter number of map to be played ");
-		int m = a.nextInt();
+		int b= a.nextInt();
 		System.out.println("Enter number of players ");
-		int p = a.nextInt();
+		total_players  = a.nextInt();
 		System.out.println("Aggressive = 1");
 		System.out.println("Benevolent = 2");
 		System.out.println("Random = 3");
 		System.out.println("Cheater = 4");
-		for(i=0;i<p;i++) {
+		for(i=0;i<total_players;i++) {
 			
 			System.out.println("Enter player "+(i+1)+" behaviour :");
 			int opt = a.nextInt();
@@ -38,10 +39,53 @@ public class RGPtournament {
 		int g = a.nextInt();
 		System.out.println("Number of turns each game should be played");
 		d = a.nextInt();
+		if(b==1) {
+			for(i=0;i<g;i++) {
+			file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world1.map");
+			tournamentstart(file);
+			}
+		}
+		if(b==2) {
+			file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world1.map");
+			tournamentstart(file);
+			file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world2.map");
+			tournamentstart(file);
+		}
+		if(b==3) {
+			file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world1.map");
+			tournamentstart(file);
+			file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world2.map");
+			tournamentstart(file);
+			file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world3.map");
+			tournamentstart(file);
+		}
+		if(b==4) {
+			file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world1.map");
+			tournamentstart(file);
+			file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world2.map");
+			tournamentstart(file);
+			file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world3.map");
+			tournamentstart(file);
+			file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world4.map");
+			tournamentstart(file);
+		}
+		if(b==5) {
+			file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world1.map");
+			tournamentstart(file);
+			file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world2.map");
+			tournamentstart(file);
+			file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world3.map");
+			tournamentstart(file);
+			file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world4.map");
+			tournamentstart(file);
+			file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world5.map");
+			tournamentstart(file);
+		}
 		
 	}
+		
 
-	public static void tournamentstart() throws Exception {
+	public static void tournamentstart(File file) throws Exception {
 		
 		
 		
@@ -72,17 +116,17 @@ public class RGPtournament {
 		
 		
 
-		HashMap<String, Integer> contvalue = o_uem.getcontinentandcontrolvalue();
-		HashMap<String, Integer> contvalue1 = o_uem.getcontinentandcountry();
-		HashMap<String, String> country_continent = o_uem.getCountryContinent();
-		ArrayList<String> continent_list = o_uem.continentlist();
-		ArrayList<String> country_list = o_uem.countrylist();
+		HashMap<String, Integer> contvalue = o_uem.getcontinentandcontrolvalue(file);
+		HashMap<String, Integer> contvalue1 = o_uem.getcontinentandcountry(file);
+		HashMap<String, String> country_continent = o_uem.getCountryContinent(file);
+		ArrayList<String> continent_list = o_uem.continentlist(file);
+		ArrayList<String> country_list = o_uem.countrylist(file);
 
 		
-		int total_country = o_uem.countrylist().size();
-		ArrayList<String> country_name = o_uem.countrylist();
+		int total_country = o_uem.countrylist(file).size();
+		ArrayList<String> country_name = o_uem.countrylist(file);
 		System.out.println(country_name);
-		System.out.println(total_players);
+		System.out.println("total players = " + total_players);
 
 		int armies_per_player = o_army.totalArmy(total_players, total_country);
 		System.out.println("Total No. of countries : " + total_country);
