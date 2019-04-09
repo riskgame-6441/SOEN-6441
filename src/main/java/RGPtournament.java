@@ -10,7 +10,7 @@ public class RGPtournament {
 
 	static int total_players = 2;
 	static HashMap<String,Integer> player_names = new HashMap<String,Integer>();;
-	static File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
+	static File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
 	static int i = 0;
 	static ArrayList<Integer> names = new ArrayList<Integer>();
 	static int d = 0;
