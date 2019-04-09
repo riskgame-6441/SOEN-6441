@@ -48,6 +48,13 @@ public class main {
 		ArrayList<String> continent_list = o_uem.continentlist();
 		ArrayList<String> country_list = o_uem.countrylist();
 
+		HashMap<String, Integer> cards = new HashMap<String, Integer>();
+		HashMap<String, Integer> card_1 = new HashMap<String, Integer>();
+		HashMap<String, Integer> card_2 = new HashMap<String, Integer>();
+		HashMap<String, Integer> card_3 = new HashMap<String, Integer>();
+		HashMap<String, Integer> card_4 = new HashMap<String, Integer>();
+		HashMap<String, Integer> card_5 = new HashMap<String, Integer>();
+		HashMap<String, Integer> card_6 = new HashMap<String, Integer>();
 		
 		int total_country = o_uem.countrylist().size();
 		ArrayList<String> country_name = o_uem.countrylist();
@@ -68,13 +75,7 @@ public class main {
 		System.out.println("No. of armies per country");
 		System.out.println(army_per_country);
 
-		HashMap<String, Integer> cards = new HashMap<String, Integer>();
-		HashMap<String, Integer> card_1 = new HashMap<String, Integer>();
-		HashMap<String, Integer> card_2 = new HashMap<String, Integer>();
-		HashMap<String, Integer> card_3 = new HashMap<String, Integer>();
-		HashMap<String, Integer> card_4 = new HashMap<String, Integer>();
-		HashMap<String, Integer> card_5 = new HashMap<String, Integer>();
-		HashMap<String, Integer> card_6 = new HashMap<String, Integer>();
+		
 		cards = o_card.hm1(country_name);
 
 		List<Integer> out_players = new ArrayList<Integer>();
@@ -117,7 +118,7 @@ public class main {
 	            	
 	            	//	o_player.reinforcement(army_per_country, country_per_player, j, total_army_per_player);
 	            	
-	            	subject1.setNameState(j+1,(int)map_per_player,continent_list_per_player.get(i),total_army_per_player);
+	            	subject1.setNameState(j+1,(int)map_per_player,continent_list_per_player.get(j),total_army_per_player);
 	            	System.out.println("\n");
 	        	}
 	        	System.out.println("==========================");
