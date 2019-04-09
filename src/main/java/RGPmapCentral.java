@@ -12,8 +12,13 @@ public class RGPmapCentral {
      */
 	public File mapOption(int value) {
 
+
+		File file = new File("C:\\Users\\raoko\\Documents\\GitHub\\SOEN-6441\\src\\main\\java\\world.map");
+
+
 		//File file = new File("C:\\Users\\raoko\\Documents\\GitHub\\SOEN-6441\\src\\main\\java\\world.map");
-		File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
+		//File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
+
 		//File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
 		//File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
 
@@ -30,9 +35,13 @@ public class RGPmapCentral {
 		if (option == 2)
 		{
 			//file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
-			file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
+
+
+
 			//file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
-			//file = new File("C:\\\\Users\\\\raoko\\\\Documents\\\\GitHub\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
+
+			//file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
+			file = new File("C:\\\\Users\\\\raoko\\\\Documents\\\\GitHub\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
 		}
 
 		if (option == 3)
