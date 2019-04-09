@@ -44,10 +44,7 @@ public class RGPobserverSubject {
 		this.message = message;
 		notifyAllObservers();
 	}
-	/**
-	 * This method is to attach details to arraylist
-	 * @param observer
-	 */
+
 	public void attach(RGPobserverObserver observer) {
 		observers.add(observer);
 	}

@@ -14,8 +14,10 @@ public class RGPcalcTotalLine {
 	 * @throws Exception
 	 */
     public int totallines() throws Exception{
-    	File file = o_main.file;
-        Scanner sc = new Scanner(file);
+    	//File file = o_main.file;
+    	//File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
+    	File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+    	Scanner sc = new Scanner(file);
         int count = 0;
         while (sc.hasNextLine()) {
             count++;
@@ -45,7 +47,9 @@ public class RGPcalcTotalLine {
      */
     public int countrylines() throws Exception{
         int a = 0;
-    	File file = o_main.file;
+    	//File file = o_main.file;
+        File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+        //File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
         Scanner sc = new Scanner(file);
         while (sc.hasNextLine()){
             a++;
@@ -79,7 +83,9 @@ public class RGPcalcTotalLine {
      */
     public int continentlines() throws Exception{
         int b = 0;
-    	File file = o_main.file;
+    	//File file = o_main.file;
+        //File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
+        File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
         Scanner sc = new Scanner(file);
         while (sc.hasNextLine()){
             b++;
