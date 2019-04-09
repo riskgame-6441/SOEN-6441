@@ -164,8 +164,8 @@ public class RGPfortification {
 					}
 				}
 			}
-			System.out.println("Country 1 : "+country1);
-			System.out.println("Country 2 : "+country2);
+		//	System.out.println("Country 1 : "+country1);
+			//System.out.println("Country 2 : "+country2);
 			int f_army = army_per_country.get(country1)-1;
 			army_per_country.put(country1, 1);
 			f_army += army_per_country.get(country2);
@@ -255,8 +255,8 @@ public class RGPfortification {
 					}
 				}
 			}
-			System.out.println("Country 1 : "+country1);
-			System.out.println("Country 2 : "+country2);
+			//System.out.println("Country 1 : "+country1);
+			//System.out.println("Country 2 : "+country2);
 			int f_army = army_per_country.get(country1)/2;
 			int new_army = army_per_country.get(country1) - f_army;
 			army_per_country.put(country1, new_army);
@@ -288,8 +288,8 @@ public class RGPfortification {
 				country2 = country_list.get(rand.nextInt(n));
 			}
 			
-			System.out.println("Country 1 : "+country1);
-			System.out.println("Country 2 : "+country2);
+		//	System.out.println("Country 1 : "+country1);
+			//System.out.println("Country 2 : "+country2);
 			
 			int f_army = rand.nextInt(m-1);
 			int new_army = army_per_country.get(country1) - f_army;
