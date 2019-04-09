@@ -30,7 +30,7 @@ public class RGPsaveLoadGame implements Serializable{
 	        {
 	            exc.printStackTrace(); 
 	            saved=false;
-	        }       
+	        }        
 	        return saved;
 	}
 	
