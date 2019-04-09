@@ -25,7 +25,9 @@ public class RGPlisting extends RGPcalcLine{
         ArrayList<String> list = new ArrayList<String>();
         int i;
         //File file = o_main.file;
-        File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
+        //File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+        //File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
+        File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world1.map");
         Scanner sc = new Scanner(file);
         int j = 0;
         int n = line2();
@@ -61,7 +63,8 @@ public class RGPlisting extends RGPcalcLine{
         String searchword = " ";
         ArrayList<String> list = new ArrayList<String>();
         int i;
-        File file = file1;
+        //File file = file1;
+        File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world1.map");
         Scanner sc = new Scanner(file);
         int j = 0;
         int n = line2(file);
@@ -96,7 +99,9 @@ public class RGPlisting extends RGPcalcLine{
         ArrayList<String> continentlist = new ArrayList<String>();
         int i;
         //File file = o_main.file;
-        File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
+        //File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+        //File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
+        File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world1.map");
         Scanner sc = new Scanner(file);
         int j = 0;
         int n = line1();
@@ -156,7 +161,9 @@ public class RGPlisting extends RGPcalcLine{
     	String searchcontinent = " ";
         int i;
         //File file = o_main.file;
-        File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
+        //File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+        //File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
+        File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world1.map");
         Scanner sc = new Scanner(file);
         int j = 0;
         int n = line1();
@@ -187,7 +194,10 @@ public class RGPlisting extends RGPcalcLine{
     	HashMap<String, Integer> contvalue = new HashMap<String, Integer>();
     	String searchcontinent = " ";
         int i;
-        File file = file1;
+        //File file = file1;
+        //File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+        //File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+        File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world1.map");
         Scanner sc = new Scanner(file);
         int j = 0;
         int n = line1();
@@ -218,8 +228,11 @@ public class RGPlisting extends RGPcalcLine{
     	HashMap<String, Integer> contcountry = new HashMap<String, Integer>();
     	String searchcontinent = " ";
     	//File file = o_main.file;
-    	File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
-        Scanner sc = new Scanner(file);
+    	//File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
+        //File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+    	//File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+    	File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world1.map");
+    	Scanner sc = new Scanner(file);
         while (sc.hasNextLine()) {
         	
             if (!sc.hasNext()) {
@@ -254,7 +267,9 @@ public class RGPlisting extends RGPcalcLine{
     public HashMap<String, Integer> getcontinentandcountry(File file1) throws Exception{
     	HashMap<String, Integer> contcountry = new HashMap<String, Integer>();
     	String searchcontinent = " ";
-    	File file = file1;
+    	//File file = file1;
+    	//File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+    	File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world1.map");
         Scanner sc = new Scanner(file);
         while (sc.hasNextLine()) {
         	
@@ -291,7 +306,10 @@ public class RGPlisting extends RGPcalcLine{
     	
     	String searchcontinent = " ";
     	//File file = o_main.file;
-    	File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
+    	//File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
+    	//File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+    	//File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+    	File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world1.map");
     	Scanner sc = new Scanner(file);
 
         while (sc.hasNextLine()) {
@@ -326,7 +344,9 @@ public class RGPlisting extends RGPcalcLine{
     	HashMap<String,String> country_continent = new HashMap<String,String>();
     	
     	String searchcontinent = " ";
-    	File file = file1;
+    	//File file = file1;
+    	//File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+    	File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world1.map");
     	Scanner sc = new Scanner(file);
 
         while (sc.hasNextLine()) {

@@ -71,7 +71,7 @@ public class RGPdiceroll {
 	 *            consists of different dice values
 	 * @return Returns the minimum value
 	 */
-	public static int minOfArray(int[] dicevalues) {
+	public int minOfArray(int[] dicevalues) {
 		int min = dicevalues[0];
 
 		for (int i = 1; i < dicevalues.length; i++) {
@@ -162,7 +162,7 @@ public class RGPdiceroll {
 	 * @return returns where it is valid or not through int
 	 * @throws Exception
 	 */
-	public int validdefender(File file, List<List<String>> country_per_player, String attack_country,
+	public int   validdefender(File file, List<List<String>> country_per_player, String attack_country,
 			String defend_country, ArrayList<String> country_list, int i, int f) throws Exception {
 		RGPfortification o_fortification = new RGPfortification();
 		int value;
@@ -181,7 +181,7 @@ public class RGPdiceroll {
 		}
 		return value;
 	}
-
+  
 	/**
 	 * This method is to place armies in country player won
 	 * 

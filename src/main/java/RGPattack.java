@@ -11,23 +11,27 @@ public class RGPattack {
 	
 	public static String getAttackingCountryAggressive(List<String> country_per_player, HashMap<String, Integer> army_per_country) {
 		String a_country= " ";
-		String country_x = " ";
-		int x = 0;
-		for(int j=0;j<country_per_player.size()-1;j++) {
-			if(a_country != " ") {
-				x = army_per_country.get(a_country);
-				country_x = a_country;
-			}else {
-				x = army_per_country.get(country_per_player.get(j));
-				country_x = country_per_player.get(j);
-			}
-			
-			int y = army_per_country.get(country_per_player.get(j+1));
-			String country_y = country_per_player.get(j+1);
-			if(x>=y) {
-				a_country = country_x;
-			}else {
-				a_country = country_y;
+		if(country_per_player.size() == 1) {
+			a_country = country_per_player.get(0);
+		}else {
+			String country_x = " ";
+			int x = 0;
+			for(int j=0;j<country_per_player.size()-1;j++) {
+				if(a_country != " ") {
+					x = army_per_country.get(a_country);
+					country_x = a_country;
+				}else {
+					x = army_per_country.get(country_per_player.get(j));
+					country_x = country_per_player.get(j);
+				}
+				
+				int y = army_per_country.get(country_per_player.get(j+1));
+				String country_y = country_per_player.get(j+1);
+				if(x>=y) {
+					a_country = country_x;
+				}else {
+					a_country = country_y;
+				}
 			}
 		}
 		return a_country;

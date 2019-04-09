@@ -10,9 +10,7 @@ public class RGPtournament {
 
 	static int total_players;
 	static HashMap<String,Integer> player_names = new HashMap<String,Integer>();;
-	
 	static File file;
-	
 	static int i = 0;
 	static ArrayList<Integer> names = new ArrayList<Integer>();
 	static int d = 0;
@@ -118,15 +116,15 @@ public class RGPtournament {
 		
 		
 
-		HashMap<String, Integer> contvalue = o_uem.getcontinentandcontrolvalue();
-		HashMap<String, Integer> contvalue1 = o_uem.getcontinentandcountry();
-		HashMap<String, String> country_continent = o_uem.getCountryContinent();
-		ArrayList<String> continent_list = o_uem.continentlist();
-		ArrayList<String> country_list = o_uem.countrylist();
+		HashMap<String, Integer> contvalue = o_uem.getcontinentandcontrolvalue(file);
+		HashMap<String, Integer> contvalue1 = o_uem.getcontinentandcountry(file);
+		HashMap<String, String> country_continent = o_uem.getCountryContinent(file);
+		ArrayList<String> continent_list = o_uem.continentlist(file);
+		ArrayList<String> country_list = o_uem.countrylist(file);
 
 		
-		int total_country = o_uem.countrylist().size();
-		ArrayList<String> country_name = o_uem.countrylist();
+		int total_country = o_uem.countrylist(file).size();
+		ArrayList<String> country_name = o_uem.countrylist(file);
 		System.out.println(country_name);
 		System.out.println("total players = " + total_players);
 

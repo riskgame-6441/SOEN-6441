@@ -14,20 +14,26 @@ public class RGPsaveLoadGame implements Serializable{
 	 * This method is to save the game
 	 * @param gameElements is game elements object
 	 */
-	public  void saveGame(RGPGameElements gameElements){
+	public  boolean saveGame(RGPGameElements gameElements){
+			
+		 boolean saved = false;
 		
 	        try
 	        {  
 	            FileOutputStream saveFile=new FileOutputStream("savegame.ser");
 	            ObjectOutputStream save = new ObjectOutputStream(saveFile);
 	            save.writeObject(gameElements);
-	            save.close(); 
+	            save.close();
+	            saved=true;
 	        }
 	        catch(Exception exc)
 	        {
-	            exc.printStackTrace();            
-	        }       
-	    }
+	            exc.printStackTrace(); 
+	            saved=false;
+	        }        
+	        return saved;
+	}
+	
 	/**
 	 * This method is to load the game
 	 * @return game element object
@@ -73,7 +79,8 @@ public class RGPsaveLoadGame implements Serializable{
 		 ArrayList<String> country_list, List<List<String>> country_per_player,
 		 int total_players, File file,HashMap<String, Integer> player_names, List<List<String>>continent_list_per_player,
 		 HashMap<String, Integer> contvalue, HashMap<String, Integer> contvalue1,
-		 int total_country,ArrayList<String> country_name,int i){
+		 int total_country,ArrayList<String> country_name,int i)
+ {
 	 RGPGameElements gameElements = new RGPGameElements();
 	 gameElements.armies_per_player = armies_per_player;
 		gameElements.army_per_country = army_per_country;
