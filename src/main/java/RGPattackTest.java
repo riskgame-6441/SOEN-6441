@@ -1,10 +1,14 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
+
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class RGPattackTest {
@@ -78,6 +82,7 @@ public class RGPattackTest {
 	
 	@Test
 	public void test4() throws Exception {
+		
 		List<List<String>> country_per_player = new ArrayList<List<String>>();
 		List<String> country_per_player1 = new ArrayList<String>();
 		List<String> country_per_player2 = new ArrayList<String>();
@@ -90,9 +95,9 @@ public class RGPattackTest {
 		country_per_player.add(country_per_player1);
 		country_per_player.add(country_per_player2);
 		//File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
-		File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
+		File file = new File("C:\\\\\\\\Users\\\\\\\\raoko\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\SOEN-6441\\\\\\\\src\\\\\\\\main\\\\\\\\java\\\\\\\\world.map");
 		String attack_country = "India";
-		String defend_country = "Bangladesh";
+		String defend_country = "SriLanka";
 		ArrayList<String> country_list = new ArrayList<String>();
 		country_list.add("India");
 		country_list.add("China");
@@ -100,7 +105,9 @@ public class RGPattackTest {
 		country_list.add("Pakistan");
 		country_list.add("Bangladesh");
 		country_list.add("SriLanka");
-		int i =1;
+		
+		int i =0;
+		
 		int f =1;
 		int m = o_dice.validdefender(file, country_per_player, attack_country, defend_country, country_list, i, f);
 		assertEquals(0, m);
@@ -120,9 +127,9 @@ public class RGPattackTest {
 		country_per_player.add(country_per_player1);
 		country_per_player.add(country_per_player2);
 		//File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
-		File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
+		File file = new File("C:\\\\\\\\Users\\\\\\\\raoko\\\\\\\\Documents\\\\\\\\GitHub\\\\\\\\SOEN-6441\\\\\\\\src\\\\\\\\main\\\\\\\\java\\\\\\\\world.map");
 		String attack_country = "India";
-		String defend_country = "Bangladesh";
+		String defend_country = "SriLanka";
 		ArrayList<String> country_list = new ArrayList<String>();
 		country_list.add("India");
 		country_list.add("China");
