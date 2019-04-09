@@ -202,10 +202,4 @@ public class RGPsaveTest {
 		
 }
 
-/*(Integer armies_per_player, HashMap<String, Integer> army_per_country,
-ArrayList<String> continent_list, HashMap<String, String> country_continent,
-ArrayList<String> country_list, List<List<String>> country_per_player,
-int total_players, File file,HashMap<String, Integer> player_names, List<List<String>>continent_list_per_player,
-HashMap<String, Integer> contvalue, HashMap<String, Integer> contvalue1,
-int total_country,ArrayList<String> country_name,int i);
-*/
+

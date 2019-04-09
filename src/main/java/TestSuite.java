@@ -11,7 +11,8 @@ import org.junit.runners.Suite;
 	RGPreinforcementTest.class,
 	RGPnamingPlayersTest.class,
 	RGPattackTest.class,
-	RGPsaveTest.class
+	RGPsaveTest.class,
+	RGPLoadTest.class
 })
 
 public class TestSuite {
