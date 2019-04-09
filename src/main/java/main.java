@@ -90,14 +90,14 @@ public class main implements Serializable {
 		} else if (ans.equalsIgnoreCase("no")) {
 			menu();
 
-			contvalue = o_uem.getcontinentandcontrolvalue();
-			contvalue1 = o_uem.getcontinentandcountry();
-			country_continent = o_uem.getCountryContinent();
-			continent_list = o_uem.continentlist();
-			country_list = o_uem.countrylist();
+			contvalue = o_uem.getcontinentandcontrolvalue(file);
+			contvalue1 = o_uem.getcontinentandcountry(file);
+			country_continent = o_uem.getCountryContinent(file);
+			continent_list = o_uem.continentlist(file);
+			country_list = o_uem.countrylist(file);
 
-			total_country = o_uem.countrylist().size();
-			country_name = o_uem.countrylist();
+			total_country = o_uem.countrylist(file).size();
+			country_name = o_uem.countrylist(file);
 			System.out.println(country_name);
 			System.out.println(total_players);
 
@@ -147,7 +147,7 @@ public class main implements Serializable {
 				System.out.println("\nWORLD DOMINATION VIEW\n");
 				System.out.println("==========================");
 				//Players world domination view
-	        	for(int j=0;j<total_players;j++) {
+	        	/*for(int j=0;j<total_players;j++) {
 	        		int total_country_num = country_list.size();
 	        		int player_country_num = (country_per_player.get(j)).size();
 	        		float map_per_player = (float)(100*player_country_num)/total_country_num;
@@ -218,7 +218,7 @@ public class main implements Serializable {
 					z += extra_army;
 					for(int h=0;h<continent_list_per_player.get(i).size();h++){
 						String continent = continent_list_per_player.get(i).get(h);
-						extra_army_continent = contvalue.get(continent);
+						extra_army_continent = contvalue.get(continent);*/
 						// Players world domination view
 						for (int j = 0; j < total_players; j++) {
 							int total_country_num = country_list.size();
@@ -251,7 +251,7 @@ public class main implements Serializable {
 								o_printtable.getTable(file, i, country_per_player, army_per_country);
 		
 								// card exchange view
-								extra_army = 0;
+								int extra_army = 0;
 								if (i == 0 && !card_1.isEmpty()) {
 									System.out.println("\nCARD EXCHANGE VIEW\n");
 									subject3.setNameState(card_1);
@@ -289,13 +289,13 @@ public class main implements Serializable {
 										extra_army = o_card.trade_card(card_6);
 									}
 								}
-								extra_army_continent = 0;
+								int extra_army_continent = 0;
 								System.out.println("Extra armies by trading cards : " + extra_army);
-								z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1,
+								int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1,
 										country_continent, contvalue);
 								z += extra_army;
-								for (h = 0; h < continent_list_per_player.get(i).size(); h++) {
-									continent = continent_list_per_player.get(i).get(h);
+								for (int h = 0; h < continent_list_per_player.get(i).size(); h++) {
+									String continent = continent_list_per_player.get(i).get(h);
 									extra_army_continent = contvalue.get(continent);
 								}
 								System.out.println("Extra armies by continent : " + extra_army_continent);
@@ -389,8 +389,7 @@ public class main implements Serializable {
 									gameElements.r_flag = 1;
 									gameElements.a_flag = 1;
 									saveload.saveGame(gameElements);
-									System.out
-											.println("Game has been saved and terminated,please restart to continue the game");
+									System.out.println("Game has been saved and terminated,please restart to continue the game");
 									System.exit(0);
 								}
 							} else {
@@ -402,8 +401,8 @@ public class main implements Serializable {
 						} else if (player_names.get(player) == 2) {
 							System.out.println("Player : " + player);
 							o_printtable.getTable(file, i, country_per_player, army_per_country);
-							extra_army = 0;
-							z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1,
+							int extra_army = 0;
+							int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1,
 									country_continent, contvalue);
 							z += extra_army;
 							army_per_country = o_reinforcement.placeReinforceArmiesAggressive(z, i, country_per_player,
@@ -468,8 +467,8 @@ public class main implements Serializable {
 						} else if (player_names.get(player) == 3) {
 							System.out.println("Player : " + player);
 							o_printtable.getTable(file, i, country_per_player, army_per_country);
-							extra_army = 0;
-							z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1,
+							int extra_army = 0;
+							int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1,
 									country_continent, contvalue);
 							z += extra_army;
 							army_per_country = o_reinforcement.placeReinforceArmiesBenevolent(z, i, country_per_player,
@@ -489,8 +488,8 @@ public class main implements Serializable {
 						} else if (player_names.get(player) == 4) {
 							System.out.println("Player : " + player);
 							o_printtable.getTable(file, i, country_per_player, army_per_country);
-							extra_army = 0;
-							z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1,
+							int extra_army = 0;
+							int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1,
 									country_continent, contvalue);
 							z += extra_army;
 							army_per_country = o_reinforcement.placeReinforceArmiesRandom(z, i, country_per_player,
@@ -571,8 +570,8 @@ public class main implements Serializable {
 						}
 					}
 				}	
-			}
-		}
+			
+		
 		System.out.println("Winner : " + winner);
 		System.out.println("The End");
 	}
