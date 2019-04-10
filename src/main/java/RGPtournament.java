@@ -335,13 +335,13 @@ public class RGPtournament {
 	            Map.Entry<String, Integer> elementAt = (Map.Entry<String, Integer>) mapSet.toArray()[i];
 	            String player = elementAt.getKey();
 	            //System.out.println("Player : "+player_names.get(player));
-	            System.out.println(out_players);
+	           // System.out.println(out_players);
 				if(out_players.size() != 0) {
 					//System.out.println(out_players);
 					if(out_players.contains(i)) {
 						continue;
 					}else {
-						System.out.println(player);
+						//System.out.println(player);
 						winner = player;
 					}
 					if(out_players.size() == (total_players-1)) {

@@ -15,9 +15,15 @@ public class RGPcalcTotalLine {
 	 */
     public int totallines() throws Exception{
     	//File file = o_main.file;
+
+    	//File file = new File("C:\\\\Users\\\\raoko\\\\Documents\\\\GitHub\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
+        
+        File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+        Scanner sc = new Scanner(file);
     	//File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
-    	File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
-    	Scanner sc = new Scanner(file);
+    	//File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
+    	//Scanner sc = new Scanner(file);
+
         int count = 0;
         while (sc.hasNextLine()) {
             count++;
@@ -49,7 +55,10 @@ public class RGPcalcTotalLine {
         int a = 0;
     	//File file = o_main.file;
         File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+       // File file = new File("C:\\\\Users\\\\raoko\\\\Documents\\\\GitHub\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
+		//File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
         //File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
+
         Scanner sc = new Scanner(file);
         while (sc.hasNextLine()){
             a++;
@@ -84,8 +93,12 @@ public class RGPcalcTotalLine {
     public int continentlines() throws Exception{
         int b = 0;
     	//File file = o_main.file;
-        //File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
+
+       // File file = new File("C:\\\\Users\\\\raoko\\\\Documents\\\\GitHub\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
         File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+        //File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
+        //File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
+
         Scanner sc = new Scanner(file);
         while (sc.hasNextLine()){
             b++;
