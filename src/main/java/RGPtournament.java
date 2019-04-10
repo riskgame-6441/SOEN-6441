@@ -5,11 +5,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
-
+/**
+ * This class is to play tournament mode based on player strategies
+ * @author pavan
+ *
+ */
 public class RGPtournament {
 
 	static int total_players;
-	static HashMap<String,Integer> player_names = new HashMap<String,Integer>();;
+	static HashMap<String,Integer> player_names = new HashMap<String,Integer>();
 	static File file;
 	static int i = 0;
 	static ArrayList<Integer> names = new ArrayList<Integer>();
@@ -17,7 +21,23 @@ public class RGPtournament {
 	static int k = 0;
 	static int b;
 	static String[] winner_list;
-	
+	static HashMap<String,String> Map1 = new HashMap<String,String>();
+	static HashMap<String,String> Map2 = new HashMap<String,String>();
+	static HashMap<String,String> Map3 = new HashMap<String,String>();
+	static HashMap<String,String> Map4 = new HashMap<String,String>();
+	static HashMap<String,String> Map5 = new HashMap<String,String>();
+	static HashMap<String,String> winnerslist1 = new HashMap<String,String>();
+	static HashMap<String,String> winnerslist2 = new HashMap<String,String>();
+	static HashMap<String,String> winnerslist3 = new HashMap<String,String>();
+	static HashMap<String,String> winnerslist4 = new HashMap<String,String>();
+	static HashMap<String,String> winnerslist5 = new HashMap<String,String>();
+	static String map = " ";
+	static String game = " ";
+	static String win = "";
+	/**
+	 * This method is to initiate the values to tournament
+	 * @throws Exception
+	 */
 	public static void tournament() throws Exception {
 		Scanner a = new Scanner(System.in);
 		System.out.println("Enter number of map to be played ");
@@ -42,65 +62,198 @@ public class RGPtournament {
 		d = a.nextInt();
 		if(b==1) {
 			for(i=0;i<g;i++) {
-			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
-			//winner_list.add(tournamentstart(file));
+				file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+				System.out.println("Map1 : ");
+				for(int i=0;i<g;i++) {
+					win = tournamentstart(file);
+					map = "map1";
+					game = "game" + (i+1);
+					winnerslist1.put(map, game);
+					Map1.put(winnerslist1.get(map),win);
+				}
 			}
+			System.out.println("\n************************************************************************");
+			System.out.println("Map 1: " + Map1);
+			System.out.println("************************************************************************\n");
 		}
 		if(b==2) {
+			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+			//String win = "";
+			//System.out.println("Map1 : ");
+			for(int i=0;i<g;i++) {
+				win = tournamentstart(file);
+				map = "map1";
+				game = "game" + (i+1);
+				winnerslist1.put(map, game);
+				Map1.put(winnerslist1.get(map),win);
+				//System.out.println(winners);
+				//System.out.println("Game "+i+" : "+win);
+			}
+			//System.out.println(winners);
+			//win = " ";
+			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+			//System.out.println("Map2 : ");
+			for(int i=0;i<g;i++) {
+				win = tournamentstart(file);
+				map = "map2";
+				game = "game" + (i+1);
+				winnerslist2.put(map, game);
+				Map2.put(winnerslist2.get(map),win);
+				//System.out.println(winners);
+				//System.out.println("Game "+i+" : "+win);
+			}
+			System.out.println("\n************************************************************************");
+			System.out.println("Map 1: " + Map1);
+			System.out.println("Map 2: " + Map2);
+			System.out.println("************************************************************************\n");
+		}
+		
+		if(b==3) {
 			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
 			String win = "";
 			System.out.println("Map1 : ");
 			for(int i=0;i<g;i++) {
 				win = tournamentstart(file);
-				System.out.println("Game "+i+" : "+win);
+				map = "map1";
+				game = "game" + (i+1);
+				winnerslist1.put(map, game);
+				Map1.put(winnerslist1.get(map),win);
 			}
-			//winner_list.add(win);
-			win = " ";
-			//winner_list.add(tournamentstart(file));
 			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
 			System.out.println("Map2 : ");
 			for(int i=0;i<g;i++) {
-				String win1 = tournamentstart(file);
-				System.out.println("Game "+i+" : "+win1);
+				win = tournamentstart(file);
+				map = "map2";
+				game = "game" + (i+1);
+				winnerslist1.put(map, game);
+				Map2.put(winnerslist1.get(map),win);
 			}
-			//winner_list.add(win);
-			//winner_list.add(tournamentstart(file));
-		}
-		if(b==3) {
 			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
-			//winner_list.add(tournamentstart(file));
-			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
-			//winner_list.add(tournamentstart(file));
-			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
-			//winner_list.add(tournamentstart(file));
+			System.out.println("Map3 : ");
+			for(int i=0;i<g;i++) {
+				win = tournamentstart(file);
+				map = "map3";
+				game = "game" + (i+1);
+				winnerslist3.put(map, game);
+				Map3.put(winnerslist3.get(map),win);
+			}
+			System.out.println("\n************************************************************************");
+			System.out.println("Map 1: " + Map1);
+			System.out.println("Map 2: " + Map2);
+			System.out.println("Map 3: " + Map3);
+			System.out.println("************************************************************************\n");
+			
 		}
 		if(b==4) {
 			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
-			//winner_list.add(tournamentstart(file));
+			String win = "";
+			System.out.println("Map1 : ");
+			for(int i=0;i<g;i++) {
+				win = tournamentstart(file);
+				map = "map1";
+				game = "game" + (i+1);
+				winnerslist1.put(map, game);
+				Map1.put(winnerslist1.get(map),win);
+			}
 			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
-			//winner_list.add(tournamentstart(file));
+			System.out.println("Map2 : ");
+			for(int i=0;i<g;i++) {
+				win = tournamentstart(file);
+				map = "map2";
+				game = "game" + (i+1);
+				winnerslist2.put(map, game);
+				Map2.put(winnerslist2.get(map),win);
+			}
 			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
-			//winner_list.add(tournamentstart(file));
+			System.out.println("Map3 : ");
+			for(int i=0;i<g;i++) {
+				win = tournamentstart(file);
+				map = "map3";
+				game = "game" + (i+1);
+				winnerslist3.put(map, game);
+				Map3.put(winnerslist3.get(map),win);
+			}
 			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
-		//	winner_list.add(tournamentstart(file));
+			System.out.println("Map4 : ");
+			for(int i=0;i<g;i++) {
+				win = tournamentstart(file);
+				map = "map4";
+				game = "game" + (i+1);
+				winnerslist4.put(map, game);
+				Map4.put(winnerslist4.get(map),win);
+			}
+			System.out.println("\n************************************************************************");
+			System.out.println("Map 1: " + Map1);
+			System.out.println("Map 2: " + Map2);
+			System.out.println("Map 3: " + Map3);
+			System.out.println("Map 4: " + Map4);
+			System.out.println("************************************************************************\n");
 		}
 		if(b==5) {
 			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
-			//winner_list.add(tournamentstart(file));
+			String win = "";
+			System.out.println("Map1 : ");
+			for(int i=0;i<g;i++) {
+				win = tournamentstart(file);
+				map = "map1";
+				game = "game" + (i+1);
+				winnerslist1.put(map, game);
+				Map1.put(winnerslist1.get(map),win);
+			}
 			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
-		//	winner_list.add(tournamentstart(file));
+			System.out.println("Map2 : ");
+			for(int i=0;i<g;i++) {
+				win = tournamentstart(file);
+				map = "map2";
+				game = "game" + (i+1);
+				winnerslist2.put(map, game);
+				Map2.put(winnerslist2.get(map),win);
+			}
 			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
-		//	winner_list.add(tournamentstart(file));
+			System.out.println("Map3 : ");
+			for(int i=0;i<g;i++) {
+				win = tournamentstart(file);
+				map = "map3";
+				game = "game" + (i+1);
+				winnerslist3.put(map, game);
+				Map3.put(winnerslist3.get(map),win);
+			}
 			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
-		//	winner_list.add(tournamentstart(file));
+			System.out.println("Map4 : ");
+			for(int i=0;i<g;i++) {
+				win = tournamentstart(file);
+				map = "map4";
+				game = "game" + (i+1);
+				winnerslist4.put(map, game);
+				Map4.put(winnerslist4.get(map),win);
+			}
 			file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
-		//	winner_list.add(tournamentstart(file));
+			System.out.println("Map5 : ");
+			for(int i=0;i<g;i++) {
+				win = tournamentstart(file);
+				map = "map5";
+				game = "game" + (i+1);
+				winnerslist5.put(map, game);
+				Map5.put(winnerslist5.get(map),win);
+			}
+			System.out.println("\n************************************************************************");
+			System.out.println("Map 1: " + Map1);
+			System.out.println("Map 2: " + Map2);
+			System.out.println("Map 3: " + Map3);
+			System.out.println("Map 4: " + Map4);
+			System.out.println("Map 5: " + Map5);
+			System.out.println("************************************************************************\n");
 		}
-		System.out.println("winner list :"+winner_list);
+		//System.out.println("winner list :"+winner_list);
 		System.exit(0);
 	}
 		
-
+    /**
+     * This method is to start the tournament mode
+     * @param file is map file
+     * @return winner of game
+     * @throws Exception
+     */
 	public static String tournamentstart(File file) throws Exception {
 		
 		
@@ -172,7 +325,8 @@ public class RGPtournament {
 		List<Integer> out_players = new ArrayList<Integer>();
 		List<List<String>> continent_list_per_player = new ArrayList<List<String>>();
 		int player_flag = 1;
-		String winner = " ";
+		String winner = null;
+		//System.out.println(winner);
 		int i;
 		while(k != d) {
 			
@@ -181,11 +335,13 @@ public class RGPtournament {
 	            Map.Entry<String, Integer> elementAt = (Map.Entry<String, Integer>) mapSet.toArray()[i];
 	            String player = elementAt.getKey();
 	            //System.out.println("Player : "+player_names.get(player));
-				if(out_players != null) {
+	            System.out.println(out_players);
+				if(out_players.size() != 0) {
 					//System.out.println(out_players);
 					if(out_players.contains(i)) {
 						continue;
 					}else {
+						System.out.println(player);
 						winner = player;
 					}
 					if(out_players.size() == (total_players-1)) {
@@ -384,15 +540,16 @@ public class RGPtournament {
 			}
 			k = k + 1;
 		}
-		if(winner == " ") {
-			winner = "Draw";
+		if(winner == null) {
+			 winner = "Draw";
 		}
-		if(out_players.size() != (total_players-1)) {
-			winner = "Draw";
-		}
+		//if(out_players.size() != (total_players-1)) {
+		//	winner = "Draw";
+		//}
+		System.out.println(out_players);
 		out_players.clear();
 		k=0;
-		//System.out.println("Winner : "+winner);
+		System.out.println("Winner : "+winner);
 		return winner;
 		//System.out.println("Winner : "+winner);
 		//System.out.println("The End");
