@@ -5,18 +5,27 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+/**
+ * This is class for cheater strategy of player
+ * @author raoko
+ *
+ */
 public class RGPplayerCheater implements RGPstrategy{
 	RGPattack o_attack = new RGPattack();
 	RGPprintTable o_printtable = new RGPprintTable();
 	RGPdiceroll o_dice = new RGPdiceroll();
 	RGPreinforcement o_reinforcement = new RGPreinforcement();
 
-	
+	/**
+	 * This method is reinforcement method
+	 */
 	public void reinforcement(HashMap<String, Integer> army_per_country, List<List<String>> country_per_player, int i, Map<String,Integer> contvalue1, Map<String,Integer> contvalue, Map<String, String> country_continent) {
 		army_per_country = o_reinforcement.placeReinforceArmiesCheater(i, country_per_player, army_per_country);
 	}
 
-
+	/**
+     * This method is for attack phase
+     */
 	public void attack(String attack_country, int i, List<List<String>> country_per_player, File file, String defend_country,ArrayList<String> country_list,int attacker_armies,int defender_armies,int attacker_armies1,int defender_armies1,HashMap<String, Integer> army_per_country,HashMap<String, Integer> cards,HashMap<String, Integer> card_1,HashMap<String, Integer> card_2,HashMap<String, Integer> card_3,HashMap<String, Integer> card_4,HashMap<String, Integer> card_5,HashMap<String, Integer> card_6,List<Integer> out_players,int total_players) throws Exception {
 		country_per_player = o_attack.attackCheater(file, i, country_per_player, out_players);
 		/*for(int j=0;j<country_per_player.get(i).size();j++) {
@@ -34,6 +43,9 @@ public class RGPplayerCheater implements RGPstrategy{
 			}
 		}*/
 	}
+	/**
+	 * This method is for fortification phase
+	 */
 	public void  fortify(File file, int l, List<List<String>> country_list,HashMap<String,Integer> army_per_country) throws Exception {
 		for(int i=0;i<country_list.get(l).size();i++) {
 			ArrayList<String> neighbour_countries = o_printtable.getNeighbour(file, country_list.get(l).get(i));

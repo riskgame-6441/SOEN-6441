@@ -8,7 +8,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+/**
+ * This class is to save and load the game 
+ * @author charan
+ *
+ */
 public class RGPsaveLoadGame implements Serializable{
 	/**
 	 * This method is to save the game

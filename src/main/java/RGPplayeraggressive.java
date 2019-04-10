@@ -4,7 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-
+/**
+ * This is class for aggressive strategy of player
+ * @author raoko
+ *
+ */
 public class RGPplayeraggressive implements RGPstrategy{
 	
 	RGPattack o_attack = new RGPattack();
@@ -12,7 +16,9 @@ public class RGPplayeraggressive implements RGPstrategy{
 	RGPdiceroll o_dice = new RGPdiceroll();
 	RGPreinforcement o_reinforcement = new RGPreinforcement();
 
-	
+	/**
+	 * This method is reinforcement method
+	 */
 	public void reinforcement(HashMap<String, Integer> army_per_country, List<List<String>> country_per_player, int i, Map<String,Integer> contvalue1, Map<String,Integer> contvalue, Map<String, String> country_continent) {
 		int extra_army = 0;
 		int z = o_reinforcement.calReinforcementArmies(country_per_player.get(i), contvalue1, country_continent, contvalue);
@@ -22,7 +28,9 @@ public class RGPplayeraggressive implements RGPstrategy{
 		System.out.println("Reinforced armies : " + z);
 	}
 
-
+    /**
+     * This method is for attack phase
+     */
 	public void attack(String attack_country, int i, List<List<String>> country_per_player, File file, String defend_country,ArrayList<String> country_list,int attacker_armies,int defender_armies,int attacker_armies1,int defender_armies1,HashMap<String, Integer> army_per_country,HashMap<String, Integer> cards,HashMap<String, Integer> card_1,HashMap<String, Integer> card_2,HashMap<String, Integer> card_3,HashMap<String, Integer> card_4,HashMap<String, Integer> card_5,HashMap<String, Integer> card_6,List<Integer> out_players,int total_players) throws Exception {
 		
 		RGPprintTable o_printtable = new RGPprintTable();
@@ -63,6 +71,9 @@ public class RGPplayeraggressive implements RGPstrategy{
 			System.out.println(country_per_player);
 		}
 	}
+	/**
+	 * This method is for fortification phase
+	 */
 	public void  fortify(File file, int l, List<List<String>> country_list,HashMap<String,Integer> army_per_country) throws Exception {
 		if(country_list.size()==1) {
 			

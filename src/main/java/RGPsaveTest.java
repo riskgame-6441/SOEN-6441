@@ -7,12 +7,19 @@ import java.util.HashMap;
 import java.util.List;
 
 
-
+/**
+ * This method is to test save and game load
+ * @author raoko
+ *
+ */
 public class RGPsaveTest {
 	
 	RGPGameElements ge = new RGPGameElements();
 	
 	RGPsaveLoadGame sl = new RGPsaveLoadGame();
+	/**
+	 * This method is to test save game test
+	 */
 	@Test
 	public void saveGameTest() {
 		
@@ -107,7 +114,9 @@ public class RGPsaveTest {
 	}
 
 	
-
+	/**
+	 * This method is to test save game test
+	 */
 		@Test
 		public void saveGameTest1() {
 			
