@@ -199,10 +199,9 @@ public class RGPdiceroll {
 			HashMap<String, Integer> army_per_country) {
 		int armies1, army1;
 		Scanner ans = new Scanner(System.in);
-		System.out.println("Attacker Armies:" + attacker_armies);
-		System.out.println("Attacker has won" + " " + defend_country + " country");
-		System.out.println(
-				"Enter no of armies to place in " + defend_country + " up to (" + (attacker_armies - 1) + "armies)");
+		//System.out.println("Attacker Armies:" + attacker_armies);
+		//System.out.println("Attacker has won" + " " + defend_country + " country");
+		//System.out.println("Enter no of armies to place in " + defend_country + " up to (" + (attacker_armies - 1) + "armies)");
 		armies1 = ans.nextInt();
 		// j = 0;
 		armies1 += army_per_country.get(defend_country);
@@ -591,10 +590,10 @@ public class RGPdiceroll {
 				int b[] = rollOfDice(noofdefenderdice1);
 
 				int minvalue = minOfArray(a);
-				System.out.println("Attacker Dice values");
+				/*System.out.println("Attacker Dice values");
 				for (int i = 0; i < a.length; i++) {
 					System.out.println(a[i]);
-				}
+				}*/
 				// System.out.println("Min value in three dice");
 				// System.out.println(minvalue);
 
@@ -603,11 +602,11 @@ public class RGPdiceroll {
 				if (attacker_armies > 2) {
 					a = deleteMinNum(a, indexv);
 				}
-				
+				/*
 				System.out.println("Defender Dice values");
 				for (int i = 0; i < b.length; i++) {
 					System.out.println(b[i]);
-				}
+				}*/
 
 				int max_dicevalue_attacker = maxOfArray(a);
 				int max_dicevalue_defender = maxOfArray(b);
@@ -637,14 +636,14 @@ public class RGPdiceroll {
 				}
 				if (RGPattackerCount > 0) {
 					defender_armies = defender_armies - 1;
-					System.out.println("Defender Armies count value" + defender_armies);
-					System.out.println("Attacker Armies count value" + attacker_armies);
+				//	System.out.println("Defender Armies count value" + defender_armies);
+					//System.out.println("Attacker Armies count value" + attacker_armies);
 					RGPattackerCount = 0;
 				}
 				if (RGPdefenderCount > 0) {
 					attacker_armies = attacker_armies - 1;
-					System.out.println("Attacker Armies count value" + attacker_armies);
-					System.out.println("Defender Armies count value" + defender_armies);
+				//	System.out.println("Attacker Armies count value" + attacker_armies);
+					//System.out.println("Defender Armies count value" + defender_armies);
 					RGPdefenderCount = 0;
 				}
 		}
@@ -690,10 +689,10 @@ public class RGPdiceroll {
 				int b[] = rollOfDice(noofdefenderdice1);
 
 				int minvalue = minOfArray(a);
-				System.out.println("Attacker Dice values");
+				/*System.out.println("Attacker Dice values");
 				for (int i = 0; i < a.length; i++) {
 					System.out.println(a[i]);
-				}
+				}*/
 				// System.out.println("Min value in three dice");
 				// System.out.println(minvalue);
 
@@ -702,11 +701,11 @@ public class RGPdiceroll {
 				if (attacker_armies > 2) {
 					a = deleteMinNum(a, indexv);
 				}
-				
+				/*
 				System.out.println("Defender Dice values");
 				for (int i = 0; i < b.length; i++) {
 					System.out.println(b[i]);
-				}
+				}*/
 
 				int max_dicevalue_attacker = maxOfArray(a);
 				int max_dicevalue_defender = maxOfArray(b);
@@ -736,14 +735,14 @@ public class RGPdiceroll {
 				}
 				if (RGPattackerCount > 0) {
 					defender_armies = defender_armies - 1;
-					System.out.println("Defender Armies count value" + defender_armies);
-					System.out.println("Attacker Armies count value" + attacker_armies);
+					//System.out.println("Defender Armies count value" + defender_armies);
+					//System.out.println("Attacker Armies count value" + attacker_armies);
 					RGPattackerCount = 0;
 				}
 				if (RGPdefenderCount > 0) {
 					attacker_armies = attacker_armies - 1;
-					System.out.println("Attacker Armies count value" + attacker_armies);
-					System.out.println("Defender Armies count value" + defender_armies);
+					//System.out.println("Attacker Armies count value" + attacker_armies);
+					//System.out.println("Defender Armies count value" + defender_armies);
 					RGPdefenderCount = 0;
 				}
 		}

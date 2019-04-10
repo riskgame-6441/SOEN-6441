@@ -2,15 +2,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
-public class RGPplayer {
-	public int reinforcement(HashMap<String, Integer> army_per_country, List<List<String>> country_per_player, int j,int total_army_per_player) {
-		for(int k=0;k<country_per_player.get(j).size();k++){
-    		total_army_per_player+=army_per_country.get(country_per_player.get(j).get(k));
-    		
-    	}
-		return total_army_per_player;
+public class RGPplayer implements RGPstrategy{
+	
+	public void reinforcement(HashMap<String, Integer> army_per_country, List<List<String>> country_per_player, int i, Map<String,Integer> contvalue1, Map<String,Integer> contvalue, Map<String, String> country_continent) {
+		
 	}
 
 

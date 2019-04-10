@@ -4,7 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+/**
+ * This class is object for game elements to save and load the game
+ * @author charan
+ *
+ */
 public class RGPGameElements implements Serializable {
 
 	int total_players;

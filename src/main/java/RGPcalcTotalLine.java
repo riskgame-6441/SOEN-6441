@@ -16,9 +16,10 @@ public class RGPcalcTotalLine {
     public int totallines() throws Exception{
     	//File file = o_main.file;
 
-    	File file = new File("C:\\\\Users\\\\raoko\\\\Documents\\\\GitHub\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
+    	//File file = new File("C:\\\\Users\\\\raoko\\\\Documents\\\\GitHub\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
+        
+        File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
         Scanner sc = new Scanner(file);
-
     	//File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
     	//File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
     	//Scanner sc = new Scanner(file);
@@ -53,8 +54,8 @@ public class RGPcalcTotalLine {
     public int countrylines() throws Exception{
         int a = 0;
     	//File file = o_main.file;
-
-        File file = new File("C:\\\\Users\\\\raoko\\\\Documents\\\\GitHub\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
+        File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
+       // File file = new File("C:\\\\Users\\\\raoko\\\\Documents\\\\GitHub\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
 		//File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
         //File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
 
@@ -93,8 +94,8 @@ public class RGPcalcTotalLine {
         int b = 0;
     	//File file = o_main.file;
 
-        File file = new File("C:\\\\Users\\\\raoko\\\\Documents\\\\GitHub\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
-
+       // File file = new File("C:\\\\Users\\\\raoko\\\\Documents\\\\GitHub\\\\SOEN-6441\\\\src\\\\main\\\\java\\\\world.map");
+        File file = new File("D:\\Projects\\Risk\\SOEN-6441\\src\\main\\java\\world.map");
         //File file = new File("E:/RiskGameGit/SOEN-6441/src/main/java/world.map");
         //File file = new File("C:\\Users\\Mr.P\\Desktop\\git\\RISK\\SOEN-6441\\src\\main\\java\\world.map");
 
