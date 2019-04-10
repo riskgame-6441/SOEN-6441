@@ -1,4 +1,6 @@
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -109,6 +111,9 @@ public class RGPreinforcementTest {
 			assertEquals(3,i);
 	}
 	
+	
+	
+	
 	@Test
 	public void endOfGameTest() {
 		ArrayList<String> country_list = new ArrayList<String>();
@@ -122,6 +127,106 @@ public class RGPreinforcementTest {
 		int x = ra.endOfGame(country_list,country_per_player,i);
 		assertEquals(1,x);
 	}
+	@Test
+	public void  placeReinforceArmiesCheaterTest(){
+		
+		int i = 1;
+		List<List<String>> country_per_player = new ArrayList<List<String>>();
+		List<String> country_per_player1 = new ArrayList<String>();
+		List<String> country_per_player2 = new ArrayList<String>();
+		country_per_player1.add("India");
+		country_per_player1.add("Bang");
+		country_per_player2.add("Pak");
+		country_per_player2.add("Srilanka");
+		country_per_player.add(country_per_player1);
+		country_per_player.add(country_per_player2);
+		
+		HashMap<String, Integer> army_per_country = new HashMap<String, Integer>();
+		army_per_country.put("India",15);
+		army_per_country.put("Pak",1);
+		army_per_country.put("Srilanka",10);
+		army_per_country.put("Bang",9);
+		
+		HashMap<String, Integer> armyCheater = ra.placeReinforceArmiesCheater(i, country_per_player, army_per_country);
+		assertEquals(15,armyCheater.get("India"));
+		
+	}
+	
+	@Test
+	public void  placeReinforceArmiesCheaterTest2(){
+		
+		int i = 1;
+		List<List<String>> country_per_player = new ArrayList<List<String>>();
+		List<String> country_per_player1 = new ArrayList<String>();
+		List<String> country_per_player2 = new ArrayList<String>();
+		country_per_player1.add("India");
+		country_per_player1.add("Bang");
+		country_per_player2.add("Pak");
+		country_per_player2.add("Srilanka");
+		country_per_player.add(country_per_player1);
+		country_per_player.add(country_per_player2);
+		
+		HashMap<String, Integer> army_per_country = new HashMap<String, Integer>();
+		army_per_country.put("India",15);
+		army_per_country.put("Pak",1);
+		army_per_country.put("Srilanka",10);
+		army_per_country.put("Bang",9);
+		
+		HashMap<String, Integer> armyCheater = ra.placeReinforceArmiesCheater(i, country_per_player, army_per_country);
+		assertEquals(15,armyCheater.get("India"));
+		
+	}
+	
+	@Test
+	public void  placeReinforceArmiesCheaterTest3(){
+		
+		int i = 1;
+		List<List<String>> country_per_player = new ArrayList<List<String>>();
+		List<String> country_per_player1 = new ArrayList<String>();
+		List<String> country_per_player2 = new ArrayList<String>();
+		country_per_player1.add("India");
+		country_per_player1.add("Bang");
+		country_per_player2.add("Pak");
+		country_per_player2.add("Srilanka");
+		country_per_player.add(country_per_player1);
+		country_per_player.add(country_per_player2);
+		
+		HashMap<String, Integer> army_per_country = new HashMap<String, Integer>();
+		army_per_country.put("India",15);
+		army_per_country.put("Pak",1);
+		army_per_country.put("Srilanka",10);
+		army_per_country.put("Bang",9);
+		
+		HashMap<String, Integer> armyCheater = ra.placeReinforceArmiesCheater(i, country_per_player, army_per_country);
+		assertEquals(15,armyCheater.get("India"));
+		
+	}
+	
+	@Test
+	public void  placeReinforceArmiesCheaterTest4(){
+		
+		int i = 1;
+		List<List<String>> country_per_player = new ArrayList<List<String>>();
+		List<String> country_per_player1 = new ArrayList<String>();
+		List<String> country_per_player2 = new ArrayList<String>();
+		country_per_player1.add("India");
+		country_per_player1.add("Bang");
+		country_per_player2.add("Pak");
+		country_per_player2.add("Srilanka");
+		country_per_player.add(country_per_player1);
+		country_per_player.add(country_per_player2);
+		
+		HashMap<String, Integer> army_per_country = new HashMap<String, Integer>();
+		army_per_country.put("India",15);
+		army_per_country.put("Pak",1);
+		army_per_country.put("Srilanka",10);
+		army_per_country.put("Bang",9);
+		
+		HashMap<String, Integer> armyCheater = ra.placeReinforceArmiesCheater(i, country_per_player, army_per_country);
+		assertEquals(15,armyCheater.get("India"));
+		
+	}
+	
 }
 
 
