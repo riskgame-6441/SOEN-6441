@@ -8,11 +8,19 @@ import java.util.List;
 
 import org.junit.Test;
 
+/**
+ * This class is to test loading of game
+ * @author raoko
+ *
+ */
 public class RGPLoadTest {
 	
 RGPGameElements ge = new RGPGameElements();
 	
 	RGPsaveLoadGame sl = new RGPsaveLoadGame();
+	/**
+	 * This method is to test loading of game
+	 */
 	@Test
 	public void loadGameTest() {
 		
@@ -110,8 +118,10 @@ RGPGameElements ge = new RGPGameElements();
 				
 				assertEquals(true,result);
 }
-	
-
+	        
+	/**
+	 * This method is to test loading of game
+	 */
 			@Test
 			public void loadGameTest1() {
 				

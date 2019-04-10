@@ -3,12 +3,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
-
+/**
+ * This class is for attack phase
+ * @author charan
+ *
+ */
 public class RGPattack {
 	
 	RGPprintTable o_printtable = new RGPprintTable();
 	RGPdiceroll o_dice = new RGPdiceroll();
 	
+	/**
+	 * This method is to get attacking country for aggressive strategy
+	 * @param country_per_player is no of countries per player
+	 * @param army_per_country is no of armies per country
+	 * @return attacking country
+	 */
 	public static String getAttackingCountryAggressive(List<String> country_per_player, HashMap<String, Integer> army_per_country) {
 		String a_country= " ";
 		if(country_per_player.size() == 1) {
@@ -37,6 +47,12 @@ public class RGPattack {
 		return a_country;
 	}
 	
+	/**
+	 * 
+	 * @param country_per_player is no of countries per player
+	 * @param army_per_country is no of armies per country
+	 * @return random attacking country
+	 */
 	public static String getAttackingCountryRandom(List<String> country_per_player, HashMap<String, Integer> army_per_country) {
 		Random rand = new Random();
 		String a_country= " ";
@@ -44,6 +60,7 @@ public class RGPattack {
 		a_country = country_per_player.get(rand.nextInt(n));
 		return a_country;
 	}
+	
 	
 	public List<List<String>> attackCheater(File file, int i, List<List<String>> country_per_player, List<Integer> out_players) throws Exception {
 		for(int j=0;j<country_per_player.get(i).size();j++) {
